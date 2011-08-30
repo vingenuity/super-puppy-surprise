@@ -22,13 +22,13 @@ namespace SuperPuppySurprise.GameObjects
             Direction = Vector2.UnitY * -1;
             Speed = 300;
             Size = new Vector2(32, 32);
-            Radius = 32;
+            Radius = 16;
             Game1.PhysicsEngine.Add(this);
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
-            texture = Content.Load<Texture2D>("TestPicture");
+            texture = Content.Load<Texture2D>("TestPicture2");
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
