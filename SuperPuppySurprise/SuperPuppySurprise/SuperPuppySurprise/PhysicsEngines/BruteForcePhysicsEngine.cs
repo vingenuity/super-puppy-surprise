@@ -21,10 +21,15 @@ namespace SuperPuppySurprise.PhysicsEngines
         public void Update(GameTime gameTime)
         {
             double time = gameTime.ElapsedGameTime.TotalSeconds;
+            UpdateMovement(time);
+            
+        }
+        void UpdateMovement(double time)
+        {
             GameObject gameObject;
             Vector2 newPosition;
-            
-            for(int i = 0; i< PhysicsGameObjects.Count; i++)
+
+            for (int i = 0; i < PhysicsGameObjects.Count; i++)
             {
                 gameObject = PhysicsGameObjects[i];
 
