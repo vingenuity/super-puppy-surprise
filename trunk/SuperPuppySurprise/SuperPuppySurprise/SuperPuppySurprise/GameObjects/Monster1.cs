@@ -14,7 +14,6 @@ namespace SuperPuppySurprise.GameObjects
         Texture2D texture;
         SpriteBatch spriteBatch;
 
-
         public Monster(Vector2 Position)
             : base(Position)
         {
