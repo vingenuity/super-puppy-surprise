@@ -34,5 +34,11 @@ namespace SuperPuppySurprise.GameObjects
         public virtual void Draw(GameTime gameTime)
         {
         }
+
+        //For AI usage.
+        public Vector2 getPosition()
+        {
+            return this.Position;
+        }
     }
 }
