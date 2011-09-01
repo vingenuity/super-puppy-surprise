@@ -47,6 +47,7 @@ namespace SuperPuppySurprise
             // TODO: Add your initialization logic here
             sceneObjects.Add(new Player(new Vector2(0, 0)));
             sceneObjects.Add(new Monster(new Vector2(300, 300)));
+            sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
         KeyboardState thisKeyState;

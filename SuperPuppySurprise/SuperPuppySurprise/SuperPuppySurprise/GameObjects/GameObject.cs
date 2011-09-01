@@ -40,5 +40,8 @@ namespace SuperPuppySurprise.GameObjects
         {
             return this.Position;
         }
+        public virtual void OnCollision(GameObject gameObject)
+        {
+        }
     }
 }
