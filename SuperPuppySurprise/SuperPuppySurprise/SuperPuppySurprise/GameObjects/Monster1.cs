@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using SuperPuppySurprise.AIRoutines;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -32,6 +33,20 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
+            Vector2 playerPos = GameState.findClosestPlayer();
+
+            Direction = Vector2.Zero;
+            if (playerPos.Y > this.Position.Y)
+                Direction.Y++;
+            else if (playerPos.Y < this.Position.Y)
+                Direction.Y--;
+            if (playerPos.X > this.Position.X)
+                Direction.X++;
+            else if (playerPos.X < this.Position.X)
+                Direction.X--;
+            Direction.Normalize();
+
+            Velocity = Direction * Speed;
         }
         public override void Draw(GameTime gameTime)
         {
