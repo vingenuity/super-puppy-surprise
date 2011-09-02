@@ -11,7 +11,6 @@ namespace SuperPuppySurprise.GameObjects
 {
     public class Monster : GameObject
     {
-       
         Texture2D texture;
         SpriteBatch spriteBatch;
 
