@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using SuperPuppySurprise.GameObjects;
 using SuperPuppySurprise.PhysicsEngines;
-//using SuperPuppySurprise.AIRoutines;
+using SuperPuppySurprise.AIRoutines;
 
 namespace SuperPuppySurprise
 {
@@ -25,7 +25,7 @@ namespace SuperPuppySurprise
         Texture2D texture;
         Vector2 PlayerPosition = Vector2.Zero;
         public List<GameObject> sceneObjects;
-        //public static GameState state;
+        public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public Game1()
         {
@@ -38,7 +38,7 @@ namespace SuperPuppySurprise
         {
             sceneObjects = new List<GameObject>();
             PhysicsEngine = new BruteForcePhysicsEngine();
-           // state = new GameState();
+            state = new GameState();
          
         }
         /// <summary>
