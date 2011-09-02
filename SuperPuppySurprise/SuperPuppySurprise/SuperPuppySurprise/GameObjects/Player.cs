@@ -15,7 +15,7 @@ namespace SuperPuppySurprise.GameObjects
         KeyboardState thisKeyState;
         Texture2D texture;
         SpriteBatch spriteBatch;
-     
+        
 
         public Player(Vector2 Position)
             : base(Position)
