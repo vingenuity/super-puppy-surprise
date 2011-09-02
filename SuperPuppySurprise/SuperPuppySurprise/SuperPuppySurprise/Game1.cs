@@ -19,15 +19,17 @@ namespace SuperPuppySurprise
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        public static Game1 game;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 PlayerPosition = Vector2.Zero;
-        List<GameObject> sceneObjects;
+        public List<GameObject> sceneObjects;
         //public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public Game1()
         {
+            game = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Restart();
