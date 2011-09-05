@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DPSF;
 using Microsoft.Xna.Framework;
+using DPSF.ParticleSystems;
 
 namespace SuperPuppySurprise.DPSFParticles
 {
@@ -24,7 +25,9 @@ namespace SuperPuppySurprise.DPSFParticles
 									 Matrix.CreateLookAt(new Vector3(0, 0, -300),
 														 new Vector3(0, 0, 0), Vector3.Up);
             manager.SetWorldViewProjectionMatricesForAllParticleSystems(Matrix.Identity, View, Projection);
-            //manager
+            RandomParticleSystem paricleSystemTest = new RandomParticleSystem(Game1.game);
+            paricleSystemTest.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.game.spriteBatch);
+            manager.AddParticleSystem(paricleSystemTest);
         }
         public void Draw()
         {
