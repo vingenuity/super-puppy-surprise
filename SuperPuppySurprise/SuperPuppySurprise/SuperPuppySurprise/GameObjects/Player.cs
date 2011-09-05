@@ -21,8 +21,10 @@ namespace SuperPuppySurprise.GameObjects
         Keys downKey;
         Keys leftKey;
         Keys rightKey;
-        Keys fire;
-        
+        Keys fireUp;
+        Keys fireDown;
+        Keys fireLeft;
+        Keys fireRight;
 
         public Player(int id, Vector2 Position)
             : base(Position)
@@ -38,18 +40,16 @@ namespace SuperPuppySurprise.GameObjects
             switch (id)
             {
                 case 1:
-                    upKey = Keys.Up;
-                    downKey = Keys.Down;
-                    leftKey = Keys.Left;
-                    rightKey = Keys.Right;
-                    fire = Keys.Space;
-                    break;
-                case 2:
                     upKey = Keys.W;
                     downKey = Keys.S;
                     leftKey = Keys.A;
                     rightKey = Keys.D;
-                    fire = Keys.RightControl;
+                    fireUp = Keys.Up;
+                    fireDown = Keys.Down;
+                    fireLeft = Keys.Left;
+                    fireRight = Keys.Right;
+                    break;
+                case 2:
                     break;
                 case 3:
                     break;
@@ -71,6 +71,7 @@ namespace SuperPuppySurprise.GameObjects
         {
             thisKeyState = Keyboard.GetState();
 
+            //Update movement
             Direction = Vector2.Zero;
             if (thisKeyState.IsKeyDown(downKey))
                 Direction.Y++;
@@ -80,14 +81,30 @@ namespace SuperPuppySurprise.GameObjects
                 Direction.X++;
             else if (thisKeyState.IsKeyDown(leftKey))
                 Direction.X--;
-            if (thisKeyState.IsKeyDown(fire))
-                fireBullet();//fire a bullet!
+
             Direction.Normalize();
 
             if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 Velocity = Vector2.Zero;
             else
                 Velocity = Direction * Speed;
+
+            //Update fire direction
+            //bulletDir.clear();
+            if (thisKeyState.IsKeyDown(downKey))
+                ;//bulletDir.Y++;
+            else if (thisKeyState.IsKeyDown(upKey))
+                ;//bulletDir.Y--;
+            if (thisKeyState.IsKeyDown(rightKey))
+                ;//bulletDir.X++;
+            else if (thisKeyState.IsKeyDown(leftKey))
+                ;//bulletDir.X--;
+            //bulletDir.Normalize();
+
+            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
+                ;//bulletVelocity = Vector2.Zero;
+            else
+                ;//bulletVelocity = Direction * Speed;
         }
         public override void Draw(GameTime gameTime)
         {
