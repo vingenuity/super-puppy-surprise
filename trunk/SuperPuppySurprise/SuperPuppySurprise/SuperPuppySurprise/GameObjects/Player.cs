@@ -25,7 +25,7 @@ namespace SuperPuppySurprise.GameObjects
             Size = new Vector2(32, 32);
             Radius = 16;
             Game1.PhysicsEngine.Add(this);
-            GameState.players[0] = this;
+            GameState.players.Add(this);
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)

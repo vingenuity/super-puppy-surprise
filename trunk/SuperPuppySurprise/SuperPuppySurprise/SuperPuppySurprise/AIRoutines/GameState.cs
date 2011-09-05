@@ -12,16 +12,33 @@ namespace SuperPuppySurprise.AIRoutines
 {
     public class GameState
     {
-        public static Player[] players;
+        public static List<Player> players;
 
         public GameState()
         {
-            players = new Player[4];
+            players = new List<Player>();
         }
 
-        public static Vector2 findClosestPlayer()
+        public void clearPlayers()
         {
-            return players[0].getPosition();
+            players.Clear();
+        }
+
+        public static Player findClosestPlayerTo(Vector2 position)
+        {
+            double closestDistance = 5000;
+            Player closestPlayer = players[0];
+            for (int i = 1; i < players.Count(); i++)
+            {
+                double distance = Math.Sqrt(Math.Pow(players[i].getPosition().X - position.X, 2)
+                                          + Math.Pow(players[i].getPosition().Y - position.Y, 2));
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPlayer = players[i];
+                }
+            }
+            return closestPlayer;
         }
     }
 }
