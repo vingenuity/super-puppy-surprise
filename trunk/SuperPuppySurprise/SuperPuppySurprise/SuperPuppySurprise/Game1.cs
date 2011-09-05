@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using SuperPuppySurprise.GameObjects;
 using SuperPuppySurprise.PhysicsEngines;
 using SuperPuppySurprise.AIRoutines;
+using SuperPuppySurprise.DPSFParticles;
 
 namespace SuperPuppySurprise
 {
@@ -21,23 +22,26 @@ namespace SuperPuppySurprise
     {
         public static Game1 game;
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 PlayerPosition = Vector2.Zero;
         public List<GameObject> sceneObjects;
         public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
+        public static ParticleManager ParticleEngine;
         public Game1()
         {
             game = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Restart();
+            
+            
         }
         public void Restart()
         {
             sceneObjects = new List<GameObject>();
             PhysicsEngine = new BruteForcePhysicsEngine();
+            ParticleEngine = new ParticleManager();
             state = new GameState();
          
         }
@@ -49,6 +53,7 @@ namespace SuperPuppySurprise
         /// </summary>
         protected override void Initialize()
         {
+            Restart();
             // TODO: Add your initialization logic here
             sceneObjects.Add(new Player(1, new Vector2(0, 0)));
             sceneObjects.Add(new Player(2, new Vector2(600, 400)));
@@ -68,6 +73,8 @@ namespace SuperPuppySurprise
             
             for (int i = 0; i < sceneObjects.Count; i++)
                 sceneObjects[i].Load(Content, spriteBatch);
+
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -99,6 +106,8 @@ namespace SuperPuppySurprise
             thisKeyState = Keyboard.GetState();
             // TODO: Add your update logic here
 
+            ParticleEngine.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -115,6 +124,8 @@ namespace SuperPuppySurprise
                 sceneObjects[i].Draw(gameTime);
             spriteBatch.End();
             // TODO: Add your drawing code here
+
+            ParticleEngine.Draw();
 
             base.Draw(gameTime);
         }

@@ -60,6 +60,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DPSF">
+      <HintPath>.\DPSF.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -108,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AIRoutines\GameState.cs" />
+    <Compile Include="DPSFParticles\ParticleManager.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Monster1.cs" />
     <Compile Include="GameObjects\Player.cs" />
