@@ -83,6 +83,7 @@ namespace DPSF.ParticleSystems
 			mfAngle += 0.1f;
 			Vector3 sDirection = DPSFHelper.PointOnSphere(-MathHelper.PiOver2, mfAngle, 70, new Vector3(0, 50, 0));
 			cParticle.Velocity = sDirection - cParticle.Position;
+
 		}
 
 		public void LoadRandomSpiralEvents()
