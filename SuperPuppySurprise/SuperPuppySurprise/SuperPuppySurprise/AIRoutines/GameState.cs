@@ -26,7 +26,8 @@ namespace SuperPuppySurprise.AIRoutines
 
         public static Player findClosestPlayerTo(Vector2 position)
         {
-            double closestDistance = 5000;
+            double closestDistance = Math.Sqrt(Math.Pow(players[0].getPosition().X - position.X, 2)
+                                          + Math.Pow(players[0].getPosition().Y - position.Y, 2)); ;
             Player closestPlayer = players[0];
             for (int i = 1; i < players.Count(); i++)
             {
