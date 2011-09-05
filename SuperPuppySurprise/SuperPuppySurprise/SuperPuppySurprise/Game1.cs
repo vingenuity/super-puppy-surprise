@@ -117,7 +117,7 @@ namespace SuperPuppySurprise
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Aqua);
 
             spriteBatch.Begin();
             for (int i = 0; i < sceneObjects.Count; i++)
