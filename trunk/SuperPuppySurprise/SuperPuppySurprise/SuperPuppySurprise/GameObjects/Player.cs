@@ -12,20 +12,48 @@ namespace SuperPuppySurprise.GameObjects
 {
     public class Player : GameObject
     {
+        int playerID;
         KeyboardState thisKeyState;
         Texture2D texture;
         SpriteBatch spriteBatch;
+        Keys upKey;
+        Keys downKey;
+        Keys leftKey;
+        Keys rightKey;
+        Keys fire;
         
 
-        public Player(Vector2 Position)
+        public Player(int id, Vector2 Position)
             : base(Position)
         {
             Direction = Vector2.UnitY * -1;
+            playerID = id;
             Speed = 300;
             Size = new Vector2(32, 32);
             Radius = 16;
             Game1.PhysicsEngine.Add(this);
             GameState.players.Add(this);
+
+            switch (id)
+            {
+                case 1:
+                    upKey = Keys.Up;
+                    downKey = Keys.Down;
+                    leftKey = Keys.Left;
+                    rightKey = Keys.Right;
+                    fire = Keys.Space;
+                    break;
+                case 2:
+                    upKey = Keys.W;
+                    downKey = Keys.S;
+                    leftKey = Keys.A;
+                    rightKey = Keys.D;
+                    fire = Keys.RightControl;
+                    break;
+                default:
+                    break;
+                //This is an error, technically.
+            }
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
@@ -39,17 +67,19 @@ namespace SuperPuppySurprise.GameObjects
             thisKeyState = Keyboard.GetState();
 
             Direction = Vector2.Zero;
-            if (thisKeyState.IsKeyDown(Keys.Down))
+            if (thisKeyState.IsKeyDown(downKey))
                 Direction.Y++;
-            else if (thisKeyState.IsKeyDown(Keys.Up))
+            else if (thisKeyState.IsKeyDown(upKey))
                 Direction.Y--;
-            if (thisKeyState.IsKeyDown(Keys.Right))
+            if (thisKeyState.IsKeyDown(rightKey))
                 Direction.X++;
-            else if (thisKeyState.IsKeyDown(Keys.Left))
+            else if (thisKeyState.IsKeyDown(leftKey))
                 Direction.X--;
+            if (thisKeyState.IsKeyDown(fire))
+                ;//fire a bullet!
             Direction.Normalize();
 
-            if (thisKeyState.IsKeyUp(Keys.Left) && thisKeyState.IsKeyUp(Keys.Right) && thisKeyState.IsKeyUp(Keys.Up) && thisKeyState.IsKeyUp(Keys.Down))
+            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 Velocity = Vector2.Zero;
             else
                 Velocity = Direction * Speed;
