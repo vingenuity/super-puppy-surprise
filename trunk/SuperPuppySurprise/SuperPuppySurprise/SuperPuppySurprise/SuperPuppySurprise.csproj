@@ -151,6 +151,7 @@
     <Compile Include="DPSFParticles\Templates\QuadParticleSystemTemplate.cs" />
     <Compile Include="DPSFParticles\Templates\SpriteParticleSystemTemplate.cs" />
     <Compile Include="DPSFParticles\Templates\TexturedQuadParticleSystemTemplate.cs" />
+    <Compile Include="GameObjects\Bullet.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Monster1.cs" />
     <Compile Include="GameObjects\Player.cs" />
