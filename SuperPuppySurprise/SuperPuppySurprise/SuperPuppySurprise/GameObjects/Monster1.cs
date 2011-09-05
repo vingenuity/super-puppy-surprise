@@ -32,16 +32,16 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
-            Vector2 playerPos = GameState.findClosestPlayer();
+            Player closest = GameState.findClosestPlayerTo(Position);
 
             Direction = Vector2.Zero;
-            if (playerPos.Y > this.Position.Y)
+            if (closest.getPosition().Y > this.Position.Y)
                 Direction.Y++;
-            else if (playerPos.Y < this.Position.Y)
+            else if (closest.getPosition().Y < this.Position.Y)
                 Direction.Y--;
-            if (playerPos.X > this.Position.X)
+            if (closest.getPosition().X > this.Position.X)
                 Direction.X++;
-            else if (playerPos.X < this.Position.X)
+            else if (closest.getPosition().X < this.Position.X)
                 Direction.X--;
             Direction.Normalize();
       
