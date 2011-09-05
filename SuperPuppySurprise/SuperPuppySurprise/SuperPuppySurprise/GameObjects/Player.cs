@@ -51,9 +51,13 @@ namespace SuperPuppySurprise.GameObjects
                     rightKey = Keys.D;
                     fire = Keys.RightControl;
                     break;
-                default:
+                case 3:
                     break;
-                //This is an error, technically.
+                case 4:
+                    break;
+                default:
+                    //This is an error, technically.
+                    break;
             }
         }
 

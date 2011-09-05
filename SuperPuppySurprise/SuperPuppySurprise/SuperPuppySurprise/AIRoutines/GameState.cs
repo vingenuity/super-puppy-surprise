@@ -13,26 +13,36 @@ namespace SuperPuppySurprise.AIRoutines
     public class GameState
     {
         public static List<Player> players;
+        public static List<Monster> enemies;
 
         public GameState()
         {
             players = new List<Player>();
+            enemies = new List<Monster>();
         }
 
+        public void clearEnemies()
+        {
+            enemies.Clear();
+        }
         public void clearPlayers()
         {
             players.Clear();
         }
 
+        private static double distanceTo(Vector2 position, GameObject gameObj)
+        {
+            return Math.Sqrt(Math.Pow(gameObj.getPosition().X - position.X, 2)
+                           + Math.Pow(gameObj.getPosition().Y - position.Y, 2));
+        }
+
         public static Player findClosestPlayerTo(Vector2 position)
         {
-            double closestDistance = Math.Sqrt(Math.Pow(players[0].getPosition().X - position.X, 2)
-                                          + Math.Pow(players[0].getPosition().Y - position.Y, 2)); ;
+            double closestDistance = distanceTo(position, players[0]);
             Player closestPlayer = players[0];
             for (int i = 1; i < players.Count(); i++)
             {
-                double distance = Math.Sqrt(Math.Pow(players[i].getPosition().X - position.X, 2)
-                                          + Math.Pow(players[i].getPosition().Y - position.Y, 2));
+                double distance = distanceTo(position, players[i]);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;

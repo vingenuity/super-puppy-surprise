@@ -29,6 +29,7 @@ namespace SuperPuppySurprise
         public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public static ParticleManager ParticleEngine;
+
         public Game1()
         {
             game = this;
@@ -43,7 +44,6 @@ namespace SuperPuppySurprise
             PhysicsEngine = new BruteForcePhysicsEngine();
             ParticleEngine = new ParticleManager();
             state = new GameState();
-         
         }
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -55,9 +55,9 @@ namespace SuperPuppySurprise
         {
             Restart();
             // TODO: Add your initialization logic here
-            sceneObjects.Add(new Player(1, new Vector2(0, 0)));
-            sceneObjects.Add(new Player(2, new Vector2(600, 400)));
-            sceneObjects.Add(new Monster(new Vector2(200, 200)));
+            sceneObjects.Add(new Player(1, new Vector2(100, 100)));
+            sceneObjects.Add(new Player(2, new Vector2(600, 300)));
+            sceneObjects.Add(new Monster(new Vector2(350, 200)));
             sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
