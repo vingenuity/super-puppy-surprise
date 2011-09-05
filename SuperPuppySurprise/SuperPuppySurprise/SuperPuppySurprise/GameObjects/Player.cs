@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SuperPuppySurprise.AIRoutines;
+using SuperPuppySurprise.PhysicsEngines;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -76,7 +77,7 @@ namespace SuperPuppySurprise.GameObjects
             else if (thisKeyState.IsKeyDown(leftKey))
                 Direction.X--;
             if (thisKeyState.IsKeyDown(fire))
-                ;//fire a bullet!
+                fireBullet();//fire a bullet!
             Direction.Normalize();
 
             if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
@@ -89,6 +90,15 @@ namespace SuperPuppySurprise.GameObjects
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
+        }
+        public void fireBullet()
+        {
+            //construct new bullet, giving  position, direction
+            Vector2 newPosition = new Vector2(this.Position.X + 8 * Direction.X, this.Position.Y + 8 * Direction.Y);
+            Bullet b = new Bullet(newPosition, Direction);
+            Game1.game.sceneObjects.Add(b);
+            b.Load(Game1.game.Content, spriteBatch);
+            Game1.PhysicsEngine.AddTrigger(b);
         }
     }
 }

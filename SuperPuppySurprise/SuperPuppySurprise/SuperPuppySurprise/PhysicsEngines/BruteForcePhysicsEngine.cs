@@ -45,7 +45,7 @@ namespace SuperPuppySurprise.PhysicsEngines
                     if (Collides(gameObject, trigger))
                         trigger.OnCollision(gameObject);
                 }
-               
+                trigger.Position += trigger.Velocity * (float)time;
             }
         }
         bool Collides(GameObject gameObject, GameObject gameObject2)
