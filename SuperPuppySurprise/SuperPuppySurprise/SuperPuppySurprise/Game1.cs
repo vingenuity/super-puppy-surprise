@@ -12,6 +12,7 @@ using SuperPuppySurprise.GameObjects;
 using SuperPuppySurprise.PhysicsEngines;
 using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.DPSFParticles;
+using DPSF.ParticleSystems;
 
 namespace SuperPuppySurprise
 {
@@ -29,7 +30,8 @@ namespace SuperPuppySurprise
         public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public static ParticleManager ParticleEngine;
-
+        public static float ScreenWidth;
+        public static float ScreenHeight;
         public Game1()
         {
             game = this;
@@ -40,10 +42,14 @@ namespace SuperPuppySurprise
         }
         public void Restart()
         {
+            ScreenHeight = graphics.GraphicsDevice.Viewport.Height;
+            ScreenWidth = graphics.GraphicsDevice.Viewport.Width;
             sceneObjects = new List<GameObject>();
             PhysicsEngine = new BruteForcePhysicsEngine();
             ParticleEngine = new ParticleManager();
             state = new GameState();
+
+            
         }
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -56,11 +62,12 @@ namespace SuperPuppySurprise
             Restart();
             // TODO: Add your initialization logic here
             sceneObjects.Add(new Player(1, new Vector2(100, 100)));
-            sceneObjects.Add(new Runner(new Vector2(350, 200)));
-            sceneObjects.Add(new Shooter(new Vector2(200, 100)));
+            //sceneObjects.Add(new Runner(new Vector2(350, 200)));
+            //sceneObjects.Add(new Shooter(new Vector2(200, 100)));
             sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
+
         KeyboardState thisKeyState;
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -74,7 +81,7 @@ namespace SuperPuppySurprise
             for (int i = 0; i < sceneObjects.Count; i++)
                 sceneObjects[i].Load(Content, spriteBatch);
 
-            
+           
             // TODO: use this.Content to load your game content here
         }
 
@@ -107,7 +114,6 @@ namespace SuperPuppySurprise
             // TODO: Add your update logic here
 
             ParticleEngine.Update(gameTime);
-
             base.Update(gameTime);
         }
 
@@ -118,15 +124,14 @@ namespace SuperPuppySurprise
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Aqua);
-
+            
             spriteBatch.Begin();
             for (int i = 0; i < sceneObjects.Count; i++)
                 sceneObjects[i].Draw(gameTime);
             spriteBatch.End();
             // TODO: Add your drawing code here
-
+            
             ParticleEngine.Draw();
-
             base.Draw(gameTime);
         }
     }
