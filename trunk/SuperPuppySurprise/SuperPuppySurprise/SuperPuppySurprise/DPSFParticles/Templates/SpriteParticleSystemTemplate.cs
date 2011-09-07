@@ -98,7 +98,7 @@ namespace DPSF.ParticleSystems
 #if (WINDOWS)
 	[Serializable]
 #endif
-	class SpriteParticleSystemTemplate : DPSF<SpriteParticleSystemTemplateParticle, DefaultSpriteParticleVertex>
+    class SpriteParticleSystemTemplate : DPSF<SpriteParticleSystemTemplateParticle, DefaultSpriteParticleVertex>
 	{
 		/// <summary>
 		/// Constructor

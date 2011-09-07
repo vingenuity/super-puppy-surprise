@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.PhysicsEngines;
+using SuperPuppySurprise.DPSFParticles;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -29,7 +30,7 @@ namespace SuperPuppySurprise.GameObjects
         double[] fireSpeeds = {1000, 500, 300, 1};
         bool rotateHelper = true;
         double elapsedTime;
-
+        TestParticle2 testParticle = new TestParticle2();
         public Player(int id, Vector2 Position)
             : base(Position)
         {
@@ -64,6 +65,7 @@ namespace SuperPuppySurprise.GameObjects
                     //This is an error, technically.
                     break;
             }
+            testParticle.Start(Vector3.Zero);
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)

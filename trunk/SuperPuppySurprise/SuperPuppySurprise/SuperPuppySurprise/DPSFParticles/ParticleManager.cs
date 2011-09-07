@@ -2,43 +2,73 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DPSF;
 using Microsoft.Xna.Framework;
-using DPSF.ParticleSystems;
+using DPSF;
 
 namespace SuperPuppySurprise.DPSFParticles
 {
     public class ParticleManager
     {
-        ParticleSystemManager manager;
-        Matrix Projection;
+        ParticleSystemManager particleSystemManager;
+        public List<Particle> ParticleList;
+        IDPSFParticleSystem mcCurrentParticleSystem;
+        Vector3 CameraPosition;
         Matrix View;
-        RandomParticleSystem paricleSystemTest;
+        Matrix Projection;
         public ParticleManager()
         {
-            float aspectRatio = (float)Game1.game.GraphicsDevice.Viewport.Width / (float)Game1.game.GraphicsDevice.Viewport.Height;
-            manager = new ParticleSystemManager();
-            manager.Enabled = true;
-            manager.AutoInitializeAllParticleSystems(Game1.game.GraphicsDevice, Game1.game.Content, Game1.game.spriteBatch);
-            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspectRatio, 1, 10000);
-            View = Matrix.CreateLookAt(new Vector3(0,0,-50), new Vector3(0,0,0),Vector3.Up);
-            manager.SetWorldViewProjectionMatricesForAllParticleSystems(Matrix.Identity, View, Projection);
-            paricleSystemTest = new RandomParticleSystem(Game1.game);
-            paricleSystemTest.DrawOrder = 100;
-            
+            particleSystemManager = new ParticleSystemManager();
+            ParticleList = new List<Particle>();
+
+            CameraPosition = new Vector3(0, 50, 200);
+            //orthographic not ready yet
+            /*
+            View = new Matrix(
+                1.0f, 0.0f, 0.0f, 0.0f,
+                0.0f, -1.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, -1.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 1.0f);
+            Projection = Matrix.CreateOrthographicOffCenter(
+                0, Game1.ScreenWidth, -Game1.ScreenHeight, 0, 0, 1);*/
+            View = Matrix.CreateLookAt(CameraPosition, new Vector3(0, 50, 0), Vector3.Up);
+            //Matrix.
+            // Setup the Camera's Projection matrix by specifying the field of view (1/4 pi), aspect ratio, and the near and far clipping planes
+            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)Game1.ScreenWidth / (float)Game1.ScreenHeight, 1, 10000);
+
            
-            manager.AddParticleSystem(paricleSystemTest);
-            paricleSystemTest.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, null);
-            paricleSystemTest.Enabled = true;
+            particleSystemManager.UpdatesPerSecond = 0;
+        }
+        public void Add(Particle p)
+        {
+            ParticleList.Add(p);
+            particleSystemManager.AddParticleSystem(p.ParticleSystem);
+        }
+        public void Remove(Particle p)
+        {
+            ParticleList.Remove(p);
+            particleSystemManager.RemoveParticleSystem(p.ParticleSystem);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            for (int i = 0; i < ParticleList.Count; i++)
+            {
+                ParticleList[i].Update(gameTime);
+            }
+            particleSystemManager.SetCameraPositionForAllParticleSystems(CameraPosition);
+
+            particleSystemManager.UpdateAllParticleSystems((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
         public void Draw()
         {
-            manager.DrawAllParticleSystems();
+            particleSystemManager.SetWorldViewProjectionMatricesForAllParticleSystems(Matrix.Identity, View, Projection);
+
+            // Draw the Particle Systems manually
+            particleSystemManager.DrawAllParticleSystems();
         }
-        public void Update(GameTime gameTime)
+        public static Vector3 ToVector3(Vector2 vector)
         {
-            manager.UpdateAllParticleSystems((float)(gameTime.ElapsedGameTime.TotalSeconds));
-     
+            return new Vector3(vector.X, vector.Y, 0);
         }
     }
 }
