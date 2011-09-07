@@ -56,7 +56,8 @@ namespace SuperPuppySurprise
             Restart();
             // TODO: Add your initialization logic here
             sceneObjects.Add(new Player(1, new Vector2(100, 100)));
-            sceneObjects.Add(new Monster(new Vector2(350, 200)));
+            sceneObjects.Add(new Runner(new Vector2(350, 200)));
+            sceneObjects.Add(new Shooter(new Vector2(200, 100)));
             sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
