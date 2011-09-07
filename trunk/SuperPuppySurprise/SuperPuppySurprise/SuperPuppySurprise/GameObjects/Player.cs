@@ -70,6 +70,7 @@ namespace SuperPuppySurprise.GameObjects
         public override void Update(GameTime gameTime)
         {
             thisKeyState = Keyboard.GetState();
+            Vector2 bulletDir;
 
             //Update movement
             Direction = Vector2.Zero;
@@ -90,21 +91,26 @@ namespace SuperPuppySurprise.GameObjects
                 Velocity = Direction * Speed;
 
             //Update fire direction
-            //bulletDir.clear();
-            if (thisKeyState.IsKeyDown(downKey))
-                ;//bulletDir.Y++;
-            else if (thisKeyState.IsKeyDown(upKey))
-                ;//bulletDir.Y--;
-            if (thisKeyState.IsKeyDown(rightKey))
-                ;//bulletDir.X++;
-            else if (thisKeyState.IsKeyDown(leftKey))
-                ;//bulletDir.X--;
-            //bulletDir.Normalize();
+            bulletDir.X = 0;
+            bulletDir.Y = 0;
+            if (thisKeyState.IsKeyDown(fireDown))
+                bulletDir.Y++;
+            else if (thisKeyState.IsKeyDown(fireUp))
+                bulletDir.Y--;
+            if (thisKeyState.IsKeyDown(fireRight))
+                bulletDir.X++;
+            else if (thisKeyState.IsKeyDown(fireLeft))
+                bulletDir.X--;
+            bulletDir.Normalize();
 
-            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
-                ;//bulletVelocity = Vector2.Zero;
-            else
-                ;//bulletVelocity = Direction * Speed;
+            if (thisKeyState.IsKeyDown(fireUp) || thisKeyState.IsKeyDown(fireDown) || 
+                thisKeyState.IsKeyDown(fireRight) || thisKeyState.IsKeyDown(fireLeft))
+                fireBullet(bulletDir);
+
+            //if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
+                //bulletVelocity = Vector2.Zero;
+            //else
+                //;bulletVelocity = Direction * Speed;
         }
         public override void Draw(GameTime gameTime)
         {
@@ -112,11 +118,11 @@ namespace SuperPuppySurprise.GameObjects
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
         }
-        public void fireBullet()
+        public void fireBullet(Vector2 bulletDir)
         {
             //construct new bullet, giving  position, direction
-            Vector2 newPosition = new Vector2(this.Position.X + 8 * Direction.X, this.Position.Y + 8 * Direction.Y);
-            Bullet b = new Bullet(newPosition, Direction);
+            Vector2 newPosition = new Vector2(this.Position.X + 8 * bulletDir.X, this.Position.Y + 8 * bulletDir.Y);
+            Bullet b = new Bullet(newPosition, bulletDir);
             Game1.game.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
             Game1.PhysicsEngine.AddTrigger(b);
