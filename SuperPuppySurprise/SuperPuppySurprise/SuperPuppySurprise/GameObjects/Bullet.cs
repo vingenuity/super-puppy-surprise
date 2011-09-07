@@ -19,7 +19,7 @@ namespace SuperPuppySurprise.GameObjects
             : base(Position) 
         {
             Direction = Dir;
-            Speed = 500;
+            Speed = 350;
             Size = new Vector2(4, 4);
             Radius = 2;
             Game1.PhysicsEngine.AddTrigger(this);
