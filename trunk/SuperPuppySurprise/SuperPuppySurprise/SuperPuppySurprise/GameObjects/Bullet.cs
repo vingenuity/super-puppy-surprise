@@ -11,7 +11,6 @@ namespace SuperPuppySurprise.GameObjects
 {
     public class Bullet : GameObject
     {
-        KeyboardState thisKeyState;
         Texture2D texture;
         SpriteBatch spriteBatch;
 

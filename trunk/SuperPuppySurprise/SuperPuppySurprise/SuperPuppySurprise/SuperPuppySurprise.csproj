@@ -155,6 +155,8 @@
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Monster1.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Runner.cs" />
+    <Compile Include="GameObjects\Shooter.cs" />
     <Compile Include="GameObjects\TestTrigger.cs" />
     <Compile Include="PhysicsEngines\BruteForcePhysicsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
