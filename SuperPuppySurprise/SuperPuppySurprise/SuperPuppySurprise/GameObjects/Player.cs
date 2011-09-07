@@ -25,6 +25,10 @@ namespace SuperPuppySurprise.GameObjects
         Keys fireDown;
         Keys fireLeft;
         Keys fireRight;
+        int currentFireSpeed = 0;
+        double[] fireSpeeds = {1000, 500, 300, 1};
+        bool rotateHelper = true;
+        double elapsedTime;
 
         public Player(int id, Vector2 Position)
             : base(Position)
@@ -32,6 +36,7 @@ namespace SuperPuppySurprise.GameObjects
             Direction = Vector2.UnitY * -1;
             playerID = id;
             Speed = 300;
+            elapsedTime = fireSpeeds[0];
             Size = new Vector2(32, 32);
             Radius = 16;
             Game1.PhysicsEngine.Add(this);
@@ -67,6 +72,12 @@ namespace SuperPuppySurprise.GameObjects
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
+
+        public void rotateWeapons()
+        {
+            currentFireSpeed++;
+        }
+
         public override void Update(GameTime gameTime)
         {
             thisKeyState = Keyboard.GetState();
@@ -105,7 +116,19 @@ namespace SuperPuppySurprise.GameObjects
 
             if (thisKeyState.IsKeyDown(fireUp) || thisKeyState.IsKeyDown(fireDown) || 
                 thisKeyState.IsKeyDown(fireRight) || thisKeyState.IsKeyDown(fireLeft))
-                fireBullet(bulletDir);
+                fireBullet(gameTime, bulletDir);
+            if (thisKeyState.IsKeyUp(fireUp) && thisKeyState.IsKeyUp(fireDown) &&
+                thisKeyState.IsKeyUp(fireRight) && thisKeyState.IsKeyUp(fireLeft))
+                elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
+
+            if (thisKeyState.IsKeyDown(Keys.Tab) && rotateHelper)
+            {
+                rotateWeapons();
+                rotateHelper = false;
+            }
+
+            if (thisKeyState.IsKeyUp(Keys.Tab))
+                rotateHelper = true;
 
             //if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 //bulletVelocity = Vector2.Zero;
@@ -118,9 +141,14 @@ namespace SuperPuppySurprise.GameObjects
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
         }
-        public void fireBullet(Vector2 bulletDir)
+        public void fireBullet(GameTime gameTime, Vector2 bulletDir)
         {
             //construct new bullet, giving  position, direction
+            //to do: prevent rapid fire
+            elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
+            if (elapsedTime < fireSpeeds[currentFireSpeed % fireSpeeds.Length])
+                return;
+            elapsedTime = 0;
             Vector2 newPosition = new Vector2(this.Position.X + 8 * bulletDir.X, this.Position.Y + 8 * bulletDir.Y);
             Bullet b = new Bullet(newPosition, bulletDir);
             Game1.game.sceneObjects.Add(b);
