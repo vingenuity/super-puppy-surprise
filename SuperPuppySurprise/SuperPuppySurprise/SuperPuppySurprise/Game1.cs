@@ -32,6 +32,7 @@ namespace SuperPuppySurprise
         public static ParticleManager ParticleEngine;
         public static float ScreenWidth;
         public static float ScreenHeight;
+        Texture2D Background;
         public Game1()
         {
             game = this;
@@ -42,6 +43,9 @@ namespace SuperPuppySurprise
         }
         public void Restart()
         {
+            graphics.PreferredBackBufferWidth = 500;
+            graphics.PreferredBackBufferHeight = 500;
+            graphics.ApplyChanges();
             ScreenHeight = graphics.GraphicsDevice.Viewport.Height;
             ScreenWidth = graphics.GraphicsDevice.Viewport.Width;
             sceneObjects = new List<GameObject>();
@@ -81,7 +85,7 @@ namespace SuperPuppySurprise
             for (int i = 0; i < sceneObjects.Count; i++)
                 sceneObjects[i].Load(Content, spriteBatch);
 
-           
+            Background = Content.Load<Texture2D>("Background");
             // TODO: use this.Content to load your game content here
         }
 
@@ -123,9 +127,11 @@ namespace SuperPuppySurprise
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Aqua);
+            GraphicsDevice.Clear(Color.DodgerBlue);
             
             spriteBatch.Begin();
+
+            spriteBatch.Draw(Background, new Rectangle(0, 0, 500, 500), Color.White);
             for (int i = 0; i < sceneObjects.Count; i++)
                 sceneObjects[i].Draw(gameTime);
             spriteBatch.End();

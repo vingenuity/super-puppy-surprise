@@ -30,7 +30,7 @@ namespace SuperPuppySurprise.GameObjects
         double[] fireSpeeds = {1000, 500, 300, 1};
         bool rotateHelper = true;
         double elapsedTime;
-        TestParticle2 testParticle = new TestParticle2();
+        TestParticle2 testParticle;
         public Player(int id, Vector2 Position)
             : base(Position)
         {
@@ -65,9 +65,18 @@ namespace SuperPuppySurprise.GameObjects
                     //This is an error, technically.
                     break;
             }
-            testParticle.Start(Vector3.Zero);
+            testParticle = new TestParticle2(this);
+            
         }
-
+      
+        void EngineParticle()
+        {
+           
+            if(Velocity.LengthSquared() > 0 && !testParticle.started)
+                testParticle.Start();
+            if(Velocity.LengthSquared() == 0 && testParticle.started)
+                testParticle.End();
+        }
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
             texture = Content.Load<Texture2D>("TestPicture2");
@@ -132,6 +141,7 @@ namespace SuperPuppySurprise.GameObjects
             if (thisKeyState.IsKeyUp(Keys.Tab))
                 rotateHelper = true;
 
+            EngineParticle();
             //if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 //bulletVelocity = Vector2.Zero;
             //else

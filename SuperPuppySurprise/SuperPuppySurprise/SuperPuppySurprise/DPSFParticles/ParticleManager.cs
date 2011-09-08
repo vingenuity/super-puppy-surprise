@@ -19,10 +19,12 @@ namespace SuperPuppySurprise.DPSFParticles
         {
             particleSystemManager = new ParticleSystemManager();
             ParticleList = new List<Particle>();
-
-            CameraPosition = new Vector3(0, 50, 200);
+            CameraPosition = new Vector3(0,0,-200);
+            View = Matrix.CreateLookAt(CameraPosition, new Vector3(0, 0, 0), Vector3.Up);
+            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)Game1.ScreenWidth / (float)Game1.ScreenHeight, 1, 10000);
+           // CameraPosition = new Vector3(0, 50, 200);
             //orthographic not ready yet
-            /*
+           /* 
             View = new Matrix(
                 1.0f, 0.0f, 0.0f, 0.0f,
                 0.0f, -1.0f, 0.0f, 0.0f,
@@ -30,10 +32,17 @@ namespace SuperPuppySurprise.DPSFParticles
                 0.0f, 0.0f, 0.0f, 1.0f);
             Projection = Matrix.CreateOrthographicOffCenter(
                 0, Game1.ScreenWidth, -Game1.ScreenHeight, 0, 0, 1);*/
-            View = Matrix.CreateLookAt(CameraPosition, new Vector3(0, 50, 0), Vector3.Up);
+           // View = Matrix.CreateLookAt(CameraPosition, new Vector3(0, 50, 0), Vector3.Up);
             //Matrix.
             // Setup the Camera's Projection matrix by specifying the field of view (1/4 pi), aspect ratio, and the near and far clipping planes
-            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)Game1.ScreenWidth / (float)Game1.ScreenHeight, 1, 10000);
+            //Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)Game1.ScreenWidth / (float)Game1.ScreenHeight, 1, 10000);
+            /*View = new Matrix(
+                1.0f, 0.0f, 0.0f, 0.0f,
+                0.0f, -1.0f, 0.0f, 0.0f,
+                0.0f, 0.0f, -1.0f, 0.0f,
+                0.0f, 0.0f, 0.0f, 1.0f);*/
+           // Projection = Matrix.CreateOrthographic(500, 500, 1, 100);
+          //  Projection = Matrix.creat
 
            
             particleSystemManager.UpdatesPerSecond = 0;
@@ -66,9 +75,26 @@ namespace SuperPuppySurprise.DPSFParticles
             // Draw the Particle Systems manually
             particleSystemManager.DrawAllParticleSystems();
         }
+        public static Vector3 To3D(Vector2 vector)
+        {
+            float x, y, z;
+            z = 0;
+            y = (vector.Y / Game1.ScreenHeight);
+            y = 1 - y;
+            y -= .5f;
+            y *= 160;
+           
+            x = (vector.X / Game1.ScreenWidth);
+            x = 1 - x;
+            x -= .5f;
+            x *= 160;
+
+            
+            return new Vector3(x,y,z);
+        }
         public static Vector3 ToVector3(Vector2 vector)
         {
-            return new Vector3(vector.X, vector.Y, 0);
+            return new Vector3(vector.X, vector.Y, -10);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnCollision(GameObject gameObject)
         {
-            c = Color.Black;
+            c = Color.DarkBlue;
             base.OnCollision(gameObject);
         }
     }
