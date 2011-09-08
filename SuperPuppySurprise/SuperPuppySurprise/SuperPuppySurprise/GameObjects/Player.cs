@@ -137,6 +137,10 @@ namespace SuperPuppySurprise.GameObjects
                 rotateWeapons();
                 rotateHelper = false;
             }
+            if (thisKeyState.IsKeyDown(Keys.O))
+            {
+                Unload();
+            }
 
             if (thisKeyState.IsKeyUp(Keys.Tab))
                 rotateHelper = true;
@@ -146,6 +150,14 @@ namespace SuperPuppySurprise.GameObjects
                 //bulletVelocity = Vector2.Zero;
             //else
                 //;bulletVelocity = Direction * Speed;
+        }
+        public override void Unload()
+        {
+            
+            Game1.ParticleEngine.Remove(testParticle);
+            Game1.PhysicsEngine.Remove(this);
+            Game1.game.RemoveGameObject(this);
+            base.Unload();
         }
         public override void Draw(GameTime gameTime)
         {
