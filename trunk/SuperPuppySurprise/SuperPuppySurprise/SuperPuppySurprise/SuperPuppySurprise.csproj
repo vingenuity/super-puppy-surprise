@@ -158,7 +158,9 @@
     <Compile Include="GameObjects\Bullet.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Monster1.cs" />
-    <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="C:\Users\Matthew Leary\Desktop\Player.cs">
+      <Link>GameObjects\Player.cs</Link>
+    </Compile>
     <Compile Include="GameObjects\TestTrigger.cs" />
     <Compile Include="PhysicsEngines\BruteForcePhysicsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
