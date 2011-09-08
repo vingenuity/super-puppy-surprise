@@ -14,6 +14,7 @@ namespace SuperPuppySurprise.GameObjects
         public Vector2 Velocity;
         public Vector2 Direction;
         public float Speed;
+        public double Health;
         //Radius is used for physics only Graphics uses Size
         public float Radius;
         public Vector2 Size;

@@ -14,6 +14,7 @@ namespace SuperPuppySurprise.GameObjects
         public Monster(Vector2 Position)
             : base(Position)
         {
+            Health = 100;
             Direction = Vector2.UnitY * -1;
             Speed = 100;
             Size = new Vector2(16, 16);
