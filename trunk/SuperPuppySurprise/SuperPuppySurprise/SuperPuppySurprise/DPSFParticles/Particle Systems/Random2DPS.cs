@@ -17,6 +17,7 @@ namespace DPSF.ParticleSystems
 #endif
 	class Random2DParticleSystem : DefaultTexturedQuadParticleSystem
 	{
+        public Vector3 Pos;
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -94,7 +95,7 @@ namespace DPSF.ParticleSystems
 		public void InitializeParticleRandom2D(DefaultTexturedQuadParticle cParticle)
 		{
 			cParticle.Lifetime = 1.5f;
-
+            Emitter.PositionData.Position = Pos;
 			cParticle.Position = Vector3.Zero;
 			cParticle.Position = PivotPoint3D.RotatePosition(Matrix.CreateFromQuaternion(Emitter.OrientationData.Orientation), Emitter.PivotPointData.PivotPoint, cParticle.Position);
 			cParticle.Position += Emitter.PositionData.Position;
