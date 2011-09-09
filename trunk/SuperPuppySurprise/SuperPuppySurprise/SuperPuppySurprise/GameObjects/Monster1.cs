@@ -22,5 +22,18 @@ namespace SuperPuppySurprise.GameObjects
             GameState.enemies.Add(this);
             Game1.PhysicsEngine.Add(this);
         }
+        public override void OnDamage(double damage)
+        {
+            Unload();
+            base.OnDamage(damage);
+        }
+
+        public override void Unload()
+        {
+            GameState.enemies.Remove(this);
+            Game1.PhysicsEngine.Remove(this);
+            Game1.game.RemoveGameObject(this);
+            base.Unload();
+        }
     }
 }

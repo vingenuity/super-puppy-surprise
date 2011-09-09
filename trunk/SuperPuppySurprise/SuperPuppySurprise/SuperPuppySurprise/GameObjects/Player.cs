@@ -183,15 +183,12 @@ namespace SuperPuppySurprise.GameObjects
                 rotateHelper = true;
 
             EngineParticle();
-            //if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
-                //bulletVelocity = Vector2.Zero;
-            //else
-                //;bulletVelocity = Direction * Speed;
         }
         public override void Unload()
         {
             
             Game1.ParticleEngine.Remove(testParticle);
+            GameState.players.Remove(this);
             Game1.PhysicsEngine.Remove(this);
             Game1.game.RemoveGameObject(this);
             base.Unload();
@@ -210,6 +207,11 @@ namespace SuperPuppySurprise.GameObjects
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
             Game1.PhysicsEngine.AddTrigger(b);
+        }
+        public override void OnDamage(double damage)
+        {
+            //Unload();
+            base.OnDamage(damage);
         }
         public void fireShotGun(Vector2 position, Vector2 bulletDir)
         {
