@@ -35,7 +35,9 @@ namespace SuperPuppySurprise.GameObjects
         public virtual void Draw(GameTime gameTime)
         {
         }
-
+        public virtual void OnDamage(double damage)
+        {
+        }
         //For AI usage.
         public Vector2 getPosition()
         {

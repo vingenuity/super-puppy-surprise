@@ -75,15 +75,19 @@ namespace SuperPuppySurprise.PhysicsEngines
             GameObject gameObject2;
             float radiusSqr;
             float distancedSqr;
+            bool flag = false;
             for (int j = 0; j < PhysicsGameObjects.Count; j++)
             {
                 gameObject2 = PhysicsGameObjects[j];
                 radiusSqr =  (gameObject.Radius + gameObject2.Radius) * (gameObject.Radius + gameObject2.Radius);
                 distancedSqr = (newPosition - gameObject2.Position).LengthSquared();
                 if (gameObject != gameObject2 && radiusSqr > distancedSqr)
+                {
+                    gameObject.OnCollision(gameObject2);
                     return true;
+                }
             }
-            return false;
+            return flag;
         }
         public void Add(GameObject gameObject)
         {
