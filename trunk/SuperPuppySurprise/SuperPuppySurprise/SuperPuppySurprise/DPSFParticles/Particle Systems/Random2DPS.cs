@@ -99,10 +99,10 @@ namespace DPSF.ParticleSystems
 			cParticle.Position = Vector3.Zero;
 			cParticle.Position = PivotPoint3D.RotatePosition(Matrix.CreateFromQuaternion(Emitter.OrientationData.Orientation), Emitter.PivotPointData.PivotPoint, cParticle.Position);
 			cParticle.Position += Emitter.PositionData.Position;
-			cParticle.Size = 30.0f;
-			cParticle.Color = Color.White;
+			cParticle.Size = 20.0f;
+			cParticle.Color = Color.Black;
 
-			cParticle.Velocity = new Vector3(RandomNumber.Next(-50, 50), RandomNumber.Next(-50, 50), 0);
+			cParticle.Velocity = new Vector3(RandomNumber.Next(-10, 10), RandomNumber.Next(-10, 10), 0);
 			cParticle.Velocity = PivotPoint3D.RotatePosition(Matrix.CreateFromQuaternion(Emitter.OrientationData.Orientation), Emitter.PivotPointData.PivotPoint, cParticle.Velocity);
 			cParticle.Acceleration = Vector3.Zero;
 
@@ -114,7 +114,7 @@ namespace DPSF.ParticleSystems
 		//===========================================================
 		protected void ChangeDirection(DefaultTexturedQuadParticle cParticle, float fElapsedTimeInSeconds)
 		{
-			cParticle.Velocity = new Vector3(RandomNumber.Next(-50, 50), RandomNumber.Next(-50, 50), 0);
+			cParticle.Velocity = new Vector3(RandomNumber.Next(-10, 10), RandomNumber.Next(-10, 10), 0);
 		}
 
 		//===========================================================
