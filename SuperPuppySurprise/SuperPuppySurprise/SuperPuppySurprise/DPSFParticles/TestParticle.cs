@@ -13,7 +13,7 @@ namespace SuperPuppySurprise.DPSFParticles
         public TestParticle() : base()
         {
             mcSphereParticleSystem = new SphereParticleSystem(Game1.game);
-            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.game.spriteBatch);
+            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.spriteBatch);
             ParticleSystem = mcSphereParticleSystem;
             
             //mcSphereParticleSystem.ChangeSphereRadius(.000000005f);

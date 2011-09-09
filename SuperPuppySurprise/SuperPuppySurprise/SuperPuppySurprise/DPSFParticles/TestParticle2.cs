@@ -17,7 +17,7 @@ namespace SuperPuppySurprise.DPSFParticles
         {
             this.gameObject = gameObject;
             mcSphereParticleSystem = new Random2DParticleSystem(Game1.game);
-            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.game.spriteBatch);
+            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.spriteBatch);
             
             ParticleSystem = mcSphereParticleSystem;
 

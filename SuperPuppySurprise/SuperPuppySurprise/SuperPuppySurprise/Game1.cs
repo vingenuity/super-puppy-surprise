@@ -13,6 +13,7 @@ using SuperPuppySurprise.PhysicsEngines;
 using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.DPSFParticles;
 using DPSF.ParticleSystems;
+using GameStateManagement;
 
 namespace SuperPuppySurprise
 {
@@ -23,16 +24,17 @@ namespace SuperPuppySurprise
     {
         public static Game1 game;
         GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
+        public static SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 PlayerPosition = Vector2.Zero;
-        public List<GameObject> sceneObjects;
+        public static List<GameObject> sceneObjects;
         public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public static ParticleManager ParticleEngine;
         public static float ScreenWidth;
         public static float ScreenHeight;
-        Texture2D Background;
+        public static ScreenManager screenManager;
+       
         public Game1()
         {
             game = this;
@@ -48,11 +50,16 @@ namespace SuperPuppySurprise
             graphics.ApplyChanges();
             ScreenHeight = graphics.GraphicsDevice.Viewport.Height;
             ScreenWidth = graphics.GraphicsDevice.Viewport.Width;
-            sceneObjects = new List<GameObject>();
-            PhysicsEngine = new BruteForcePhysicsEngine();
-            ParticleEngine = new ParticleManager();
-            state = new GameState();
+            
 
+            // Create the screen manager component.
+            screenManager = new ScreenManager(this);
+
+            Components.Add(screenManager);
+
+            // Activate the first screens.
+            screenManager.AddScreen(new BackgroundScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(), null);
             
         }
         public void RemoveGameObject(GameObject g)
@@ -69,27 +76,19 @@ namespace SuperPuppySurprise
         {
             Restart();
             // TODO: Add your initialization logic here
-            sceneObjects.Add(new Player(1, new Vector2(100, 100)));
+            //sceneObjects.Add(new Player(1, new Vector2(100, 100)));
             //sceneObjects.Add(new Runner(new Vector2(350, 200)));
             //sceneObjects.Add(new Shooter(new Vector2(200, 100)));
-            sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
+           // sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
-
-        KeyboardState thisKeyState;
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            for (int i = 0; i < sceneObjects.Count; i++)
-                sceneObjects[i].Load(Content, spriteBatch);
-
-            Background = Content.Load<Texture2D>("Background");
             // TODO: use this.Content to load your game content here
         }
 
@@ -113,15 +112,6 @@ namespace SuperPuppySurprise
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            for (int i = 0; i < sceneObjects.Count; i++)
-                sceneObjects[i].Update(gameTime);
-
-            PhysicsEngine.Update(gameTime);
-
-            thisKeyState = Keyboard.GetState();
-            // TODO: Add your update logic here
-
-            ParticleEngine.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -133,15 +123,7 @@ namespace SuperPuppySurprise
         {
             GraphicsDevice.Clear(Color.DodgerBlue);
             
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(Background, new Rectangle(0, 0, 500, 500), Color.White);
-            for (int i = 0; i < sceneObjects.Count; i++)
-                sceneObjects[i].Draw(gameTime);
-            spriteBatch.End();
-            // TODO: Add your drawing code here
             
-            ParticleEngine.Draw();
             base.Draw(gameTime);
         }
     }

@@ -14,7 +14,7 @@ namespace SuperPuppySurprise.DPSFParticles
             : base()
         {
             mcSphereParticleSystem = new SpriteParticleSystem(Game1.game);
-            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.game.spriteBatch);
+            mcSphereParticleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.spriteBatch);
             mcSphereParticleSystem.Emitter.PositionData.Position = new Vector3(1000, 600, 0);
             ParticleSystem = mcSphereParticleSystem;
 
