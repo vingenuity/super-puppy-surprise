@@ -1,0 +1,1061 @@
+Signature = XACT3;
+Version = 18;
+Content Version = 46;
+Release = February 2010;
+
+Options
+{
+    Verbose Report = 0;
+    Generate C/C++ Headers = 1;
+}
+
+Global Settings
+{
+    Xbox File = Xbox\SoundTesting.xgs;
+    Windows File = Win\SoundTesting.xgs;
+    Header File = SoundTesting.h;
+    Exclude Category Names = 0;
+    Exclude Variable Names = 0;
+    Last Modified Low = 2190562567;
+    Last Modified High = 30173466;
+
+    Category
+    {
+        Name = Global;
+        Public = 1;
+        Background Music = 0;
+        Volume = 0;
+
+        Category Entry
+        {
+        }
+
+        Instance Limit
+        {
+            Max Instances = 255;
+            Behavior = 0;
+
+            Crossfade
+            {
+                Fade In = 0;
+                Fade Out = 0;
+                Crossfade Type = 0;
+            }
+        }
+    }
+
+    Category
+    {
+        Name = Default;
+        Public = 1;
+        Background Music = 0;
+        Volume = 0;
+
+        Category Entry
+        {
+            Name = Global;
+        }
+
+        Instance Limit
+        {
+            Max Instances = 255;
+            Behavior = 0;
+
+            Crossfade
+            {
+                Fade In = 0;
+                Fade Out = 0;
+                Crossfade Type = 0;
+            }
+        }
+    }
+
+    Category
+    {
+        Name = Music;
+        Public = 1;
+        Background Music = 1;
+        Volume = 0;
+
+        Category Entry
+        {
+            Name = Global;
+        }
+
+        Instance Limit
+        {
+            Max Instances = 255;
+            Behavior = 0;
+
+            Crossfade
+            {
+                Fade In = 0;
+                Fade Out = 0;
+                Crossfade Type = 0;
+            }
+        }
+    }
+
+    Variable
+    {
+        Name = OrientationAngle;
+        Public = 1;
+        Global = 0;
+        Internal = 0;
+        External = 0;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 0;
+        Time = 0;
+        Value = 0.000000;
+        Initial Value = 0.000000;
+        Min = -180.000000;
+        Max = 180.000000;
+    }
+
+    Variable
+    {
+        Name = DopplerPitchScalar;
+        Public = 1;
+        Global = 0;
+        Internal = 0;
+        External = 0;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 0;
+        Time = 0;
+        Value = 1.000000;
+        Initial Value = 1.000000;
+        Min = 0.000000;
+        Max = 4.000000;
+    }
+
+    Variable
+    {
+        Name = SpeedOfSound;
+        Public = 1;
+        Global = 1;
+        Internal = 0;
+        External = 0;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 0;
+        Time = 0;
+        Value = 380952.406250;
+        Initial Value = 0.000000;
+        Min = 0.000000;
+        Max = 1000000.000000;
+    }
+
+    Variable
+    {
+        Name = ReleaseTime;
+        Public = 1;
+        Global = 0;
+        Internal = 1;
+        External = 1;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 1;
+        Time = 1;
+        Value = 0.000000;
+        Initial Value = 0.000000;
+        Min = 0.000000;
+        Max = 15000.000000;
+    }
+
+    Variable
+    {
+        Name = AttackTime;
+        Public = 1;
+        Global = 0;
+        Internal = 1;
+        External = 1;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 1;
+        Time = 1;
+        Value = 0.000000;
+        Initial Value = 0.000000;
+        Min = 0.000000;
+        Max = 15000.000000;
+    }
+
+    Variable
+    {
+        Name = NumCueInstances;
+        Public = 1;
+        Global = 0;
+        Internal = 1;
+        External = 1;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 1;
+        Time = 0;
+        Value = 0.000000;
+        Initial Value = 0.000000;
+        Min = 0.000000;
+        Max = 1024.000000;
+    }
+
+    Variable
+    {
+        Name = Distance;
+        Public = 1;
+        Global = 0;
+        Internal = 0;
+        External = 0;
+        Monitored = 1;
+        Reserved = 1;
+        Read Only = 0;
+        Time = 0;
+        Value = 0.000000;
+        Initial Value = 0.000000;
+        Min = 0.000000;
+        Max = 1000000.000000;
+    }
+
+    RPC
+    {
+        Name = Microsoft Reverb;
+
+        Effect Entry
+        {
+            Effect Name = Microsoft Reverb;
+        }
+    }
+
+    Effect
+    {
+        Name = Microsoft Reverb;
+        Global = 1;
+        Parameter Preset = Default;
+
+        Effect Parameter
+        {
+            Name = Reflections Delay;
+            Minimum = 0.000000;
+            Maximum = 300.000000;
+            Value = 20.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Reverb Delay;
+            Minimum = 0.000000;
+            Maximum = 85.000000;
+            Value = 40.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Position Left;
+            Minimum = 0.000000;
+            Maximum = 30.000000;
+            Value = 6.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Position Right;
+            Minimum = 0.000000;
+            Maximum = 30.000000;
+            Value = 6.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Position Left Matrix;
+            Minimum = 0.000000;
+            Maximum = 30.000000;
+            Value = 27.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Position Right Matrix;
+            Minimum = 0.000000;
+            Maximum = 30.000000;
+            Value = 27.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Early Diffusion;
+            Minimum = 0.000000;
+            Maximum = 15.000000;
+            Value = 15.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Late Diffusion;
+            Minimum = 0.000000;
+            Maximum = 15.000000;
+            Value = 15.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Low EQ Gain;
+            Minimum = 0.000000;
+            Maximum = 12.000000;
+            Value = 8.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Low EQ Cutoff;
+            Minimum = 0.000000;
+            Maximum = 9.000000;
+            Value = 4.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = High EQ Gain;
+            Minimum = 0.000000;
+            Maximum = 8.000000;
+            Value = 7.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = High EQ Cutoff;
+            Minimum = 0.000000;
+            Maximum = 14.000000;
+            Value = 6.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Rear Delay;
+            Minimum = 0.000000;
+            Maximum = 5.000000;
+            Value = 5.000000;
+            Type = 1;
+        }
+
+        Effect Parameter
+        {
+            Name = Room Filter Frequency;
+            Minimum = 20.000000;
+            Maximum = 20000.000000;
+            Value = 5000.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Room Filter Main;
+            Minimum = -100.000000;
+            Maximum = 0.000000;
+            Value = -100.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Room Filter High Frequency;
+            Minimum = -100.000000;
+            Maximum = 0.000000;
+            Value = 0.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Reflections Gain;
+            Minimum = -100.000000;
+            Maximum = 20.000000;
+            Value = -100.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Reverb Gain;
+            Minimum = -100.000000;
+            Maximum = 20.000000;
+            Value = -100.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Decay Time;
+            Minimum = 0.100000;
+            Maximum = 30.000000;
+            Value = 1.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Density;
+            Minimum = 0.000000;
+            Maximum = 100.000000;
+            Value = 100.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Room Size;
+            Minimum = 1.000000;
+            Maximum = 100.000000;
+            Value = 100.000000;
+            Type = 0;
+        }
+
+        Effect Parameter
+        {
+            Name = Wet/Dry Mix;
+            Minimum = 0.000000;
+            Maximum = 100.000000;
+            Value = 100.000000;
+            Type = 0;
+        }
+    }
+}
+
+Wave Bank
+{
+    Name = Wave Bank;
+    Xbox File = Xbox\Wave Bank.xwb;
+    Windows File = Win\Wave Bank.xwb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Seek Tables = 1;
+    Compression Preset Name = <none>;
+    Bank Last Revised Low = 251111068;
+    Bank Last Revised High = 30174580;
+
+    Wave
+    {
+        Name = car;
+        File = MARIO PAINT\car.wav;
+        Build Settings Last Modified Low = 64317159;
+        Build Settings Last Modified High = 30173464;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 23120;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 27626;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 501413888;
+            Last Modified High = 29368622;
+        }
+    }
+
+    Wave
+    {
+        Name = yoshi;
+        File = MARIO PAINT\yoshi.wav;
+        Build Settings Last Modified Low = 228727159;
+        Build Settings Last Modified High = 30173464;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 23120;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 20896;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2361413888;
+            Last Modified High = 29368622;
+        }
+    }
+
+    Wave
+    {
+        Name = SHUFFLE;
+        File = FF6\SHUFFLE.WAV;
+        Build Settings Last Modified Low = 3145562968;
+        Build Settings Last Modified High = 30173566;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 32768;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7776;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 4197498880;
+            Last Modified High = 29791845;
+        }
+    }
+
+    Wave
+    {
+        Name = SHAKE;
+        File = FF6\SHAKE.WAV;
+        Build Settings Last Modified Low = 3672435650;
+        Build Settings Last Modified High = 30173566;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 30928;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 7776;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 1407433472;
+            Last Modified High = 29791843;
+        }
+    }
+
+    Wave
+    {
+        Name = coinsound;
+        File = mario\coinsound.wav;
+        Build Settings Last Modified Low = 734604054;
+        Build Settings Last Modified High = 30173567;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 17760;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 896;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 54361088;
+            Last Modified High = 29702922;
+        }
+    }
+
+    Wave
+    {
+        Name = coinsound2;
+        File = mario\coinsound2.wav;
+        Build Settings Last Modified Low = 805941187;
+        Build Settings Last Modified High = 30173567;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 32536;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 1120;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 134361088;
+            Last Modified High = 29702922;
+        }
+    }
+
+    Wave
+    {
+        Name = tik;
+        File = mario\tik.wav;
+        Build Settings Last Modified Low = 1528603446;
+        Build Settings Last Modified High = 30173567;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 32632;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 4000;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2729328384;
+            Last Modified High = 29702921;
+        }
+    }
+
+    Wave
+    {
+        Name = hover;
+        File = hover.wav;
+        Build Settings Last Modified Low = 3434263350;
+        Build Settings Last Modified High = 30174575;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 70560;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2765761946;
+            Last Modified High = 30174579;
+        }
+    }
+}
+
+Sound Bank
+{
+    Name = Sound Bank;
+    Xbox File = Xbox\Sound Bank.xsb;
+    Windows File = Win\Sound Bank.xsb;
+    Xbox Bank Path Edited = 0;
+    Windows Bank Path Edited = 0;
+    Header Last Modified High = 0;
+    Header Last Modified Low = 0;
+
+    Sound
+    {
+        Name = yoshi;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Loop Count = 1;
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 45.000000;
+                Speaker Position Arc = 315.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = yoshi;
+                    Entry Index = 1;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = car;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 1;
+            Filter Mode = 0;
+            Filter Frequency = 1000.000000;
+            Filter Q Factor = 30.000000;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Pitch Variation
+                {
+                    Min = -100;
+                    Max = 100;
+                    Operator = 0;
+                    New Variation On Loop = 0;
+                }
+
+                Frequency Variation
+                {
+                    Min = 1000.000000;
+                    Max = 1000.000000;
+                    Operator = 0;
+                    New Variation On Loop = 0;
+                }
+
+                Q Factor Variation
+                {
+                    Min = 30.000000;
+                    Max = 30.000000;
+                    Operator = 0;
+                    New Variation On Loop = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = car;
+                    Entry Index = 0;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = SHUFFLE;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 1;
+            Filter Mode = 0;
+            Filter Frequency = 1000.000000;
+            Filter Q Factor = 30.000000;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = SHUFFLE;
+                    Entry Index = 2;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = SHAKE;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = SHAKE;
+                    Entry Index = 3;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = tik;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Pitch Variation
+                {
+                    Min = -612;
+                    Max = -384;
+                    Operator = 0;
+                    New Variation On Loop = 0;
+                }
+
+                Volume Variation
+                {
+                    Min = 0;
+                    Max = 580;
+                    Volume = 0;
+                    New Variation On Loop = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = tik;
+                    Entry Index = 6;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = hover;
+        Volume = -1730;
+        Pitch = -41;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 300;
+            Use Filter = 1;
+            Filter Mode = 0;
+            Filter Frequency = 1000.000000;
+            Filter Q Factor = 30.000000;
+
+            Play Wave Event
+            {
+                Loop Count = 255;
+                Break Loop = 0;
+                Use Speaker Position = 1;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 345.000000;
+                Speaker Position Arc = 30.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = hover;
+                    Entry Index = 7;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Cue
+    {
+        Name = yoshi;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = yoshi;
+            Index = 0;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = car;
+
+        Variation
+        {
+            Variation Type = 4;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = car;
+            Index = 1;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+
+        Sound Entry
+        {
+            Name = yoshi;
+            Index = 0;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = tik;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = tik;
+            Index = 4;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = hover;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = hover;
+            Index = 5;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+}
