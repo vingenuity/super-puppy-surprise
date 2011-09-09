@@ -32,6 +32,8 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
+            if (!GameState.arePlayers())
+                return;
             Player closest = GameState.findClosestPlayerTo(Position);
             Vector2 bulletDir;
 

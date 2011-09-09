@@ -48,5 +48,9 @@ namespace SuperPuppySurprise.GameObjects
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
         }
+        public override void OnCollision(GameObject obj)
+        {
+            base.OnCollision(obj);
+        }
     }
 }

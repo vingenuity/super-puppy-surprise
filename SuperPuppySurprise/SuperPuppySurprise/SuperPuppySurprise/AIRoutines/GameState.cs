@@ -30,6 +30,13 @@ namespace SuperPuppySurprise.AIRoutines
             players.Clear();
         }
 
+        public static bool arePlayers()
+        {
+            if (players.Count == 0)
+                return false;
+            return true;
+        }
+
         private static double distanceTo(Vector2 position, GameObject gameObj)
         {
             return Math.Sqrt(Math.Pow(gameObj.getPosition().X - position.X, 2)
@@ -40,7 +47,7 @@ namespace SuperPuppySurprise.AIRoutines
         {
             double closestDistance = distanceTo(position, players[0]);
             Player closestPlayer = players[0];
-            for (int i = 1; i < players.Count(); i++)
+            for (int i = 0; i < players.Count(); i++)
             {
                 double distance = distanceTo(position, players[i]);
                 if (distance < closestDistance)

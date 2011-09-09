@@ -44,5 +44,19 @@ namespace SuperPuppySurprise.GameObjects
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
         }
+        public override void OnCollision(GameObject gameObject)
+        {
+            if (gameObject is Monster)
+            {
+                gameObject.OnDamage(0);
+            }
+
+            if (gameObject is Player)
+            {
+                gameObject.OnDamage(1);
+            }
+
+            base.OnCollision(gameObject);
+        }
     }
 }

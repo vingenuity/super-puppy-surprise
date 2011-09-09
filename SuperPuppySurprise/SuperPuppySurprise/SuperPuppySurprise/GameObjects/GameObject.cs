@@ -46,5 +46,8 @@ namespace SuperPuppySurprise.GameObjects
         public virtual void OnCollision(GameObject gameObject)
         {
         }
+        public virtual void OnDamage(double damage)
+        {
+        }
     }
 }
