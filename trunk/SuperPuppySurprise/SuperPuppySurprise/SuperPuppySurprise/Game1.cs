@@ -45,7 +45,7 @@ namespace SuperPuppySurprise
         }
         public void Restart()
         {
-            graphics.PreferredBackBufferWidth = 500;
+            graphics.PreferredBackBufferWidth = 750;
             graphics.PreferredBackBufferHeight = 500;
             graphics.ApplyChanges();
             ScreenHeight = graphics.GraphicsDevice.Viewport.Height;

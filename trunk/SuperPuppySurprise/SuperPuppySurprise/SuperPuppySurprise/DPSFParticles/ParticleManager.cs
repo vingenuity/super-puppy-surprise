@@ -83,13 +83,13 @@ namespace SuperPuppySurprise.DPSFParticles
             y = 1 - y;
             y -= .5f;
             y *= 160;
+         
            
             x = (vector.X / Game1.ScreenWidth);
             x = 1 - x;
             x -= .5f;
-            x *= 160;
-
-            
+            x *= 250;
+     
             return new Vector3(x,y,z);
         }
         public static Vector3 ToVector3(Vector2 vector)

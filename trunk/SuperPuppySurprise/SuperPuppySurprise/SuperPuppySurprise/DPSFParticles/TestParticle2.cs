@@ -2,6 +2,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using SuperPuppySurprise.GameObjects;
+using Microsoft.Xna.Framework.Input;
 
 namespace SuperPuppySurprise.DPSFParticles
 {
@@ -23,12 +24,28 @@ namespace SuperPuppySurprise.DPSFParticles
 
             //mcSphereParticleSystem.ChangeSphereRadius(.000000005f);
         }
+        int a = 0;
+        KeyboardState keystate;
+        double timercd;
+        //126... 42....-38
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-           
-            
+           timercd -= gameTime.ElapsedGameTime.TotalSeconds;
+            keystate = Keyboard.GetState();
+            if (keystate.IsKeyDown(Keys.Left) && timercd <= 0)
+            {
+                a = a +1;
+                timercd = .03;
+
+            }
+            if (keystate.IsKeyDown(Keys.Right) && timercd <= 0)
+            {
+                a =  a -1;
+                timercd = .03;
+
+            }
+            mcSphereParticleSystem.Pos = new Vector3(-126,0,0);//ParticleManager.To3D(gameObject.Position);*/
             mcSphereParticleSystem.Pos = ParticleManager.To3D(gameObject.Position);
-           
             //mcSphereParticleSystem.Emitter.PositionData.Position = Position;
             base.Update(gameTime);
         }

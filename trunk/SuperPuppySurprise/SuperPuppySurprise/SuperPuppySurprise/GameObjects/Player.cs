@@ -97,6 +97,8 @@ namespace SuperPuppySurprise.GameObjects
 
         public override void Update(GameTime gameTime)
         {
+
+
             thisKeyState = Keyboard.GetState();
             Vector2 bulletDir;
 
