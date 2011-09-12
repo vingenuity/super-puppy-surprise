@@ -21,6 +21,7 @@ using SuperPuppySurprise.DPSFParticles;
 using SuperPuppySurprise.AIRoutines;
 using System.Collections.Generic;
 using SuperPuppySurprise.Huds;
+using SuperPuppySurprise.Sounds;
 #endregion
 
 namespace GameStateManagement
@@ -62,6 +63,7 @@ namespace GameStateManagement
             Game1.ParticleEngine = new ParticleManager();
             Game1.state = new GameState();
             Game1.hud = new Hud();
+            Game1.SoundEngine = new SoundManager();
             LoadUnits();
         }
         public void LoadUnits()
@@ -88,6 +90,8 @@ namespace GameStateManagement
             Background = Game1.game.Content.Load<Texture2D>("Background");
 
             ScreenManager.Game.ResetElapsedTime();
+
+            Game1.SoundEngine.Load();
 
             Game1.hud.Load();
         }
@@ -134,6 +138,7 @@ namespace GameStateManagement
                 Game1.ParticleEngine.Update(gameTime);
 
                 Game1.hud.Update(gameTime);
+
             }
         }
 
