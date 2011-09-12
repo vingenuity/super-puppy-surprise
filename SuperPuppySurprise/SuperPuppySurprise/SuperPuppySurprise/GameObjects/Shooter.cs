@@ -32,22 +32,20 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
-            if (!GameState.arePlayers())
-                return;
-            Player closest = GameState.findClosestPlayerTo(Position);
+            Vector2 closest = GameState.findClosestPlayerTo(Position);
             Vector2 bulletDir;
 
             Direction = Vector2.Zero;
             bulletDir = Vector2.Zero;
             Direction.X++;
 
-            if (closest.getPosition().Y > this.Position.Y)
+            if (closest.Y > this.Position.Y)
                 bulletDir.Y++;
-            else if (closest.getPosition().Y < this.Position.Y)
+            else if (closest.Y < this.Position.Y)
                 bulletDir.Y--;
-            if (closest.getPosition().X > this.Position.X)
+            if (closest.X > this.Position.X)
                 bulletDir.X++;
-            else if (closest.getPosition().X < this.Position.X)
+            else if (closest.X < this.Position.X)
                 bulletDir.X--;
             Direction.Normalize();
             bulletDir.Normalize();
