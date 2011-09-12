@@ -14,6 +14,7 @@ using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.DPSFParticles;
 using DPSF.ParticleSystems;
 using GameStateManagement;
+using SuperPuppySurprise.Huds;
 
 namespace SuperPuppySurprise
 {
@@ -34,7 +35,7 @@ namespace SuperPuppySurprise
         public static float ScreenWidth;
         public static float ScreenHeight;
         public static ScreenManager screenManager;
-       
+        public static Hud hud;
         public Game1()
         {
             game = this;

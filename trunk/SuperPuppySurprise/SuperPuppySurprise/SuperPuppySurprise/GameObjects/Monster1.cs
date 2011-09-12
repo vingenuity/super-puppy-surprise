@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperPuppySurprise.AIRoutines;
+using SuperPuppySurprise.GameMech;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -24,6 +25,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnDamage(double damage)
         {
+            GameMechanics.Score += 5;
             Unload();
             base.OnDamage(damage);
         }

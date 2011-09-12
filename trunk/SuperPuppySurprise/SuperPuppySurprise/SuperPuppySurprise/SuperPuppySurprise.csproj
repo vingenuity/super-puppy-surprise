@@ -164,6 +164,7 @@
     <Compile Include="GameObjects\Runner.cs" />
     <Compile Include="GameObjects\Shooter.cs" />
     <Compile Include="GameObjects\TestTrigger.cs" />
+    <Compile Include="Huds\Hud.cs" />
     <Compile Include="PhysicsEngines\BruteForcePhysicsEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
