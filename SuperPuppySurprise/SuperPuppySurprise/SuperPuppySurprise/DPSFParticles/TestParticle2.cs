@@ -12,7 +12,11 @@ namespace SuperPuppySurprise.DPSFParticles
         public int counter = 0;
         public Vector3 Position;
         GameObject gameObject;
-       
+        public bool On = false;
+        public void ChangeStatus(bool on)
+        {
+            mcSphereParticleSystem.on = on;
+        }
         public TestParticle2(GameObject gameObject)
             : base()
         {

@@ -18,10 +18,13 @@ namespace DPSF.ParticleSystems
 	class Random2DParticleSystem : DefaultTexturedQuadParticleSystem
 	{
         public Vector3 Pos;
+        public Boolean on;
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public Random2DParticleSystem(Game cGame) : base(cGame) { }
+		public Random2DParticleSystem(Game cGame) : base(cGame) {
+            
+        }
 
 		//===========================================================
 		// Structures and Variables
@@ -59,7 +62,8 @@ namespace DPSF.ParticleSystems
 			InitializeTexturedQuadParticleSystem(cGraphicsDevice, cContentManager, 1000, 50000,
 												UpdateVertexProperties, "Textures/Fire");
 			LoadEvents();
-			Emitter.ParticlesPerSecond = 100;
+            Emitter.ParticlesPerSecond = 100; 
+            Emitter.EmitParticlesAutomatically = false;
 			Name = "Random 2D";
 		}
 
@@ -78,7 +82,7 @@ namespace DPSF.ParticleSystems
 		public void LoadExtraEvents()
 		{
 			ParticleInitializationFunction = InitializeParticleRandom2D;
-
+           
 			Emitter.PositionData.Position = new Vector3(0, 50, 0);
 
 			ParticleEvents.RemoveAllEvents();
@@ -90,6 +94,8 @@ namespace DPSF.ParticleSystems
 			ParticleEvents.AddNormalizedTimedEvent(0.4f, ChangeDirection);
 			ParticleEvents.AddNormalizedTimedEvent(0.6f, ChangeDirection);
 			ParticleEvents.AddNormalizedTimedEvent(0.8f, ChangeDirection);
+
+            
 		}
 
 		public void InitializeParticleRandom2D(DefaultTexturedQuadParticle cParticle)
@@ -120,7 +126,11 @@ namespace DPSF.ParticleSystems
 		//===========================================================
 		// Particle System Update Functions
 		//===========================================================
-		
+        protected override void BeforeUpdate(float fElapsedTimeInSeconds)
+        {
+            Emitter.EmitParticlesAutomatically = on;
+            base.BeforeUpdate(fElapsedTimeInSeconds);
+        }
 		//===========================================================
 		// Other Particle System Functions
 		//===========================================================
