@@ -197,6 +197,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Draw(GameTime gameTime)
         {
+            //Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
