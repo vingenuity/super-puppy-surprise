@@ -29,7 +29,7 @@ namespace SuperPuppySurprise.GameObjects
         TestParticle2 testParticle;
         int currentFireSpeed = 2;
         int currentFireMode = 0;
-        double[] fireSpeeds = {1000, 500, 300, 1};
+        double[] fireSpeeds = {800, 500, 300, 1};
         bool rotateHelper = true;
         double elapsedTime;
 
@@ -92,7 +92,7 @@ namespace SuperPuppySurprise.GameObjects
             if (currentFireMode % 5 == 4)
                 currentFireSpeed = 3;
             else
-                currentFireSpeed = 1;
+                currentFireSpeed = 2;
         }
 
         public override void Update(GameTime gameTime)
@@ -115,7 +115,8 @@ namespace SuperPuppySurprise.GameObjects
 
             Direction.Normalize();
 
-            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
+            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && 
+                thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 Velocity = Vector2.Zero;
             else
                 Velocity = Direction * Speed;
@@ -170,7 +171,8 @@ namespace SuperPuppySurprise.GameObjects
                     fireAutomatic(this.Position, bulletDir);
             }
 
-            //this function is for testing purposes only, the player will switch weapons in game via power-ups
+            //this function is for testing purposes only
+            //the player will switch weapons in game via power-ups
             if (thisKeyState.IsKeyDown(Keys.Tab) && rotateHelper)
             {
                 rotateWeapons();
@@ -197,7 +199,6 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Draw(GameTime gameTime)
         {
-            //Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
@@ -216,56 +217,63 @@ namespace SuperPuppySurprise.GameObjects
             //Unload();
             base.OnDamage(damage);
         }
-        public void fireShotGun(Vector2 position, Vector2 bulletDir)
+        private Vector2 position1(Vector2 position, Vector2 bulletDir)
         {
-            currentFireSpeed = 1;
-            Vector2 position1 = position;
-            Vector2 position2 = position;
-            position1.X += 12 * bulletDir.Y;
-            position1.Y -= 12 * bulletDir.X;
-            position2.X -= 12 * bulletDir.Y;
-            position2.Y += 12 * bulletDir.X;
-            fireBullet(position, bulletDir);
-            fireBullet(position1, bulletDir);
-            fireBullet(position2, bulletDir);
+            position.X += 8 * bulletDir.Y;
+            position.Y -= 8 * bulletDir.X;
+            return position;
         }
-        public void fireShotGun2(Vector2 position, Vector2 bulletDir)
+        private Vector2 position2(Vector2 position, Vector2 bulletDir)
+        {
+            position.X -= 8 * bulletDir.Y;
+            position.Y += 8 * bulletDir.X;
+            return position;
+        }
+        private void fireShotGun(Vector2 position, Vector2 bulletDir)
         {
             currentFireSpeed = 1;
-            Vector2 position1 = position;
-            Vector2 position2 = position;
-            position1.X += 6 * bulletDir.Y;
-            position1.Y -= 6 * bulletDir.X;
-            position2.X -= 6 * bulletDir.Y;
-            position2.Y += 6 * bulletDir.X;
+            fireBullet(position, bulletDir);
+            fireBullet(position1(position, bulletDir), bulletDir);
+            fireBullet(position2(position, bulletDir), bulletDir);
+        }
+        private void fireShotGun2(Vector2 position, Vector2 bulletDir)
+        {
+            currentFireSpeed = 1;
             Vector2 bulletDir1 = bulletDir;
             Vector2 bulletDir2 = bulletDir;
             bulletDir1.X += .2f * bulletDir.Y;
             bulletDir1.Y -= .2f * bulletDir.X;
             bulletDir2.X -= .2f * bulletDir.Y;
             bulletDir2.Y += .2f * bulletDir.X;
-            //fireBullet(position, bulletDir);
-            //fireBullet(position1, bulletDir1);
-            //fireBullet(position2, bulletDir2);
+            //can be changed to fireBullet()
             fireBurst(position, bulletDir);
-            fireBurst(position1, bulletDir1);
-            fireBurst(position2, bulletDir2);
+            fireBurst(position1(position, bulletDir), bulletDir1);
+            fireBurst(position2(position, bulletDir), bulletDir2);
         }
-        public void fireBurst(Vector2 position, Vector2 bulletDir)
+        private void fireBurst(Vector2 position, Vector2 bulletDir)
         {
             currentFireSpeed = 1;
-            Vector2 position1 = position;
-            Vector2 position2 = position;
-            position1.X += 12 * bulletDir.X;
-            position1.Y += 12 * bulletDir.Y;
-            position2.X -= 12 * bulletDir.X;
-            position2.Y -= 12 * bulletDir.Y;
+            Vector2 position1;
+            position1.X = position.X + 8 * bulletDir.X;
+            position1.Y = position.Y + 8 * bulletDir.Y;
+            Vector2 position2;
+            position2.X = position.X - 8 * bulletDir.X;
+            position2.Y = position.Y - 8 * bulletDir.Y;
             fireBullet(position, bulletDir);
             fireBullet(position1, bulletDir);
             fireBullet(position2, bulletDir);
         }
-        public void fireAutomatic(Vector2 position, Vector2 bulletDir)
+        public float getRandomAdjust() {
+            Random random = new Random();
+            int randomNumber = random.Next(0, 10);
+            randomNumber -= 5;
+            float randomAdjust = (float)randomNumber * 0.01f;
+            return randomAdjust;
+        }
+        private void fireAutomatic(Vector2 position, Vector2 bulletDir)
         {
+            bulletDir.X += getRandomAdjust();
+            bulletDir.Y += getRandomAdjust();
             fireBullet(position, bulletDir);
         }
     }
