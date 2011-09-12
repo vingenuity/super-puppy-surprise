@@ -20,6 +20,7 @@ using SuperPuppySurprise.PhysicsEngines;
 using SuperPuppySurprise.DPSFParticles;
 using SuperPuppySurprise.AIRoutines;
 using System.Collections.Generic;
+using SuperPuppySurprise.Huds;
 #endregion
 
 namespace GameStateManagement
@@ -60,6 +61,7 @@ namespace GameStateManagement
             Game1.PhysicsEngine = new BruteForcePhysicsEngine();
             Game1.ParticleEngine = new ParticleManager();
             Game1.state = new GameState();
+            Game1.hud = new Hud();
             LoadUnits();
         }
         public void LoadUnits()
@@ -86,6 +88,8 @@ namespace GameStateManagement
             Background = Game1.game.Content.Load<Texture2D>("Background");
 
             ScreenManager.Game.ResetElapsedTime();
+
+            Game1.hud.Load();
         }
 
 
@@ -128,6 +132,8 @@ namespace GameStateManagement
                 Game1.PhysicsEngine.Update(gameTime);
 
                 Game1.ParticleEngine.Update(gameTime);
+
+                Game1.hud.Update(gameTime);
             }
         }
 
@@ -175,6 +181,7 @@ namespace GameStateManagement
             Game1.spriteBatch.Draw(Background, new Rectangle(0, 0, 500, 500), Color.White);
             for (int i = 0; i < Game1.sceneObjects.Count; i++)
                 Game1.sceneObjects[i].Draw(gameTime);
+            Game1.hud.Draw(gameTime);
             Game1.spriteBatch.End();
             // TODO: Add your drawing code here
 
