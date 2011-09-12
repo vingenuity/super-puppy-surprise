@@ -32,10 +32,12 @@ namespace SuperPuppySurprise.GameObjects
         double[] fireSpeeds = {800, 500, 300, 1};
         bool rotateHelper = true;
         double elapsedTime;
+        Random random;
 
         public Player(int id, Vector2 Position)
             : base(Position)
         {
+            random = new Random();
             Direction = Vector2.UnitY * -1;
             playerID = id;
             Speed = 300;
@@ -264,7 +266,6 @@ namespace SuperPuppySurprise.GameObjects
             fireBullet(position2, bulletDir);
         }
         public float getRandomAdjust() {
-            Random random = new Random();
             int randomNumber = random.Next(0, 10);
             randomNumber -= 5;
             float randomAdjust = (float)randomNumber * 0.01f;

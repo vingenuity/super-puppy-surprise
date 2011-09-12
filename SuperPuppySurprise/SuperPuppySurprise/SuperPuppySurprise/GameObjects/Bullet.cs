@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SuperPuppySurprise.GameMech;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -33,9 +34,18 @@ namespace SuperPuppySurprise.GameObjects
             base.Load(Content, spriteBatch);
         }
 
+        public override void Unload()
+        {
+            Game1.PhysicsEngine.Remove(this);
+            Game1.game.RemoveGameObject(this);
+            base.Unload();
+        }
+
         public override void Update(GameTime gameTime)
         {
             //detect collision, unload if needed
+            if (HitsWalls())
+                Unload();
         }
         
         public override void Draw(GameTime gameTime)
@@ -49,6 +59,7 @@ namespace SuperPuppySurprise.GameObjects
             if (gameObject is Monster)
             {
                 gameObject.OnDamage(0);
+                Unload();
             }
 
             if (gameObject is Player)
@@ -57,6 +68,15 @@ namespace SuperPuppySurprise.GameObjects
             }
 
             base.OnCollision(gameObject);
+        }
+        bool HitsWalls()
+        {
+            int radius = (int)Radius;
+            if (GameMechanics.LeftWallBound > Position.X ) return true;
+            if (GameMechanics.RightWallBound < Position.X) return true;
+            if (GameMechanics.TopWallBound > Position.Y) return true;
+            if (GameMechanics.BottomWallBound < Position.Y) return true;
+            return false;
         }
     }
 }
