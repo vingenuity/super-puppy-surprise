@@ -36,6 +36,7 @@ namespace SuperPuppySurprise.DPSFParticles
                 Game1.ParticleEngine.Add(this);
             }
         }
+
         public virtual void End()
         {
             started = false;

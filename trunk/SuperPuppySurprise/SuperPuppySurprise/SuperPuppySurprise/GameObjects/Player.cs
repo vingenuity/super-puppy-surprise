@@ -70,16 +70,16 @@ namespace SuperPuppySurprise.GameObjects
                     break;
             }
             testParticle = new TestParticle2(this);
-            
+            testParticle.Start();
         }
       
         void EngineParticle()
         {
-           
-            if(Velocity.LengthSquared() > 0 && !testParticle.started)
-                testParticle.Start();
-            if(Velocity.LengthSquared() == 0 && testParticle.started)
-                testParticle.End();
+
+            if (Velocity.LengthSquared() > 0)
+                testParticle.ChangeStatus(true);
+            if(Velocity.LengthSquared() == 0)
+                testParticle.ChangeStatus(false);
         }
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {

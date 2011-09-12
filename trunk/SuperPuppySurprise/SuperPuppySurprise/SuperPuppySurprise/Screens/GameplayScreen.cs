@@ -179,13 +179,20 @@ namespace GameStateManagement
             Game1.spriteBatch.Begin();
 
             Game1.spriteBatch.Draw(Background, new Rectangle(0, 0, 500, 500), Color.White);
+            Game1.spriteBatch.End();
+
+            Game1.ParticleEngine.Draw();
+            Game1.spriteBatch.Begin();
+           
             for (int i = 0; i < Game1.sceneObjects.Count; i++)
                 Game1.sceneObjects[i].Draw(gameTime);
+            
             Game1.hud.Draw(gameTime);
+           
             Game1.spriteBatch.End();
             // TODO: Add your drawing code here
 
-            Game1.ParticleEngine.Draw();
+            
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0 || pauseAlpha > 0)
