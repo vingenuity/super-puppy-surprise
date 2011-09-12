@@ -30,11 +30,18 @@ namespace SuperPuppySurprise.AIRoutines
             players.Clear();
         }
 
-        public static bool arePlayers()
+        public static bool noEnemies()
+        {
+            if (enemies.Count == 0)
+                return true;
+            return false;
+        }
+
+        public static bool noPlayers()
         {
             if (players.Count == 0)
-                return false;
-            return true;
+                return true;
+            return false;
         }
 
         private static double distanceTo(Vector2 position, GameObject gameObj)
@@ -43,8 +50,10 @@ namespace SuperPuppySurprise.AIRoutines
                            + Math.Pow(gameObj.getPosition().Y - position.Y, 2));
         }
 
-        public static Player findClosestPlayerTo(Vector2 position)
+        public static Vector2 findClosestPlayerTo(Vector2 position)
         {
+            if (noPlayers())
+                return new Vector2(250, 250);
             double closestDistance = distanceTo(position, players[0]);
             Player closestPlayer = players[0];
             for (int i = 0; i < players.Count(); i++)
@@ -56,7 +65,7 @@ namespace SuperPuppySurprise.AIRoutines
                     closestPlayer = players[i];
                 }
             }
-            return closestPlayer;
+            return closestPlayer.getPosition();
         }
     }
 }

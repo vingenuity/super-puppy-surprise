@@ -1,6 +1,5 @@
 ﻿using System;
 using DPSF.ParticleSystems;
-using System;
 using Microsoft.Xna.Framework;
 
 namespace SuperPuppySurprise.DPSFParticles
