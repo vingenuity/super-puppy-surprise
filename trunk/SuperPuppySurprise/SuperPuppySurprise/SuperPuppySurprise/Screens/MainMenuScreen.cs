@@ -9,6 +9,8 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using SuperPuppySurprise.Sounds;
+using SuperPuppySurprise;
 #endregion
 
 namespace GameStateManagement
@@ -28,6 +30,7 @@ namespace GameStateManagement
             : base("Main Menu")
         {
             // Create our menu entries.
+            Game1.SoundEngine.TurnSoundOn(ConstantSounds.MenuBackground);
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
             MenuEntry optionsMenuEntry = new MenuEntry("Options");
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
@@ -54,6 +57,7 @@ namespace GameStateManagement
         /// </summary>
         void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
+            Game1.SoundEngine.TurnSoundOff(ConstantSounds.MenuBackground);
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
                                new GameplayScreen());
         }
