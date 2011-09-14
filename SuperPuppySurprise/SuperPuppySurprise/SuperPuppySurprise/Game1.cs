@@ -37,6 +37,7 @@ namespace SuperPuppySurprise
         public static float ScreenHeight;
         public static ScreenManager screenManager;
         public static Hud hud;
+        public static Spawner spawner;
         public static SoundManager SoundEngine;
         public Game1()
         {
@@ -87,11 +88,6 @@ namespace SuperPuppySurprise
         protected override void Initialize()
         {
             Restart();
-            // TODO: Add your initialization logic here
-            //sceneObjects.Add(new Player(1, new Vector2(100, 100)));
-            //sceneObjects.Add(new Runner(new Vector2(350, 200)));
-            //sceneObjects.Add(new Shooter(new Vector2(200, 100)));
-           // sceneObjects.Add(new TestTrigger(new Vector2(500, 300)));
             base.Initialize();
         }
         /// <summary>
@@ -123,7 +119,7 @@ namespace SuperPuppySurprise
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
+            
             base.Update(gameTime);
         }
 

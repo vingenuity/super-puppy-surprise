@@ -183,6 +183,7 @@
     <Compile Include="Screens\PauseMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Sounds\SoundManager.cs" />
+    <Compile Include="Spawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

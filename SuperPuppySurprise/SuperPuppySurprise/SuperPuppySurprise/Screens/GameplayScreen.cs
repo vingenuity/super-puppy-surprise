@@ -63,15 +63,18 @@ namespace GameStateManagement
             Game1.ParticleEngine = new ParticleManager();
             Game1.state = new GameState();
             Game1.hud = new Hud();
-            
+            Game1.spawner = new Spawner();
+            Game1.SoundEngine = new SoundManager();
             LoadUnits();
         }
         public void LoadUnits()
         {
             // TODO: Add your initialization logic here
+
             Game1.sceneObjects.Add(new Player(1, new Vector2(100, 100)));
-            Game1.sceneObjects.Add(new Runner(new Vector2(350, 200)));
-            Game1.sceneObjects.Add(new Runner(new Vector2(0, 0)));
+            Game1.spawner.spawn(0, 0);
+            //Game1.sceneObjects.Add(new Runner(new Vector2(350, 200)));
+            //Game1.sceneObjects.Add(new Runner(new Vector2(0, 0)));
             //Game1.sceneObjects.Add(new Shooter(new Vector2(200, 100)));
             Game1.sceneObjects.Add(new TestTrigger(new Vector2(300, 300)));
         }
@@ -137,7 +140,10 @@ namespace GameStateManagement
 
                 Game1.ParticleEngine.Update(gameTime);
 
-                Game1.hud.Update(gameTime);
+                Game1.hud.Update(gameTime); 
+                
+                if (GameState.noEnemies())
+                    Game1.spawner.randSpawn();
 
             }
         }
