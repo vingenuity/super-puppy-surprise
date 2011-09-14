@@ -70,3 +70,11 @@ H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise
 H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Menu\gradient.xnb
 H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Menu\gamefont.xnb
 H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Menu\menufont.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Complete\Electricity.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Complete\Electric_hit.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Complete\explode.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Complete\hover.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Complete\single_shot.xnb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Soundauto.xgs
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Waves.xwb
+H:\super-puppy-surprise\SuperPuppySurprise\SuperPuppySurprise\SuperPuppySurprise\bin\x86\Debug\Content\Sound\Sounds.xsb

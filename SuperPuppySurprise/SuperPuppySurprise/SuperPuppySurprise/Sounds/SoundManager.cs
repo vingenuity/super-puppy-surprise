@@ -48,12 +48,15 @@ namespace SuperPuppySurprise.Sounds
         SoundEffectInstance menubackground;
         public SoundManager()
         {
-            
-            engine = new AudioEngine("Content/Sound/Soundauto.xgs");
-            soundBank = new SoundBank(engine, "Content/Sound/Sounds.xsb");
-            waveBank = new WaveBank(engine, "Content/Sound/Waves.xwb");
-            
-            Sounds = this;
+            try
+            {
+                engine = new AudioEngine("Content/Sound/Soundauto.xgs");
+                soundBank = new SoundBank(engine, "Content/Sound/Sounds.xsb");
+                waveBank = new WaveBank(engine, "Content/Sound/Waves.xwb");
+
+                Sounds = this;
+            }
+            catch { }
             Reset();
         }
         void Reset()
@@ -65,71 +68,85 @@ namespace SuperPuppySurprise.Sounds
         }
         public void Load()
         {
-            content = Game1.game.Content;
-            /*monsterattack = new List<SoundEffect>();
-            monsterattack.Add(content.Load<SoundEffect>("zzz"));
-            menuselect = content.Load<SoundEffect>("Sound/Menu/UI_Misc12");
-            menuback = soundBank.GetCue("MenuBackground");
+            try
+            {
+                content = Game1.game.Content;
+                /*monsterattack = new List<SoundEffect>();
+                monsterattack.Add(content.Load<SoundEffect>("zzz"));
+                menuselect = content.Load<SoundEffect>("Sound/Menu/UI_Misc12");
+                menuback = soundBank.GetCue("MenuBackground");
             
-            string asdfasf = menuback.ToString();
-            playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh2"));
-            playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh4"));
-            playerattacklong = content.Load<SoundEffect>("Sound/PlayerAttemptAttack/long_whoosh_00");
-            hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_01"));
-            hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_02"));*/
-            ambient = soundBank.GetCue("hover");
+                string asdfasf = menuback.ToString();
+                playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh2"));
+                playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh4"));
+                playerattacklong = content.Load<SoundEffect>("Sound/PlayerAttemptAttack/long_whoosh_00");
+                hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_01"));
+                hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_02"));*/
+                ambient = soundBank.GetCue("hover");
+            }
+            catch { }
         }
         public void PlaySound(SoundEffects sound)
         {
-            SoundEffectInstance sb;
-            switch (sound)
+            try
             {
-                case SoundEffects.Hit:
-                    SoundEffectInstance s2 = hit[(random.Next(playerattack.Count))].CreateInstance();
-                    s2.Volume = s2.Volume / 7;
-                    s2.Play();
-                    break;
-                case SoundEffects.MenuSelect:
-                    SoundEffectInstance s = menuselect.CreateInstance();
-                    s.Volume = s.Volume / 7;
-                    s.Pitch = s.Pitch - 1;
-                    s.Play();
-                    break;
-                case SoundEffects.MonsterAttack:
-                    monsterattack[(random.Next(monsterattack.Count))].Play();
-                    break;
-                case SoundEffects.PlayerAttack:
-                    SoundEffectInstance s1 = playerattack[(random.Next(playerattack.Count))].CreateInstance();
-                    s1.Volume = s1.Volume / 7;
-                    s1.Play();
-                    break;
-                case SoundEffects.PlayerAttackLong:
-                    sb = playerattacklong.CreateInstance();
-                    sb.Volume = sb.Volume / 2;
-                    sb.Play();
-                    break;
-            };
+                SoundEffectInstance sb;
+                switch (sound)
+                {
+                    case SoundEffects.Hit:
+                        SoundEffectInstance s2 = hit[(random.Next(playerattack.Count))].CreateInstance();
+                        s2.Volume = s2.Volume / 7;
+                        s2.Play();
+                        break;
+                    case SoundEffects.MenuSelect:
+                        SoundEffectInstance s = menuselect.CreateInstance();
+                        s.Volume = s.Volume / 7;
+                        s.Pitch = s.Pitch - 1;
+                        s.Play();
+                        break;
+                    case SoundEffects.MonsterAttack:
+                        monsterattack[(random.Next(monsterattack.Count))].Play();
+                        break;
+                    case SoundEffects.PlayerAttack:
+                        SoundEffectInstance s1 = playerattack[(random.Next(playerattack.Count))].CreateInstance();
+                        s1.Volume = s1.Volume / 7;
+                        s1.Play();
+                        break;
+                    case SoundEffects.PlayerAttackLong:
+                        sb = playerattacklong.CreateInstance();
+                        sb.Volume = sb.Volume / 2;
+                        sb.Play();
+                        break;
+                };
+            }
+            catch { }
         }
         public void TurnSoundOn(ConstantSounds sound)
         {
-            switch (sound)
+            try
             {
-               /*case ConstantSounds.MenuBackground:
-                    if (!menuback.IsPlaying)
-                        menuback.Play();
-                    menuback.Resume();
-                    break;*/
-                case ConstantSounds.Ambient:
-                    if (!ambient.IsPlaying)
-                        ambient.Play();
-                    ambient.Resume();
-                    break;
-            };
+                switch (sound)
+                {
+                    /*case ConstantSounds.MenuBackground:
+                         if (!menuback.IsPlaying)
+                             menuback.Play();
+                         menuback.Resume();
+                         break;*/
+                    case ConstantSounds.Ambient:
+                        if (!ambient.IsPlaying)
+                            ambient.Play();
+                        ambient.Resume();
+                        break;
+                };
+            }
+            catch { }
         }
         public void TurnSoundOff(ConstantSounds sound)
         {
-            switch (sound)
+            try
             {
+                switch (sound)
+                {
                     /*
                 case ConstantSounds.MenuBackground:
                     if (menuback.IsPlaying)
@@ -138,12 +155,14 @@ namespace SuperPuppySurprise.Sounds
                     break;
                      */
 
-                case ConstantSounds.Ambient:
-                    if (ambient.IsPlaying)
-                        ambient.Pause();
-                    break;
-                     
-            };
+                    case ConstantSounds.Ambient:
+                        if (ambient.IsPlaying)
+                            ambient.Pause();
+                        break;
+
+                };
+            }
+            catch { }
         }
     }
 }
