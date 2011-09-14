@@ -48,6 +48,7 @@ namespace SuperPuppySurprise
         }
         public void Restart()
         {
+
             graphics.PreferredBackBufferWidth = 750;
             graphics.PreferredBackBufferHeight = 500;
             graphics.ApplyChanges();
@@ -55,15 +56,23 @@ namespace SuperPuppySurprise
             ScreenWidth = graphics.GraphicsDevice.Viewport.Width;
             
 
+
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
 
             Components.Add(screenManager);
 
+           
+            
+        }
+        public void RestartLoad()
+        {
+            Game1.SoundEngine = new SoundManager();
+            Game1.SoundEngine.Load();
+
             // Activate the first screens.
             screenManager.AddScreen(new BackgroundScreen(), null);
             screenManager.AddScreen(new MainMenuScreen(), null);
-            
         }
         public void RemoveGameObject(GameObject g)
         {
@@ -91,7 +100,7 @@ namespace SuperPuppySurprise
         /// </summary>
         protected override void LoadContent()
         {
-            
+            RestartLoad();
             // TODO: use this.Content to load your game content here
         }
 
