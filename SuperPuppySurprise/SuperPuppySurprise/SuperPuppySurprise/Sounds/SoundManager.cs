@@ -74,7 +74,7 @@ namespace SuperPuppySurprise.Sounds
                 /*monsterattack = new List<SoundEffect>();
                 monsterattack.Add(content.Load<SoundEffect>("zzz"));
                 menuselect = content.Load<SoundEffect>("Sound/Menu/UI_Misc12");
-                menuback = soundBank.GetCue("MenuBackground");
+                
             
                 string asdfasf = menuback.ToString();
                 playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh2"));
@@ -83,6 +83,7 @@ namespace SuperPuppySurprise.Sounds
                 hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_01"));
                 hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_02"));*/
                 ambient = soundBank.GetCue("hover");
+                menuback = soundBank.GetCue("SPSIntro");
             }
             catch { }
         }
@@ -127,11 +128,11 @@ namespace SuperPuppySurprise.Sounds
             {
                 switch (sound)
                 {
-                    /*case ConstantSounds.MenuBackground:
+                    case ConstantSounds.MenuBackground:
                          if (!menuback.IsPlaying)
                              menuback.Play();
                          menuback.Resume();
-                         break;*/
+                         break;
                     case ConstantSounds.Ambient:
                         if (!ambient.IsPlaying)
                             ambient.Play();
@@ -147,13 +148,13 @@ namespace SuperPuppySurprise.Sounds
             {
                 switch (sound)
                 {
-                    /*
+                    
                 case ConstantSounds.MenuBackground:
                     if (menuback.IsPlaying)
                         menuback.Pause();
                     
                     break;
-                     */
+                     
 
                     case ConstantSounds.Ambient:
                         if (ambient.IsPlaying)
