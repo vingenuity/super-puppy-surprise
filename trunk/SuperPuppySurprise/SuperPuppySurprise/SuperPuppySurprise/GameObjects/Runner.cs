@@ -17,6 +17,7 @@ namespace SuperPuppySurprise.GameObjects
 
         public Runner(Vector2 Position) : base(Position)
         {
+            Speed = 225;
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
@@ -47,6 +48,11 @@ namespace SuperPuppySurprise.GameObjects
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
+        }
+        public override void Unload()
+        {
+
+            base.Unload();
         }
         public override void OnCollision(GameObject obj)
         {

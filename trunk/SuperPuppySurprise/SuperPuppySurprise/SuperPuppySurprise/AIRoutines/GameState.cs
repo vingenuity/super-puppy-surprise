@@ -12,20 +12,20 @@ namespace SuperPuppySurprise.AIRoutines
 {
     public class GameState
     {
-        public static List<Player> players;
         public static List<Monster> enemies;
+        public static List<Player> players;
 
         public GameState()
         {
-            players = new List<Player>();
             enemies = new List<Monster>();
+            players = new List<Player>();
         }
 
-        public void clearEnemies()
+        public static void clearEnemies()
         {
             enemies.Clear();
         }
-        public void clearPlayers()
+        public static void clearPlayers()
         {
             players.Clear();
         }
