@@ -42,6 +42,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sound\Soundauto.xap">
+      <Name>Soundauto</Name>
+      <Importer>XactImporter</Importer>
+      <Processor>XactProcessor</Processor>
+    </Compile>
     <Compile Include="TestPicture.png">
       <Name>TestPicture</Name>
       <Importer>TextureImporter</Importer>
@@ -400,13 +405,6 @@
       <Name>single_shot</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Sound\Soundauto.xap">
-      <Name>Soundauto</Name>
-      <Importer>XactImporter</Importer>
-      <Processor>XactProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
