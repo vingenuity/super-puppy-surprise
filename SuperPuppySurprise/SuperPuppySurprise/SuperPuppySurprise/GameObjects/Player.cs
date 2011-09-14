@@ -159,8 +159,8 @@ namespace SuperPuppySurprise.GameObjects
                 else if (currentFireMode % 5 == 4)
                     fireAutomatic(this.Position, bulletDir);
             }
-            if (thisKeyState.IsKeyUp(fireUp) && thisKeyState.IsKeyUp(fireDown) &&
-                thisKeyState.IsKeyUp(fireRight) && thisKeyState.IsKeyUp(fireLeft))
+            if (thisKeyState.IsKeyDown(fireUp) && thisKeyState.IsKeyDown(fireDown) &&
+                thisKeyState.IsKeyDown(fireRight) && thisKeyState.IsKeyDown(fireLeft))
             {
                 elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
                 if (currentFireMode % 5 == 0)
