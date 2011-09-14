@@ -31,13 +31,13 @@ namespace SuperPuppySurprise.GameObjects
             Vector2 closest = GameState.findClosestPlayerTo(Position);
 
             Direction = Vector2.Zero;
-            if (closest.Y > this.Position.Y)
+            if (closest.Y > this.Position.Y + 5)
                 Direction.Y++;
-            else if (closest.Y < this.Position.Y)
+            else if (closest.Y < this.Position.Y - 5)
                 Direction.Y--;
-            if (closest.X > this.Position.X)
+            if (closest.X > this.Position.X + 5)
                 Direction.X++;
-            else if (closest.X < this.Position.X)
+            else if (closest.X < this.Position.X - 5)
                 Direction.X--;
             Direction.Normalize();
 
