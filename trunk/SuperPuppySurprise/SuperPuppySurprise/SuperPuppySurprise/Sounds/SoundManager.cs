@@ -8,28 +8,29 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace SuperPuppySurprise.Sounds
 {
+
+    public enum ConstantSounds
+    {
+        Ambient,
+        IntroVideo,
+        WalkSoft,
+        MenuBackground,
+    };
+
+    public enum SoundEffects
+    {
+        MenuSelect,
+        Hit,
+        PlayerAttack,
+        PlayerAttackLong,
+        MonsterAttack,
+    };
     public class SoundManager
     {
         ContentManager content;
 
         public static SoundManager Sounds;
 
-        public enum ConstantSounds
-        {
-            Ambient,
-            IntroVideo,
-            WalkSoft,
-            MenuBackground,
-        };
-
-        public enum SoundEffects
-        {
-            MenuSelect,
-            Hit,
-            PlayerAttack,
-            PlayerAttackLong,
-            MonsterAttack,
-        };
 
         AudioEngine engine;
         WaveBank waveBank;
@@ -47,10 +48,11 @@ namespace SuperPuppySurprise.Sounds
         SoundEffectInstance menubackground;
         public SoundManager()
         {
+            
             engine = new AudioEngine("Content/Sound/Soundauto.xgs");
-            soundBank = new SoundBank(engine, "Content/Sound/Sound Bank.xsb");
-            waveBank = new WaveBank(engine, "Content/Sound/Wave Bank.xwb");
-
+            soundBank = new SoundBank(engine, "Content/Sound/Sounds.xsb");
+            waveBank = new WaveBank(engine, "Content/Sound/Waves.xwb");
+            
             Sounds = this;
             Reset();
         }
@@ -68,13 +70,14 @@ namespace SuperPuppySurprise.Sounds
             monsterattack.Add(content.Load<SoundEffect>("zzz"));
             menuselect = content.Load<SoundEffect>("Sound/Menu/UI_Misc12");
             menuback = soundBank.GetCue("MenuBackground");
-            ambient = soundBank.GetCue("NightAmbienceSimple_02");
+            
             string asdfasf = menuback.ToString();
             playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh2"));
             playerattack.Add(content.Load<SoundEffect>("Sound/PlayerAttemptAttack/Whoosh4"));
             playerattacklong = content.Load<SoundEffect>("Sound/PlayerAttemptAttack/long_whoosh_00");
             hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_01"));
             hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_02"));*/
+            ambient = soundBank.GetCue("hover");
         }
         public void PlaySound(SoundEffects sound)
         {
@@ -111,16 +114,16 @@ namespace SuperPuppySurprise.Sounds
         {
             switch (sound)
             {
-               /* case ConstantSounds.MenuBackground:
+               /*case ConstantSounds.MenuBackground:
                     if (!menuback.IsPlaying)
                         menuback.Play();
                     menuback.Resume();
-                    break;
+                    break;*/
                 case ConstantSounds.Ambient:
                     if (!ambient.IsPlaying)
                         ambient.Play();
                     ambient.Resume();
-                    break;*/
+                    break;
             };
         }
         public void TurnSoundOff(ConstantSounds sound)
@@ -131,13 +134,15 @@ namespace SuperPuppySurprise.Sounds
                 case ConstantSounds.MenuBackground:
                     if (menuback.IsPlaying)
                         menuback.Pause();
-
+                    
                     break;
+                     */
+
                 case ConstantSounds.Ambient:
                     if (ambient.IsPlaying)
                         ambient.Pause();
                     break;
-                     * */
+                     
             };
         }
     }
