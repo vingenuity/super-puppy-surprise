@@ -13,7 +13,14 @@ namespace SuperPuppySurprise.PowerUps
         int type;
         public ChangeWeapon1(Vector2 Position, int type): base(Position)
         {
-            texture = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_blue");
+            if (type == 1)
+                texture = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_blue");
+            if (type == 2)
+                texture = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_green");
+            if (type == 3)
+                texture = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_orange");
+            if (type == 4)
+                texture = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_purple");
             Size = new Vector2(12, 12);
             this.type = type;
         }
