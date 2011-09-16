@@ -9,6 +9,7 @@ using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.GameMech;
 using SuperPuppySurprise.DPSFParticles;
 using SuperPuppySurprise.PowerUps;
+using GameStateManagement;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -40,6 +41,12 @@ namespace SuperPuppySurprise.GameObjects
             Game1.PhysicsEngine.Remove(this);
             Game1.game.RemoveGameObject(this);
             base.Unload();
+        }
+        public override void OnCollision(GameObject gameObject)
+        {
+            if (gameObject is Player)
+                Game1.screenManager.AddScreen(new VictoryDefeatScreen("They got you.........."), PlayerIndex.One);
+            base.OnCollision(gameObject);
         }
     }
 }
