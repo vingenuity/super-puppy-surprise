@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.GameMech;
+using SuperPuppySurprise.DPSFParticles;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -26,6 +27,7 @@ namespace SuperPuppySurprise.GameObjects
         public override void OnDamage(double damage)
         {
             GameMechanics.Score += 5;
+            DeathParticle.CreateDeathParticle(Position);
             Unload();
             base.OnDamage(damage);
         }
