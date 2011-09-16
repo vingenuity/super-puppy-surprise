@@ -75,7 +75,11 @@ namespace SuperPuppySurprise.PhysicsEngines
 
                 newPosition = gameObject.Position + gameObject.Velocity * (float)time;
                 if (!CollidesWithAnObjectSquares(newPosition, gameObject))
-                    gameObject.Position = newPosition;
+                {
+                    Vector2 v = VelocityAfterHitsWall(newPosition, gameObject.Velocity, gameObject);
+                    gameObject.Position = gameObject.Position + v * (float)time;
+                }
+                   // gameObject.Position = newPosition;
             }
         }
         bool CollidesWithAnObjectSquares(Vector2 newPosition, GameObject gameObject)
@@ -97,7 +101,9 @@ namespace SuperPuppySurprise.PhysicsEngines
                     flag = true;
                 }
             }
-            return (flag || HitsWalls(newPosition, gameObject));
+            return flag;
+
+            //return (flag || HitsWalls(newPosition, gameObject));
         }
         bool HitsWalls(Vector2 newPosition, GameObject gameObject)
         {
@@ -107,6 +113,15 @@ namespace SuperPuppySurprise.PhysicsEngines
             if (GameMechanics.TopWallBound > newPosition.Y && newPosition.Y < gameObject.Position.Y) return true;
             if (GameMechanics.BottomWallBound < newPosition.Y && newPosition.Y > gameObject.Position.Y) return true;
             return false;
+        }
+        public Vector2 VelocityAfterHitsWall(Vector2 newPosition, Vector2 Velocity, GameObject gameObject)
+        {
+            Vector2 newVelocity = Velocity;
+            if (GameMechanics.LeftWallBound > newPosition.X && newPosition.X < gameObject.Position.X) newVelocity.X = 0 ;
+            if (GameMechanics.RightWallBound < newPosition.X && newPosition.X > gameObject.Position.X) newVelocity.X = 0;
+            if (GameMechanics.TopWallBound > newPosition.Y && newPosition.Y < gameObject.Position.Y) newVelocity.Y = 0;
+            if (GameMechanics.BottomWallBound < newPosition.Y && newPosition.Y > gameObject.Position.Y) newVelocity.Y = 0;
+            return newVelocity;
         }
         bool CollidesWithAnObject(Vector2 newPosition, GameObject gameObject)
         {
