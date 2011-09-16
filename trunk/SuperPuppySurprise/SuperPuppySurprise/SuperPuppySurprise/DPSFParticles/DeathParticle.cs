@@ -29,7 +29,7 @@ namespace SuperPuppySurprise.DPSFParticles
             deathParicleSystem.AutoInitialize(Game1.game.GraphicsDevice, Game1.game.Content, Game1.spriteBatch);
             deathParicleSystem.Emitter.EmitParticlesAutomatically = false;
 
-            deathParicleSystem.Emitter.BurstParticles = (50);
+            deathParicleSystem.Emitter.BurstParticles = (10);
 
             deathParicleSystem.Emitter.Enabled = true;
 

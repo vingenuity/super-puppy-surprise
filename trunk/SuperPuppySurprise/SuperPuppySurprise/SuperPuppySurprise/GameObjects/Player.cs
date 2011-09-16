@@ -78,11 +78,11 @@ namespace SuperPuppySurprise.GameObjects
       
         void EngineParticle()
         {
-
+            /*
             if (Velocity.LengthSquared() > 0)
                 testParticle.ChangeStatus(true);
             if(Velocity.LengthSquared() == 0)
-                testParticle.ChangeStatus(false);
+                testParticle.ChangeStatus(false);*/
         }
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
