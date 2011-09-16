@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.GameMech;
 using SuperPuppySurprise.DPSFParticles;
+using SuperPuppySurprise.PowerUps;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -28,6 +29,7 @@ namespace SuperPuppySurprise.GameObjects
         {
             GameMechanics.Score += 5;
             DeathParticle.CreateDeathParticle(Position);
+            Game1.PowerUpEngine.Add(new ChangeWeapon1(Position, 3));
             Unload();
             base.OnDamage(damage);
         }

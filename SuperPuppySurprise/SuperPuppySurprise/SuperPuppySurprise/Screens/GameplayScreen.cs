@@ -22,6 +22,7 @@ using SuperPuppySurprise.AIRoutines;
 using System.Collections.Generic;
 using SuperPuppySurprise.Huds;
 using SuperPuppySurprise.Sounds;
+using SuperPuppySurprise.PowerUps;
 #endregion
 
 namespace GameStateManagement
@@ -60,6 +61,7 @@ namespace GameStateManagement
         {
             Game1.sceneObjects = new List<GameObject>();
             Game1.PhysicsEngine = new BruteForcePhysicsEngine();
+            Game1.PowerUpEngine = new PowerUpManager();
             Game1.ParticleEngine = new ParticleManager();
             Game1.state = new GameState();
             Game1.hud = new Hud();
@@ -140,6 +142,8 @@ namespace GameStateManagement
 
                 Game1.ParticleEngine.Update(gameTime);
 
+                Game1.PowerUpEngine.Update(gameTime);
+
                 Game1.hud.Update(gameTime); 
                 
                 if (GameState.noEnemies())
@@ -197,7 +201,9 @@ namespace GameStateManagement
            
             for (int i = 0; i < Game1.sceneObjects.Count; i++)
                 Game1.sceneObjects[i].Draw(gameTime);
-            
+
+            Game1.PowerUpEngine.Draw(gameTime);
+
             Game1.hud.Draw(gameTime);
            
             Game1.spriteBatch.End();
