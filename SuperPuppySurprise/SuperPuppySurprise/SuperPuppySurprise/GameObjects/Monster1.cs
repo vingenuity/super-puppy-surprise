@@ -15,6 +15,7 @@ namespace SuperPuppySurprise.GameObjects
 {
     public class Monster : GameObject
     {
+        static Random random = new Random();
         public Monster(Vector2 Position)
             : base(Position)
         {
@@ -25,9 +26,9 @@ namespace SuperPuppySurprise.GameObjects
             Radius = 8;
             GameState.enemies.Add(this);
             Game1.PhysicsEngine.Add(this);
-            random = new Random();
+            
         }
-        Random random;
+        
         public override void OnDamage(double damage)
         {
             GameMechanics.Score += 5;

@@ -167,6 +167,7 @@
     <Compile Include="GameObjects\Shooter.cs" />
     <Compile Include="GameObjects\TestTrigger.cs" />
     <Compile Include="Huds\Hud.cs" />
+    <Compile Include="Huds\RoomMap.cs" />
     <Compile Include="PhysicsEngines\BruteForcePhysicsEngine.cs" />
     <Compile Include="PowerUps\ChangeWeapon1.cs" />
     <Compile Include="PowerUps\PowerUp.cs" />
