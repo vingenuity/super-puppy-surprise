@@ -426,7 +426,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="PowerUps\asset_powerup_purple.png">
+    <Compile Include="Sound\asset_powerup_purple.png">
       <Name>asset_powerup_purple</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -447,6 +447,20 @@
   <ItemGroup>
     <Compile Include="HudRoom\Arrow.png">
       <Name>Arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="asset_char.png">
+      <Name>asset_char</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PowerUps\asset_powerup_purple.png">
+      <Name>asset_powerup_purple</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
