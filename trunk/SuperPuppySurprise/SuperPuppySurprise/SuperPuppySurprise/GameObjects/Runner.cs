@@ -17,7 +17,7 @@ namespace SuperPuppySurprise.GameObjects
 
         public Runner(Vector2 Position) : base(Position)
         {
-            Speed = 225;
+            Speed = 200;
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
