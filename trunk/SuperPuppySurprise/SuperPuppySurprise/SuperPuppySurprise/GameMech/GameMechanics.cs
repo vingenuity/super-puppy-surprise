@@ -12,5 +12,7 @@ namespace SuperPuppySurprise.GameMech
         public static int RightWallBound = 420;
         public static int TopWallBound = 80;
         public static int BottomWallBound = 420;
+
+        public static int RoomNumber = 0;
     }
 }

@@ -21,13 +21,51 @@ namespace SuperPuppySurprise
         public Spawner()
         {
         }
-
+        double time;
+        public void delayedRandSpawn()
+        {
+            if(!needsToSpawn)
+                time = 1;
+            needsToSpawn = true;
+        }
         public void randSpawn()
         {
-            setSpawn(rand.Next(0, 4), 0);
-
+            int nextSpawnLocation = rand.Next(0, 4);
+            spawn(nextSpawnLocation, 0, 0 ,0);
+            spawn(nextSpawnLocation, 0,25,25);
+            spawn(nextSpawnLocation, 0, -25, -25);
+            spawn(nextSpawnLocation, 0, 25, -25);
+            spawn(nextSpawnLocation, 0, -25, 25);
+            //setSpawn(rand.Next(0, 4), 0);
         }
-
+        public void spawn(int door, int type, int offSetX, int offsetY)
+        {
+            switch (type)
+            {
+                case 0:
+                    Vector2 pos = doors[door];
+                    pos.X += offSetX;
+                    pos.Y += offsetY;
+                    Runner r = new Runner(pos);
+                    Game1.sceneObjects.Add(r);
+                    r.Load(Game1.game.Content, Game1.spriteBatch);
+                    break;
+                case 1:
+                    break;
+                default:
+                    break;
+            }
+        }
+        bool needsToSpawn = false;
+        public void Update(GameTime gameTime)
+        {
+            time -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (time < 0 && needsToSpawn)
+            {
+                needsToSpawn = false;
+                randSpawn();
+            }
+        }
         public void setSpawn(int door, int type)
         {
             lastDoor = door;

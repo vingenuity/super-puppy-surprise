@@ -75,7 +75,7 @@ namespace GameStateManagement
 
             Game1.sceneObjects.Add(new Player(1, new Vector2(100, 100)));
             Game1.spawner.randSpawn();
-            Game1.sceneObjects.Add(new TestTrigger(new Vector2(300, 300)));
+            //Game1.sceneObjects.Add(new TestTrigger(new Vector2(300, 300)));
         }
         /// <summary>
         /// Load graphics content for the game.
@@ -141,10 +141,12 @@ namespace GameStateManagement
 
                 Game1.PowerUpEngine.Update(gameTime);
 
-                Game1.hud.Update(gameTime); 
-                
+                Game1.hud.Update(gameTime);
+
+                Game1.spawner.Update(gameTime);
+
                 if (GameState.noEnemies())
-                    Game1.spawner.randSpawn();
+                    Game1.spawner.delayedRandSpawn();
 
             }
         }

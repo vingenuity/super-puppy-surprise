@@ -71,6 +71,9 @@ Content\Sound\Complete\Electric_hit.xnb
 Content\Sound\Complete\explode.xnb
 Content\Sound\Complete\hover.xnb
 Content\Sound\Complete\single_shot.xnb
+Content\HudRoom\ClearedDoor.xnb
+Content\HudRoom\LockedDoor.xnb
+Content\HudRoom\Arrow.xnb
 Content\Sound\Soundauto.xgs
 Content\Sound\Waves.xwb
 Content\Sound\Sounds.xsb
