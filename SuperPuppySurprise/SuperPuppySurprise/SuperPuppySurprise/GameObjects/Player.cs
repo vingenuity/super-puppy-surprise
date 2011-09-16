@@ -87,7 +87,8 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
-            texture = Content.Load<Texture2D>("TestPicture2");
+            //texture = Content.Load<Texture2D>("TestPicture2");
+            texture = Content.Load<Texture2D>("asset_char");
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
