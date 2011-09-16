@@ -25,12 +25,17 @@ namespace SuperPuppySurprise.GameObjects
             Radius = 8;
             GameState.enemies.Add(this);
             Game1.PhysicsEngine.Add(this);
+            random = new Random();
         }
+        Random random;
         public override void OnDamage(double damage)
         {
             GameMechanics.Score += 5;
             DeathParticle.CreateDeathParticle(Position);
-            Game1.PowerUpEngine.Add(new ChangeWeapon1(Position, 3));
+            int type = random.Next(4) + 1;
+            int rand = random.Next(6);
+            if(rand > 4)
+                Game1.PowerUpEngine.Add(new ChangeWeapon1(Position, type));
             Unload();
             base.OnDamage(damage);
         }
@@ -44,8 +49,8 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnCollision(GameObject gameObject)
         {
-            if (gameObject is Player)
-                Game1.screenManager.AddScreen(new VictoryDefeatScreen("They got you.........."), PlayerIndex.One);
+           // if (gameObject is Player)
+            //    Game1.screenManager.AddScreen(new VictoryDefeatScreen("They got you.........."), PlayerIndex.One);
             base.OnCollision(gameObject);
         }
     }
