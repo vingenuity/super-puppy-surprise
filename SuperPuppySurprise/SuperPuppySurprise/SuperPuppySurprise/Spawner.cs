@@ -16,39 +16,50 @@ namespace SuperPuppySurprise
         Random rand = new Random();
 
         private Vector2[] doors = new Vector2[4] {new Vector2(50, 250), new Vector2(250, 50), 
-                                                        new Vector2(450, 250), new Vector2(250, 450)};
+                                                  new Vector2(450, 250), new Vector2(250, 450)};
 
-        public Spawner()
+        public Spawner() { }
+
+        public void makeEnemy(char eType,int door, int xOffset, int yOffset)
         {
+            Vector2 pos = doors[door];
+            pos.X += xOffset;
+            pos.Y += yOffset;
+            
+            switch(eType)
+            {
+                case 'r':
+                    Runner r = new Runner(pos);
+                    Game1.sceneObjects.Add(r);
+                    r.Load(Game1.game.Content, Game1.spriteBatch);
+                    break;
+                case 's':
+                    Shooter s = new Shooter(pos);
+                    Game1.sceneObjects.Add(s);
+                    s.Load(Game1.game.Content, Game1.spriteBatch);
+                    break;
+                default:
+                    break;
+            }
         }
-        double time;
-        public void delayedRandSpawn()
-        {
-            if(!needsToSpawn)
-                time = 1;
-            needsToSpawn = true;
-        }
+
         public void randSpawn()
         {
-            int nextSpawnLocation = rand.Next(0, 4);
-            spawn(nextSpawnLocation, 0, 0 ,0);
-            spawn(nextSpawnLocation, 0,25,25);
-            spawn(nextSpawnLocation, 0, -25, -25);
-            spawn(nextSpawnLocation, 0, 25, -25);
-            spawn(nextSpawnLocation, 0, -25, 25);
-            //setSpawn(rand.Next(0, 4), 0);
+            setSpawn(rand.Next(0, 4), 0);
         }
-        public void spawn(int door, int type, int offSetX, int offsetY)
+
+        public void spawn(int door, int type)
         {
             switch (type)
             {
                 case 0:
-                    Vector2 pos = doors[door];
-                    pos.X += offSetX;
-                    pos.Y += offsetY;
-                    Runner r = new Runner(pos);
-                    Game1.sceneObjects.Add(r);
-                    r.Load(Game1.game.Content, Game1.spriteBatch);
+                    Thread.Sleep(5000);
+                    makeEnemy('r', door, 0, 0);
+                    Thread.Sleep(spawn_delay);
+                    makeEnemy('r', door, -10, 0);
+                    makeEnemy('r', door, 10, 0);
+                    Thread.Sleep(spawn_delay);
+                    makeEnemy('r', door, 0, 0);
                     break;
                 case 1:
                     break;
@@ -56,16 +67,7 @@ namespace SuperPuppySurprise
                     break;
             }
         }
-        bool needsToSpawn = false;
-        public void Update(GameTime gameTime)
-        {
-            time -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (time < 0 && needsToSpawn)
-            {
-                needsToSpawn = false;
-                randSpawn();
-            }
-        }
+        
         public void setSpawn(int door, int type)
         {
             lastDoor = door;

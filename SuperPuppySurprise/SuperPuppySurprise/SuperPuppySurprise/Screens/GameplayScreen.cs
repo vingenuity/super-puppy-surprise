@@ -143,10 +143,8 @@ namespace GameStateManagement
 
                 Game1.hud.Update(gameTime);
 
-                Game1.spawner.Update(gameTime);
-
                 if (GameState.noEnemies())
-                    Game1.spawner.delayedRandSpawn();
+                    Game1.spawner.randSpawn();
 
             }
         }
