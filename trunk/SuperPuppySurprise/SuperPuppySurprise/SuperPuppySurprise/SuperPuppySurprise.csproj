@@ -167,6 +167,9 @@
     <Compile Include="GameObjects\TestTrigger.cs" />
     <Compile Include="Huds\Hud.cs" />
     <Compile Include="PhysicsEngines\BruteForcePhysicsEngine.cs" />
+    <Compile Include="PowerUps\ChangeWeapon1.cs" />
+    <Compile Include="PowerUps\PowerUp.cs" />
+    <Compile Include="PowerUps\PowerUpManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

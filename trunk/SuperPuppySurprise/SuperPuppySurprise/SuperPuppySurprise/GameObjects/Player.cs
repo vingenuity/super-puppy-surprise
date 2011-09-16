@@ -90,7 +90,14 @@ namespace SuperPuppySurprise.GameObjects
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
-
+        public void ChangeWeapon(int weapon)
+        {
+            currentFireMode = weapon;
+            if (currentFireMode % 5 == 4)
+                currentFireSpeed = 3;
+            else
+                currentFireSpeed = 2;
+        }
         public void rotateWeapons()
         {
             currentFireMode++;

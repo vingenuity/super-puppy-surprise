@@ -16,6 +16,7 @@ using DPSF.ParticleSystems;
 using GameStateManagement;
 using SuperPuppySurprise.Huds;
 using SuperPuppySurprise.Sounds;
+using SuperPuppySurprise.PowerUps;
 
 namespace SuperPuppySurprise
 {
@@ -33,6 +34,7 @@ namespace SuperPuppySurprise
         public static GameState state;
         public static BruteForcePhysicsEngine PhysicsEngine;
         public static ParticleManager ParticleEngine;
+        public static PowerUpManager PowerUpEngine;
         public static float ScreenWidth;
         public static float ScreenHeight;
         public static ScreenManager screenManager;

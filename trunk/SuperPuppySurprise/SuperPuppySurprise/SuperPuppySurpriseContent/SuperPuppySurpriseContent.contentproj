@@ -410,6 +410,28 @@
   <ItemGroup>
     <Folder Include="Sound\Win\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PowerUps\asset_powerup_blue.png">
+      <Name>asset_powerup_blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="PowerUps\asset_powerup_green.png">
+      <Name>asset_powerup_green</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="PowerUps\asset_powerup_orange.png">
+      <Name>asset_powerup_orange</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="PowerUps\asset_powerup_purple.png">
+      <Name>asset_powerup_purple</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
