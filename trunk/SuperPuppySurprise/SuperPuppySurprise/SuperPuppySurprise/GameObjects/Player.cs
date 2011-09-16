@@ -10,6 +10,7 @@ using SuperPuppySurprise.AIRoutines;
 using SuperPuppySurprise.PhysicsEngines;
 using SuperPuppySurprise.DPSFParticles;
 using SuperPuppySurprise.Sounds;
+using GameStateManagement;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -286,6 +287,11 @@ namespace SuperPuppySurprise.GameObjects
             bulletDir.X += getRandomAdjust();
             bulletDir.Y += getRandomAdjust();
             fireBullet(position, bulletDir);
+        }
+        public override void OnCollision(GameObject gameObject)
+        {
+           
+            base.OnCollision(gameObject);
         }
     }
 }
