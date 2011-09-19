@@ -16,8 +16,8 @@ Global Settings
     Header File = SPSAudio.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 2905030292;
-    Last Modified High = 30175990;
+    Last Modified Low = 782613503;
+    Last Modified High = 30176385;
 
     Category
     {
@@ -225,12 +225,8 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Xbox Bank Last Modified Low = 0;
-    Xbox Bank Last Modified High = 0;
-    PC Bank Last Modified Low = 2908240613;
-    PC Bank Last Modified High = 30175990;
-    Bank Last Revised Low = 2908220611;
-    Bank Last Revised High = 30175990;
+    Bank Last Revised Low = 783583503;
+    Bank Last Revised High = 30176385;
 
     Wave
     {
@@ -326,10 +322,10 @@ Wave Bank
 
     Wave
     {
-        Name = SPSIntro;
-        File = Complete\SPSIntro.wav;
-        Build Settings Last Modified Low = 2311967335;
-        Build Settings Last Modified High = 30175990;
+        Name = Intro;
+        File = Complete\Intro.wav;
+        Build Settings Last Modified Low = 2888434799;
+        Build Settings Last Modified High = 30176384;
 
         Cache
         {
@@ -355,8 +351,8 @@ Sound Bank
     Windows File = Win\Sounds.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
-    Bank Last Modified Low = 2970366825;
-    Bank Last Modified High = 30175990;
+    Bank Last Modified Low = 790773503;
+    Bank Last Modified High = 30176385;
     Header Last Modified High = 0;
     Header Last Modified Low = 0;
 
@@ -505,8 +501,8 @@ Sound Bank
     Sound
     {
         Name = explode;
-        Volume = -1200;
-        Pitch = 0;
+        Volume = -2140;
+        Pitch = -220;
         Priority = 0;
 
         Category Entry
@@ -536,6 +532,14 @@ Sound Bank
                     Random Offset = 0;
                 }
 
+                Pitch Variation
+                {
+                    Min = 106;
+                    Max = 237;
+                    Operator = 0;
+                    New Variation On Loop = 0;
+                }
+
                 Wave Entry
                 {
                     Bank Name = Waves;
@@ -551,8 +555,8 @@ Sound Bank
 
     Sound
     {
-        Name = SPSIntro;
-        Volume = -1200;
+        Name = Intro;
+        Volume = 0;
         Pitch = 0;
         Priority = 0;
 
@@ -568,11 +572,12 @@ Sound Bank
 
             Play Wave Event
             {
+                Loop Count = 255;
                 Break Loop = 0;
                 Use Speaker Position = 0;
                 Use Center Speaker = 1;
                 New Speaker Position On Loop = 1;
-                Speaker Position Angle = 4.000000;
+                Speaker Position Angle = 0.000000;
                 Speaker Position Arc = 0.000000;
 
                 Event Header
@@ -587,7 +592,7 @@ Sound Bank
                 {
                     Bank Name = Waves;
                     Bank Index = 0;
-                    Entry Name = SPSIntro;
+                    Entry Name = Intro;
                     Entry Index = 4;
                     Weight = 255;
                     Weight Min = 0;
@@ -678,7 +683,7 @@ Sound Bank
 
     Cue
     {
-        Name = SPSIntro;
+        Name = Intro;
 
         Variation
         {
@@ -689,7 +694,7 @@ Sound Bank
 
         Sound Entry
         {
-            Name = SPSIntro;
+            Name = Intro;
             Index = 4;
             Weight Min = 0;
             Weight Max = 255;

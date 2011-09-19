@@ -68,7 +68,6 @@ namespace SuperPuppySurprise.GameObjects
                 case 3:
                     break;
                 case 4:
-                    break;
                 default:
                     //This is an error, technically.
                     break;

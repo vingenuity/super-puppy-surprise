@@ -10,6 +10,7 @@ using SuperPuppySurprise.GameMech;
 using SuperPuppySurprise.DPSFParticles;
 using SuperPuppySurprise.PowerUps;
 using GameStateManagement;
+using SuperPuppySurprise.Sounds;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -40,6 +41,7 @@ namespace SuperPuppySurprise.GameObjects
 
         public override void Unload()
         {
+            Game1.SoundEngine.PlaySound(SoundEffects.explode);
             GameState.enemies.Remove(this);
             Game1.PhysicsEngine.Remove(this);
             Game1.game.RemoveGameObject(this);

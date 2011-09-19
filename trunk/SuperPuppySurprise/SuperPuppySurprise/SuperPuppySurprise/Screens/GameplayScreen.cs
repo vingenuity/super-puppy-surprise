@@ -67,6 +67,7 @@ namespace GameStateManagement
             Game1.hud = new Hud();
             Game1.spawner = new Spawner();
             Game1.SoundEngine = new SoundManager();
+            Game1.SoundEngine.Load();
             LoadUnits();
         }
         public void LoadUnits()
