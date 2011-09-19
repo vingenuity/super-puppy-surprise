@@ -51,6 +51,7 @@ namespace SuperPuppySurprise.PhysicsEngines
         }
         public bool CollidesWithAnotherObject(GameObject s)
         {
+
             GameObject gameObject;
             for (int i = 0; i < PhysicsGameObjects.Count; i++)
             {
@@ -64,8 +65,7 @@ namespace SuperPuppySurprise.PhysicsEngines
         {
             Rectangle rec1 = new Rectangle((int)(gameObject.Position.X - gameObject.Radius), (int)(gameObject.Position.Y - gameObject.Radius), (int)gameObject.Radius * 2, (int)gameObject.Radius * 2);
             Rectangle rec2 = new Rectangle((int)(gameObject2.Position.X - gameObject2.Radius), (int)(gameObject2.Position.Y - gameObject2.Radius), (int)gameObject2.Radius * 2, (int)gameObject2.Radius * 2);
-            return rec1.Intersects(rec2);
-             
+            return rec1.Intersects(rec2); 
         }
         bool Collides(GameObject gameObject, GameObject gameObject2)
         {
