@@ -34,6 +34,7 @@ namespace SuperPuppySurprise.GameObjects
         double[] fireSpeeds = { 800, 500, 300, 1 };
         public int[] rounds = { 0, 2000, 2000, 2000, 2000 };
         bool rotateHelper = true;
+        bool shotGunHelper = true;
         double elapsedTime;
         Random random;
         GamePadState gamePadState;
@@ -102,6 +103,14 @@ namespace SuperPuppySurprise.GameObjects
         public void rotateWeapons()
         {
             currentFireMode++;
+            if (currentFireMode % 5 == 4)
+                currentFireSpeed = 3;
+            else
+                currentFireSpeed = 2;
+        }
+        public void setFireMode(int mode)
+        {
+            currentFireMode = mode;
             if (currentFireMode % 5 == 4)
                 currentFireSpeed = 3;
             else
@@ -225,6 +234,22 @@ namespace SuperPuppySurprise.GameObjects
                 if (gamePadState.Triggers.Right == 0 && gamePadState.Triggers.Left == 0)
                     elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
 
+            if (gamePadState.Buttons.A == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D4))
+                setFireMode(4);
+            if (gamePadState.Buttons.B == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D3))
+                setFireMode(3);
+            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == true)
+                setFireMode(1);
+            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == false)
+                setFireMode(2);
+            if (gamePadState.Buttons.Y == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D1))
+                setFireMode(0);
+
+            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 1)
+                shotGunHelper = false;
+            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 2)
+                shotGunHelper = true;
+
             //this function is for testing purposes only
             //the player will switch weapons in game via power-ups
             if ((thisKeyState.IsKeyDown(Keys.Tab) ||
@@ -314,10 +339,25 @@ namespace SuperPuppySurprise.GameObjects
             bulletDir1.Y -= .2f * bulletDir.X;
             bulletDir2.X -= .2f * bulletDir.Y;
             bulletDir2.Y += .2f * bulletDir.X;
-            //can be changed to fireBullet()
-            fireBurst(position, bulletDir);
-            fireBurst(position1(position, bulletDir), bulletDir1);
-            fireBurst(position2(position, bulletDir), bulletDir2);
+            Vector2 position0;
+            position0.X = position.X + 8 * bulletDir.X;
+            position0.Y = position.Y + 8 * bulletDir.Y;
+            Vector2 position3;
+            position3.X = position.X - 4 * bulletDir.X;
+            position3.Y = position.Y - 4 * bulletDir.Y;
+            Vector2 position4;
+            position4.X = position.X - 4 * bulletDir.X;
+            position4.Y = position.Y - 4 * bulletDir.Y;
+            Vector2 position5;
+            position5.X = position.X - 8 * bulletDir.X;
+            position5.Y = position.Y - 8 * bulletDir.Y;
+            //can be changed to fireBurst()
+            fireBullet(position0, bulletDir);
+            fireBullet(position1(position, bulletDir), bulletDir1);
+            fireBullet(position2(position, bulletDir), bulletDir2);
+            fireBullet(position3, bulletDir1);
+            fireBullet(position4, bulletDir2);
+            fireBullet(position5, bulletDir);
             rounds[2]--;
         }
         private void fireBurst(Vector2 position, Vector2 bulletDir)
@@ -336,7 +376,7 @@ namespace SuperPuppySurprise.GameObjects
             position2.Y = position.Y - 8 * bulletDir.Y;
             fireBullet(position, bulletDir);
             fireBullet(position1, bulletDir);
-            fireBullet(position2, bulletDir);
+            fireBullet(position2, bulletDir); 
             rounds[3]--;
         }
         public float getRandomAdjust()
