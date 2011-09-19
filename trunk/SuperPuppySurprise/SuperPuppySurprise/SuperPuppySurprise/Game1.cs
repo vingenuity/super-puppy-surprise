@@ -45,28 +45,20 @@ namespace SuperPuppySurprise
         {
             game = this;
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            
-            
+            Content.RootDirectory = "Content";    
         }
         public void Restart()
         {
-
             graphics.PreferredBackBufferWidth = 750;
             graphics.PreferredBackBufferHeight = 500;
             graphics.ApplyChanges();
             ScreenHeight = graphics.GraphicsDevice.Viewport.Height;
             ScreenWidth = graphics.GraphicsDevice.Viewport.Width;
             
-
-
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
 
-            Components.Add(screenManager);
-
-           
-            
+            Components.Add(screenManager); 
         }
         public void RestartLoad()
         {

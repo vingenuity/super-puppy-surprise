@@ -32,6 +32,7 @@ namespace SuperPuppySurprise.GameObjects
         int currentFireSpeed = 2;
         int currentFireMode = 0;
         double[] fireSpeeds = { 800, 500, 300, 1 };
+        public int[] rounds = { 0, 20, 20, 20, 20 };
         bool rotateHelper = true;
         double elapsedTime;
         Random random;
@@ -289,13 +290,24 @@ namespace SuperPuppySurprise.GameObjects
         }
         private void fireShotGun(Vector2 position, Vector2 bulletDir)
         {
+            if (rounds[1] == 0)
+            {
+                currentFireMode = 0;
+                return;
+            }
             currentFireSpeed = 1;
             fireBullet(position, bulletDir);
             fireBullet(position1(position, bulletDir), bulletDir);
             fireBullet(position2(position, bulletDir), bulletDir);
+            rounds[1]--;
         }
         private void fireShotGun2(Vector2 position, Vector2 bulletDir)
         {
+            if (rounds[2] == 0)
+            {
+                currentFireMode = 0;
+                return;
+            }
             currentFireSpeed = 1;
             Vector2 bulletDir1 = bulletDir;
             Vector2 bulletDir2 = bulletDir;
@@ -307,9 +319,15 @@ namespace SuperPuppySurprise.GameObjects
             fireBurst(position, bulletDir);
             fireBurst(position1(position, bulletDir), bulletDir1);
             fireBurst(position2(position, bulletDir), bulletDir2);
+            rounds[2]--;
         }
         private void fireBurst(Vector2 position, Vector2 bulletDir)
         {
+            if (rounds[3] == 0)
+            {
+                currentFireMode = 0;
+                return;
+            }
             currentFireSpeed = 1;
             Vector2 position1;
             position1.X = position.X + 8 * bulletDir.X;
@@ -320,6 +338,7 @@ namespace SuperPuppySurprise.GameObjects
             fireBullet(position, bulletDir);
             fireBullet(position1, bulletDir);
             fireBullet(position2, bulletDir);
+            rounds[3]--;
         }
         public float getRandomAdjust()
         {
@@ -330,9 +349,16 @@ namespace SuperPuppySurprise.GameObjects
         }
         private void fireAutomatic(Vector2 position, Vector2 bulletDir)
         {
+            if (rounds[4] == 0)
+            {
+                currentFireMode = 0;
+                currentFireSpeed = 2;
+                return;
+            }
             bulletDir.X += getRandomAdjust();
             bulletDir.Y += getRandomAdjust();
             fireBullet(position, bulletDir);
+            rounds[4]--;
         }
         public override void OnCollision(GameObject gameObject)
         {

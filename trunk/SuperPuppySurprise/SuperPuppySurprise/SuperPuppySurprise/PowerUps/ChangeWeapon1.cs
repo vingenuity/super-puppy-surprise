@@ -27,8 +27,9 @@ namespace SuperPuppySurprise.PowerUps
         public override void Effect(GameObject gameObject)
         {
             Player p = gameObject as Player;
-            p.ChangeWeapon(type);
-            base.Effect(gameObject);
+            p.rounds[type] += 12;
+            //p.ChangeWeapon(type);
+            //base.Effect(gameObject);
         }
     }
 }
