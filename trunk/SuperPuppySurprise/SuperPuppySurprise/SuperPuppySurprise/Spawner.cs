@@ -13,6 +13,7 @@ namespace SuperPuppySurprise
     {
         static int lastDoor = 0, lastType = 0;
         static Int32 spawn_delay = 1000;
+        static Int32 delay = 10;
         static Random rand = new Random();
         static AutoResetEvent autoEvent = new AutoResetEvent(false);
 
@@ -85,10 +86,11 @@ namespace SuperPuppySurprise
             switch (lastType)
             {
                 case 0:
-                    Runner r = new Runner(doors[lastDoor]);
-                    Game1.sceneObjects.Add(r);
-                    r.Load(Game1.game.Content, Game1.spriteBatch);
-                    Thread.Sleep(spawn_delay);
+
+                    spawnRunner();
+                    spawnRunner();
+                    spawnRunner();
+                    /*
                     Runner r2 = new Runner(doors[lastDoor]);
                     Game1.sceneObjects.Add(r2);
                     r2.Load(Game1.game.Content, Game1.spriteBatch);
@@ -96,7 +98,7 @@ namespace SuperPuppySurprise
                     Runner r3 = new Runner(doors[lastDoor]);
                     Game1.sceneObjects.Add(r3);
                     r3.Load(Game1.game.Content, Game1.spriteBatch);
-                    
+                    */
                     break;
                 case 1:
                     break;
@@ -105,6 +107,17 @@ namespace SuperPuppySurprise
             }
             ((AutoResetEvent)stateInfo).Set();
 
+        }
+        public static void spawnRunner()
+        {
+            Runner r = new Runner(doors[lastDoor]);
+            while (Game1.PhysicsEngine.CollidesWithAnotherObject(r))
+            {
+                Thread.Sleep(100);
+            }
+            r.AddGameObjectToScene();
+            r.Load(Game1.game.Content, Game1.spriteBatch);
+            Thread.Sleep(spawn_delay);
         }
     }
 }

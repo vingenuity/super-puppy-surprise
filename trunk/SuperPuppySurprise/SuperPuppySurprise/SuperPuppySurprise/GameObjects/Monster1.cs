@@ -23,10 +23,7 @@ namespace SuperPuppySurprise.GameObjects
             Direction = Vector2.UnitY * -1;
             Speed = 100;
             Size = new Vector2(16, 16);
-            Radius = 8;
-            GameState.enemies.Add(this);
-            Game1.PhysicsEngine.Add(this);
-            
+            Radius = 8;     
         }
         
         public override void OnDamage(double damage)
