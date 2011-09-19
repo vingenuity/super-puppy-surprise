@@ -72,7 +72,7 @@ namespace GameStateManagement
         public void LoadUnits()
         {
             // TODO: Add your initialization logic here
-
+            Runner.texture2 = Game1.game.Content.Load<Texture2D>("TestPicture2");
             Game1.sceneObjects.Add(new Player(1, new Vector2(100, 100)));
             Game1.spawner.randSpawn();
             //Game1.sceneObjects.Add(new TestTrigger(new Vector2(300, 300)));

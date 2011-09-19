@@ -19,10 +19,10 @@ namespace SuperPuppySurprise.GameObjects
         {
             Speed = 200;
         }
-
+        public static Texture2D texture2;
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
-            texture = Content.Load<Texture2D>("TestPicture2");
+            texture = texture2;
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
@@ -46,7 +46,7 @@ namespace SuperPuppySurprise.GameObjects
         public override void Draw(GameTime gameTime)
         {
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
-            spriteBatch.Draw(texture, r, Color.White);
+            Game1.spriteBatch.Draw(texture, r, Color.White);
             base.Draw(gameTime);
         }
         public override void Unload()

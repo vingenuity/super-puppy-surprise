@@ -41,6 +41,9 @@ namespace SuperPuppySurprise
         public static Hud hud;
         public static Spawner spawner;
         public static SoundManager SoundEngine;
+
+
+
         public Game1()
         {
             game = this;
