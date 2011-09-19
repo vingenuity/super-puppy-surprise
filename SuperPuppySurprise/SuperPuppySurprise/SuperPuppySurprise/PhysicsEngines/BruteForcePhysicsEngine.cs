@@ -49,6 +49,17 @@ namespace SuperPuppySurprise.PhysicsEngines
                 trigger.Position += trigger.Velocity * (float)time;
             }
         }
+        public bool CollidesWithAnotherObject(GameObject s)
+        {
+            GameObject gameObject;
+            for (int i = 0; i < PhysicsGameObjects.Count; i++)
+            {
+                gameObject = PhysicsGameObjects[i];
+                if (CollidesSquares(gameObject, s) && gameObject != s)
+                    return true;
+            }
+            return false;
+        }
         bool CollidesSquares(GameObject gameObject, GameObject gameObject2)
         {
             Rectangle rec1 = new Rectangle((int)(gameObject.Position.X - gameObject.Radius), (int)(gameObject.Position.Y - gameObject.Radius), (int)gameObject.Radius * 2, (int)gameObject.Radius * 2);

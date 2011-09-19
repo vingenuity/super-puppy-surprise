@@ -19,6 +19,7 @@ namespace SuperPuppySurprise.GameObjects
         {
             Speed = 200;
         }
+      
         public static Texture2D texture2;
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
@@ -57,6 +58,13 @@ namespace SuperPuppySurprise.GameObjects
         public override void OnCollision(GameObject obj)
         {
             base.OnCollision(obj);
+        }
+        public override void AddGameObjectToScene()
+        {
+            GameState.enemies.Add(this);
+            Game1.PhysicsEngine.Add(this);
+            Game1.sceneObjects.Add(this);
+            base.AddGameObjectToScene();
         }
     }
 }

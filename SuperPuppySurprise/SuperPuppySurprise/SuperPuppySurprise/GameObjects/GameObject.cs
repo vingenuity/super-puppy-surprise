@@ -18,7 +18,9 @@ namespace SuperPuppySurprise.GameObjects
         //Radius is used for physics only Graphics uses Size
         public float Radius;
         public Vector2 Size;
-
+        public virtual void AddGameObjectToScene()
+        {
+        }
         public GameObject(Vector2 Position)
         {
             this.Position = Position;
