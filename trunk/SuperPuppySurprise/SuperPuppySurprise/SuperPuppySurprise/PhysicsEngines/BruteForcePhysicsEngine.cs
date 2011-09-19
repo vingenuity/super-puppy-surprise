@@ -89,7 +89,8 @@ namespace SuperPuppySurprise.PhysicsEngines
                 if (!CollidesWithAnObjectSquares(newPosition, gameObject, out Velocity2))
                 {
                     Vector2 v = VelocityAfterHitsWall(newPosition, gameObject.Velocity, gameObject);
-                    gameObject.Position = gameObject.Position + Velocity2 * (float)time;
+                    if(!HitsWalls(newPosition, gameObject))
+                        gameObject.Position = gameObject.Position + Velocity2 * (float)time;
                 }
                    // gameObject.Position = newPosition;
             }
@@ -110,9 +111,9 @@ namespace SuperPuppySurprise.PhysicsEngines
 
                 if (rec1.Intersects(rec2) && gameObject != gameObject2)
                 {
-                    if (Math.Abs(rec1.X - rec2.X) < Math.Abs(rec1.Width - rec2.Width))
+                    if (Math.Abs(rec1.X - rec2.X) < Math.Abs(rec1.Width/2 + rec2.Width/2))
                         Velocity2.X = 0;
-                    if (Math.Abs(rec1.Y - rec2.Y) < Math.Abs(rec1.Height - rec2.Height))
+                    if (Math.Abs(rec1.Y - rec2.Y) < Math.Abs(rec1.Height/2 + rec2.Height/2))
                         Velocity2.Y = 0;
                     gameObject.OnCollision(gameObject2);
                     flag = true;
