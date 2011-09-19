@@ -111,13 +111,19 @@ namespace SuperPuppySurprise
         public static void spawnRunner()
         {
             Runner r = new Runner(doors[lastDoor]);
-            while (Game1.PhysicsEngine.CollidesWithAnotherObject(r))
+            try
             {
-                Thread.Sleep(100);
+
+                while (Game1.PhysicsEngine.CollidesWithAnotherObject(r))
+                {
+                    Thread.Sleep(100);
+                }
+                r.AddGameObjectToScene();
+                r.Load(Game1.game.Content, Game1.spriteBatch);
+
+                Thread.Sleep(spawn_delay);
             }
-            r.AddGameObjectToScene();
-            r.Load(Game1.game.Content, Game1.spriteBatch);
-            Thread.Sleep(spawn_delay);
+            catch{}
         }
     }
 }

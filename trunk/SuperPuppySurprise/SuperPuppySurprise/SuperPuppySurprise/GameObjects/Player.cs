@@ -32,7 +32,7 @@ namespace SuperPuppySurprise.GameObjects
         int currentFireSpeed = 2;
         int currentFireMode = 0;
         double[] fireSpeeds = { 800, 500, 300, 1 };
-        public int[] rounds = { 0, 20, 20, 20, 20 };
+        public int[] rounds = { 0, 2000, 2000, 2000, 2000 };
         bool rotateHelper = true;
         double elapsedTime;
         Random random;
