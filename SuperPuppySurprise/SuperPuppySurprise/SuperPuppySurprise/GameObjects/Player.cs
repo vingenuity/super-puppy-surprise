@@ -31,10 +31,11 @@ namespace SuperPuppySurprise.GameObjects
         TestParticle2 testParticle;
         int currentFireSpeed = 2;
         int currentFireMode = 0;
-        double[] fireSpeeds = {800, 500, 300, 1};
+        double[] fireSpeeds = { 800, 500, 300, 1 };
         bool rotateHelper = true;
         double elapsedTime;
         Random random;
+        GamePadState gamePadState;
 
         public Player(int id, Vector2 Position)
             : base(Position)
@@ -48,7 +49,6 @@ namespace SuperPuppySurprise.GameObjects
             Radius = 16;
             Game1.PhysicsEngine.Add(this);
             GameState.players.Add(this);
-            
 
             switch (id)
             {
@@ -76,7 +76,6 @@ namespace SuperPuppySurprise.GameObjects
             testParticle.Start();
             Game1.SoundEngine.TurnSoundOn(ConstantSounds.Ambient);
         }
-      
         void EngineParticle()
         {
             /*
@@ -108,16 +107,11 @@ namespace SuperPuppySurprise.GameObjects
             else
                 currentFireSpeed = 2;
         }
-
-        public override void Update(GameTime gameTime)
+        public void setVelocityFromKeyBoard()
         {
-
+            Direction = Vector2.Zero;
 
             thisKeyState = Keyboard.GetState();
-            Vector2 bulletDir;
-
-            //Update movement
-            Direction = Vector2.Zero;
             if (thisKeyState.IsKeyDown(downKey))
                 Direction.Y++;
             else if (thisKeyState.IsKeyDown(upKey))
@@ -129,28 +123,81 @@ namespace SuperPuppySurprise.GameObjects
 
             Direction.Normalize();
 
-            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) && 
+            if (thisKeyState.IsKeyUp(leftKey) && thisKeyState.IsKeyUp(rightKey) &&
                 thisKeyState.IsKeyUp(upKey) && thisKeyState.IsKeyUp(downKey))
                 Velocity = Vector2.Zero;
             else
                 Velocity = Direction * Speed;
+        }
+        public void setVelocityFromGamePad()
+        {
+            Direction = Vector2.Zero;
+
+            Direction.X = gamePadState.ThumbSticks.Left.X;
+            Direction.Y = -1 * gamePadState.ThumbSticks.Left.Y;
+
+            if (gamePadState.ThumbSticks.Left.X == 0 &&
+               gamePadState.ThumbSticks.Left.Y == 0)
+                Velocity = Vector2.Zero;
+            else
+                Velocity = Direction * Speed;
+        }
+        public Vector2 getBulletDirectionFromKeyBoard()
+        {
+            Vector2 tempDir;
+            tempDir = Vector2.Zero;
+
+            if (thisKeyState.IsKeyDown(fireDown))
+                tempDir.Y++;
+            else if (thisKeyState.IsKeyDown(fireUp))
+                tempDir.Y--;
+            if (thisKeyState.IsKeyDown(fireRight))
+                tempDir.X++;
+            else if (thisKeyState.IsKeyDown(fireLeft))
+                tempDir.X--;
+            tempDir.Normalize();
+
+            return tempDir;
+        }
+        public Vector2 getBulletDirectionFromGamePad()
+        {
+            Vector2 tempDir;
+            tempDir = Vector2.Zero;
+
+            tempDir.X = gamePadState.ThumbSticks.Right.X;
+            tempDir.Y = -1 * gamePadState.ThumbSticks.Right.Y;
+
+            tempDir.Normalize();
+
+            return tempDir;
+        }
+        public override void Update(GameTime gameTime)
+        {
+
+            gamePadState = GamePad.GetState(PlayerIndex.One);
+            thisKeyState = Keyboard.GetState();
+            Vector2 bulletDir;
+
+            //Update movement
+            Direction = Vector2.Zero;
+
+            if (!gamePadState.IsConnected)
+                setVelocityFromKeyBoard();
+            else
+                setVelocityFromGamePad();
 
             //Update fire direction
-            bulletDir.X = 0;
-            bulletDir.Y = 0;
-            if (thisKeyState.IsKeyDown(fireDown))
-                bulletDir.Y++;
-            else if (thisKeyState.IsKeyDown(fireUp))
-                bulletDir.Y--;
-            if (thisKeyState.IsKeyDown(fireRight))
-                bulletDir.X++;
-            else if (thisKeyState.IsKeyDown(fireLeft))
-                bulletDir.X--;
-            bulletDir.Normalize();
+            bulletDir = Vector2.Zero;
+            if (!gamePadState.IsConnected)
+                bulletDir = getBulletDirectionFromKeyBoard();
+            else
+                bulletDir = getBulletDirectionFromGamePad();
 
-
+            //fire!
             if (thisKeyState.IsKeyDown(fireUp) || thisKeyState.IsKeyDown(fireDown) ||
-                thisKeyState.IsKeyDown(fireRight) || thisKeyState.IsKeyDown(fireLeft))
+                thisKeyState.IsKeyDown(fireRight) || thisKeyState.IsKeyDown(fireLeft) ||
+                ((gamePadState.Triggers.Right > 0 || gamePadState.Triggers.Left > 0)
+                && bulletDir.Length() > 0.0f))
             {
                 elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
                 if (elapsedTime < fireSpeeds[currentFireSpeed % fireSpeeds.Length])
@@ -168,37 +215,34 @@ namespace SuperPuppySurprise.GameObjects
                 else if (currentFireMode % 5 == 4)
                     fireAutomatic(this.Position, bulletDir);
             }
-            if (thisKeyState.IsKeyDown(fireUp) && thisKeyState.IsKeyDown(fireDown) &&
-                thisKeyState.IsKeyDown(fireRight) && thisKeyState.IsKeyDown(fireLeft))
-            {
-                elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
-                if (currentFireMode % 5 == 0)
-                    fireBullet(this.Position, bulletDir);
-                //todo: no semi-auto shotgun!
-                else if (currentFireMode % 5 == 1)
-                    fireShotGun(this.Position, bulletDir);
-                else if (currentFireMode % 5 == 2)
-                    fireShotGun2(this.Position, bulletDir);
-                else if (currentFireMode % 5 == 3)
-                    fireBurst(this.Position, bulletDir);
-                else if (currentFireMode % 5 == 4)
-                    fireAutomatic(this.Position, bulletDir);
-            }
+
+            //allows for button mashing
+            if (!gamePadState.IsConnected)
+                if (thisKeyState.IsKeyUp(fireUp) && thisKeyState.IsKeyUp(fireDown) &&
+                    thisKeyState.IsKeyUp(fireRight) && thisKeyState.IsKeyUp(fireLeft))
+                    elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
+            if (gamePadState.IsConnected)
+                if (gamePadState.Triggers.Right == 0 && gamePadState.Triggers.Left == 0)
+                    elapsedTime = fireSpeeds[currentFireSpeed % fireSpeeds.Length];
 
             //this function is for testing purposes only
             //the player will switch weapons in game via power-ups
-            if (thisKeyState.IsKeyDown(Keys.Tab) && rotateHelper)
+            if ((thisKeyState.IsKeyDown(Keys.Tab) ||
+                gamePadState.Buttons.RightShoulder == ButtonState.Pressed ||
+                gamePadState.Buttons.LeftShoulder == ButtonState.Pressed)
+                && rotateHelper)
             {
                 rotateWeapons();
                 rotateHelper = false;
             }
+
+            if (thisKeyState.IsKeyUp(Keys.Tab) || gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
+                rotateHelper = true;
+
             if (thisKeyState.IsKeyDown(Keys.O))
             {
                 Unload();
             }
-
-            if (thisKeyState.IsKeyUp(Keys.Tab))
-                rotateHelper = true;
 
             EngineParticle();
         }
@@ -277,7 +321,8 @@ namespace SuperPuppySurprise.GameObjects
             fireBullet(position1, bulletDir);
             fireBullet(position2, bulletDir);
         }
-        public float getRandomAdjust() {
+        public float getRandomAdjust()
+        {
             int randomNumber = random.Next(0, 10);
             randomNumber -= 5;
             float randomAdjust = (float)randomNumber * 0.01f;
@@ -291,7 +336,6 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnCollision(GameObject gameObject)
         {
-           
             base.OnCollision(gameObject);
         }
     }
