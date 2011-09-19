@@ -11,9 +11,9 @@ namespace SuperPuppySurprise
 {
     public class Spawner
     {
+        static bool areSpawning = false;
         static int lastDoor = 0, lastType = 0;
-        static Int32 spawn_delay = 1000;
-        static Int32 delay = 10;
+        static Int32 spawn_delay = 500;
         static Random rand = new Random();
         static AutoResetEvent autoEvent = new AutoResetEvent(false);
 
@@ -73,9 +73,10 @@ namespace SuperPuppySurprise
         {
             lastDoor = door;
             lastType = type;
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback(spawn),
-            autoEvent);
+            if (!areSpawning)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(spawn), autoEvent);
+            }
 
             //Thread sThread = new Thread(spawn);
             //sThread.Start();
@@ -83,13 +84,15 @@ namespace SuperPuppySurprise
 
         public static void spawn(object stateInfo)
         {
+            areSpawning = true;
+            Thread.Sleep(3000);
             switch (lastType)
             {
                 case 0:
 
-                    spawnRunner();
-                    spawnRunner();
-                    spawnRunner();
+                    spawnRunner(0, 0);
+                    spawnRunner(10, 0);
+                    spawnRunner(0, 0);
                     /*
                     Runner r2 = new Runner(doors[lastDoor]);
                     Game1.sceneObjects.Add(r2);
@@ -105,10 +108,11 @@ namespace SuperPuppySurprise
                 default:
                     break;
             }
+            areSpawning = false;
             ((AutoResetEvent)stateInfo).Set();
 
         }
-        public static void spawnRunner()
+        public static void spawnRunner(int leftOff, int rightOff)
         {
             Runner r = new Runner(doors[lastDoor]);
             try
