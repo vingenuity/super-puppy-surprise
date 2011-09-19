@@ -11,11 +11,12 @@ namespace SuperPuppySurprise
 {
     public class Spawner
     {
-        int lastDoor = 0, lastType = 0;
-        Int32 spawn_delay = 1000;
-        Random rand = new Random();
+        static int lastDoor = 0, lastType = 0;
+        static Int32 spawn_delay = 1000;
+        static Random rand = new Random();
+        static AutoResetEvent autoEvent = new AutoResetEvent(false);
 
-        private Vector2[] doors = new Vector2[4] {new Vector2(50, 250), new Vector2(250, 50), 
+        static private Vector2[] doors = new Vector2[4] {new Vector2(50, 250), new Vector2(250, 50), 
                                                   new Vector2(450, 250), new Vector2(250, 450)};
 
         public Spawner() { }
@@ -67,16 +68,19 @@ namespace SuperPuppySurprise
                     break;
             }
         }
-        
         public void setSpawn(int door, int type)
         {
             lastDoor = door;
             lastType = type;
-            Thread sThread = new Thread(spawn);
-            sThread.Start();
+
+            ThreadPool.QueueUserWorkItem(new WaitCallback(spawn),
+            autoEvent);
+
+            //Thread sThread = new Thread(spawn);
+            //sThread.Start();
         }
 
-        public void spawn()
+        public static void spawn(object stateInfo)
         {
             switch (lastType)
             {
@@ -92,12 +96,15 @@ namespace SuperPuppySurprise
                     Runner r3 = new Runner(doors[lastDoor]);
                     Game1.sceneObjects.Add(r3);
                     r3.Load(Game1.game.Content, Game1.spriteBatch);
+                    
                     break;
                 case 1:
                     break;
                 default:
                     break;
             }
+            ((AutoResetEvent)stateInfo).Set();
+
         }
     }
 }
