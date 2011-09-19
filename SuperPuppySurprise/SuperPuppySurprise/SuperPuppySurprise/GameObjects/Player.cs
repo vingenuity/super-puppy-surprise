@@ -75,7 +75,7 @@ namespace SuperPuppySurprise.GameObjects
             }
             testParticle = new TestParticle2(this);
             testParticle.Start();
-            Game1.SoundEngine.TurnSoundOn(ConstantSounds.Ambient);
+            Game1.SoundEngine.StartHover();
         }
         void EngineParticle()
         {
@@ -150,6 +150,7 @@ namespace SuperPuppySurprise.GameObjects
                 Velocity = Vector2.Zero;
             else
                 Velocity = Direction * Speed;
+
         }
         public Vector2 getBulletDirectionFromKeyBoard()
         {
@@ -269,11 +270,13 @@ namespace SuperPuppySurprise.GameObjects
                 Unload();
             }
 
+            Game1.SoundEngine.PlayerVelocity = Velocity;
+
             EngineParticle();
         }
         public override void Unload()
         {
-            Game1.SoundEngine.TurnSoundOff(ConstantSounds.Ambient);
+            Game1.SoundEngine.StopHover();
             Game1.ParticleEngine.Remove(testParticle);
             GameState.players.Remove(this);
             Game1.PhysicsEngine.Remove(this);
