@@ -42,8 +42,24 @@ namespace SuperPuppySurprise
         public static Spawner spawner;
         public static SoundManager SoundEngine;
 
-
-
+        static List<GameObject> gameObjectAddList = new List<GameObject>();
+        public static Object lockList = new Object();
+        public void AddEntriesToList()
+        {
+            lock (lockList)
+            {
+                for (int i = 0; i < gameObjectAddList.Count; i++)
+                    sceneObjects.Add(gameObjectAddList[i]);
+                gameObjectAddList.Clear();
+            }
+        }
+        public static void AddToList(GameObject gameObject)
+        {
+            lock (lockList)
+            {
+                gameObjectAddList.Add(gameObject);
+            }
+        }
         public Game1()
         {
             game = this;
@@ -116,7 +132,8 @@ namespace SuperPuppySurprise
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            
+            AddEntriesToList();
+            GameState.AddEntriesToList();
             base.Update(gameTime);
         }
 

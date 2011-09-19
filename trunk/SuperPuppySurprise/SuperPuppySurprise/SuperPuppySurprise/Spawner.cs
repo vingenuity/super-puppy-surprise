@@ -33,7 +33,7 @@ namespace SuperPuppySurprise
                 case 'r':
                     Runner r = new Runner(pos);
                     Game1.sceneObjects.Add(r);
-                    r.Load(Game1.game.Content, Game1.spriteBatch);
+                    r.Load();
                     break;
                 case 's':
                     Shooter s = new Shooter(pos);
@@ -158,7 +158,7 @@ namespace SuperPuppySurprise
                             Thread.Sleep(100);
                         }
                         r.AddGameObjectToScene();
-                        r.Load(Game1.game.Content, Game1.spriteBatch);
+                        r.Load();
                         break;
                     case 's':
                         Shooter s = new Shooter(pos);

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperPuppySurprise.AIRoutines;
+using SuperPuppySurprise.PhysicsEngines;
 
 namespace SuperPuppySurprise.GameObjects
 {
@@ -20,12 +21,16 @@ namespace SuperPuppySurprise.GameObjects
             Speed = 200;
         }
       
+
         public static Texture2D texture2;
-        public override void Load(ContentManager Content, SpriteBatch spriteBatch)
+        static Object Lock = new Object();
+        static Object Lock2 = new Object();
+        public void Load()
         {
-            texture = texture2;
-            this.spriteBatch = spriteBatch;
-            base.Load(Content, spriteBatch);
+            lock(Lock)
+            {
+                texture = texture2;
+            }
         }
         public override void Update(GameTime gameTime)
         {
@@ -61,9 +66,22 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void AddGameObjectToScene()
         {
-            GameState.enemies.Add(this);
-            Game1.PhysicsEngine.Add(this);
-            Game1.sceneObjects.Add(this);
+            lock (Lock2)
+            {
+            }
+            lock (GameState.lockList)
+            {
+                GameState.AddToList(this);
+            }
+            lock (BruteForcePhysicsEngine.lockList)
+            {
+                Game1.PhysicsEngine.AddToList(this);
+                Game1.PhysicsEngine.Add(this);
+            }
+            lock (Game1.lockList)
+            {
+                Game1.AddToList(this);
+            }
             base.AddGameObjectToScene();
         }
     }

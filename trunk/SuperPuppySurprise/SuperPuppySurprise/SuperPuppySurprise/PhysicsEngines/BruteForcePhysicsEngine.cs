@@ -12,6 +12,9 @@ namespace SuperPuppySurprise.PhysicsEngines
     {
         List<GameObject> PhysicsGameObjects;
         List<GameObject> PhysicsGameObjectTriggers;
+        List<GameObject> gameObjectAddList;
+        public static Object lockList = new Object();
+
         public BruteForcePhysicsEngine()
         {
             Reset();
@@ -20,12 +23,23 @@ namespace SuperPuppySurprise.PhysicsEngines
         {
             PhysicsGameObjects = new List<GameObject>();
             PhysicsGameObjectTriggers = new List<GameObject>();
+            gameObjectAddList = new List<GameObject>();
         }
         public void Update(GameTime gameTime)
         {
+            AddEntriesToList();
             double time = gameTime.ElapsedGameTime.TotalSeconds;
             UpdateMovement(time);
             UpdateTriggers(time);
+        }
+        public void AddEntriesToList()
+        {
+            lock (lockList)
+            {
+                for (int i = 0; i < gameObjectAddList.Count; i++)
+                    Add(gameObjectAddList[i]);
+                gameObjectAddList.Clear();
+            }
         }
         /// <summary>
         /// Currently Only tests for TiggerVSRegular game object collisions
@@ -177,6 +191,13 @@ namespace SuperPuppySurprise.PhysicsEngines
             PhysicsGameObjects.Remove(gameObject);
             PhysicsGameObjectTriggers.Remove(gameObject);
         }
- 
+        
+        public void AddToList(GameObject gameObject)
+        {
+            lock (lockList)
+            {
+                gameObjectAddList.Add(gameObject);
+            }
+        }
     }
 }
