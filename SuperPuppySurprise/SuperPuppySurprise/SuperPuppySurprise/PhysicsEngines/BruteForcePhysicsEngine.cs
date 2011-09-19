@@ -85,21 +85,23 @@ namespace SuperPuppySurprise.PhysicsEngines
                 gameObject = PhysicsGameObjects[i];
 
                 newPosition = gameObject.Position + gameObject.Velocity * (float)time;
-                if (!CollidesWithAnObjectSquares(newPosition, gameObject))
+                Vector2 Velocity2;
+                if (!CollidesWithAnObjectSquares(newPosition, gameObject, out Velocity2))
                 {
                     Vector2 v = VelocityAfterHitsWall(newPosition, gameObject.Velocity, gameObject);
-                    gameObject.Position = gameObject.Position + v * (float)time;
+                    gameObject.Position = gameObject.Position + Velocity2 * (float)time;
                 }
                    // gameObject.Position = newPosition;
             }
         }
-        bool CollidesWithAnObjectSquares(Vector2 newPosition, GameObject gameObject)
+        bool CollidesWithAnObjectSquares(Vector2 newPosition, GameObject gameObject, out Vector2 Velocity2)
         {
             Rectangle rec1 = new Rectangle((int)(newPosition.X - gameObject.Radius), (int)(newPosition.Y - gameObject.Radius), (int)gameObject.Radius * 2, (int)gameObject.Radius * 2);
             Rectangle rec2; 
             GameObject gameObject2;
             //float radiusSqr;
             float distancedSqr;
+            Velocity2 = gameObject.Velocity;
             bool flag = false;
             for (int j = 0; j < PhysicsGameObjects.Count; j++)
             {
@@ -108,6 +110,10 @@ namespace SuperPuppySurprise.PhysicsEngines
 
                 if (rec1.Intersects(rec2) && gameObject != gameObject2)
                 {
+                    if (Math.Abs(rec1.X - rec2.X) < Math.Abs(rec1.Width - rec2.Width))
+                        Velocity2.X = 0;
+                    if (Math.Abs(rec1.Y - rec2.Y) < Math.Abs(rec1.Height - rec2.Height))
+                        Velocity2.Y = 0;
                     gameObject.OnCollision(gameObject2);
                     flag = true;
                 }
