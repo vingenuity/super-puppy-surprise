@@ -87,7 +87,7 @@ namespace SuperPuppySurprise.PhysicsEngines
             Rectangle rec1 = new Rectangle((int)(newPosition.X - gameObject.Radius), (int)(newPosition.Y - gameObject.Radius), (int)gameObject.Radius * 2, (int)gameObject.Radius * 2);
             Rectangle rec2; 
             GameObject gameObject2;
-            float radiusSqr;
+            //float radiusSqr;
             float distancedSqr;
             bool flag = false;
             for (int j = 0; j < PhysicsGameObjects.Count; j++)
