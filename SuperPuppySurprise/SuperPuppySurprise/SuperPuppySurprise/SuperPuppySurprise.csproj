@@ -175,6 +175,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="RoomManager\Level1.cs" />
+    <Compile Include="RoomManager\Room.cs" />
+    <Compile Include="RoomManager\RoomEngine.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />
     <Compile Include="ScreenManager\ScreenManager.cs" />
