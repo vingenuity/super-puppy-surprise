@@ -18,6 +18,7 @@ using SuperPuppySurprise.Huds;
 using SuperPuppySurprise.Sounds;
 using SuperPuppySurprise.PowerUps;
 using SuperPuppySurprise.Spawning;
+using SuperPuppySurprise.RoomManager;
 
 namespace SuperPuppySurprise
 {
@@ -43,6 +44,9 @@ namespace SuperPuppySurprise
         //public static Spawner spawner;
         public static SoundManager SoundEngine;
         public static SpawnManager SpawnManager;
+
+        public static RoomEngine RoomManager;
+
         static List<GameObject> gameObjectAddList = new List<GameObject>();
 
         public Game1()

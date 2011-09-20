@@ -26,19 +26,9 @@ namespace SuperPuppySurprise.Spawning
             {
                 SpawnList[i].Update(gameTime);
             }
-            SetSpawn();
+           
         }
-        void SetSpawn()
-        {
-            if (SpawnList.Count == 0 && GameState.enemies.Count == 0)
-            {
-                setSpawn(rand.Next(0, 2));
-            }
-        }
-        void setSpawn(int a)
-        {
-            SpawnList.Add(new BasicRunnerSpawn(a));
-        }
+       
         public void Add(Spawn s)
         {
             SpawnList.Add(s);

@@ -24,6 +24,7 @@ using SuperPuppySurprise.Huds;
 using SuperPuppySurprise.Sounds;
 using SuperPuppySurprise.PowerUps;
 using SuperPuppySurprise.Spawning;
+using SuperPuppySurprise.RoomManager;
 #endregion
 
 namespace GameStateManagement
@@ -70,6 +71,8 @@ namespace GameStateManagement
             Game1.SoundEngine = new SoundManager();
             Game1.SoundEngine.Load();
             Game1.SpawnManager = new SpawnManager();
+
+            Game1.RoomManager = new RoomEngine();
             LoadUnits();
         }
         public void LoadUnits()
@@ -147,6 +150,8 @@ namespace GameStateManagement
                 Game1.hud.Update(gameTime);
 
                 Game1.SpawnManager.Update(gameTime);
+
+                Game1.RoomManager.Update(gameTime);
 
              //   if (GameState.noEnemies())
              //       Game1.spawner.randSpawn();

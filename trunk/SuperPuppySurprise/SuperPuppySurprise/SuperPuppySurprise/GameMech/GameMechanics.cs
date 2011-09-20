@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace SuperPuppySurprise.GameMech
 {
@@ -14,5 +15,6 @@ namespace SuperPuppySurprise.GameMech
         public static int BottomWallBound = 420;
 
         public static int RoomNumber = 0;
+       
     }
 }
