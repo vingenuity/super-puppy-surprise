@@ -15,23 +15,7 @@ namespace SuperPuppySurprise.AIRoutines
         public static List<Monster> enemies;
         public static List<Player> players;
         public static List<GameObject> gameObjectAddList = new List<GameObject>();
-        public static Object lockList = new Object();
-        public static void AddToList(GameObject gameObject)
-        {
-            lock (lockList)
-            {
-                gameObjectAddList.Add(gameObject);
-            }
-        }
-        public static void AddEntriesToList()
-        {
-            lock (lockList)
-            {
-                for (int i = 0; i < gameObjectAddList.Count; i++)
-                    enemies.Add((Monster)gameObjectAddList[i]);
-                gameObjectAddList.Clear();
-            }
-        }
+
         public GameState()
         {
             enemies = new List<Monster>();
@@ -39,7 +23,7 @@ namespace SuperPuppySurprise.AIRoutines
         }
         public static void Update(GameTime gameTime)
         {
-            AddEntriesToList();
+
         }
         public static void clearEnemies()
         {

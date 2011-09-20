@@ -23,14 +23,10 @@ namespace SuperPuppySurprise.GameObjects
       
 
         public static Texture2D texture2;
-        static Object Lock = new Object();
-        static Object Lock2 = new Object();
+
         public void Load()
         {
-            lock(Lock)
-            {
-                texture = texture2;
-            }
+            texture = texture2;
         }
         public override void Update(GameTime gameTime)
         {
@@ -66,22 +62,10 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void AddGameObjectToScene()
         {
-            lock (Lock2)
-            {
-            }
-            lock (GameState.lockList)
-            {
-                GameState.AddToList(this);
-            }
-            lock (BruteForcePhysicsEngine.lockList)
-            {
-                Game1.PhysicsEngine.AddToList(this);
-                Game1.PhysicsEngine.Add(this);
-            }
-            lock (Game1.lockList)
-            {
-                Game1.AddToList(this);
-            }
+
+            Game1.sceneObjects.Add(this);
+            Game1.PhysicsEngine.Add(this);
+            GameState.enemies.Add(this);
             base.AddGameObjectToScene();
         }
     }
