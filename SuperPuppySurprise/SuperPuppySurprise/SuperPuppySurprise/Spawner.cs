@@ -22,6 +22,8 @@ namespace SuperPuppySurprise
 
         public Spawner() { }
 
+
+        static Object SpawningLock = new Object();
         public void makeEnemy(char eType,int door, int xOffset, int yOffset)
         {
             Vector2 pos = doors[door];
@@ -63,7 +65,10 @@ namespace SuperPuppySurprise
 
         public static void spawn(object stateInfo)
         {
-            areSpawning = true;
+            lock (SpawningLock)
+            {
+                areSpawning = true;
+            }
             Thread.Sleep(2000);
             switch (lastType)
             {
@@ -128,7 +133,7 @@ namespace SuperPuppySurprise
                 default:
                     break;
             }
-            areSpawning = false;
+            
             ((AutoResetEvent)stateInfo).Set();
 
         }

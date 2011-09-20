@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using SuperPuppySurprise.Huds;
 using SuperPuppySurprise.Sounds;
 using SuperPuppySurprise.PowerUps;
+using SuperPuppySurprise.Spawning;
 #endregion
 
 namespace GameStateManagement
@@ -65,9 +66,10 @@ namespace GameStateManagement
             Game1.ParticleEngine = new ParticleManager();
             Game1.state = new GameState();
             Game1.hud = new Hud();
-            Game1.spawner = new Spawner();
+           // Game1.spawner = new Spawner();
             Game1.SoundEngine = new SoundManager();
             Game1.SoundEngine.Load();
+            Game1.SpawnManager = new SpawnManager();
             LoadUnits();
         }
         public void LoadUnits()
@@ -75,7 +77,7 @@ namespace GameStateManagement
             // TODO: Add your initialization logic here
             Runner.texture2 = Game1.game.Content.Load<Texture2D>("TestPicture2");
             Game1.sceneObjects.Add(new Player(1, new Vector2(100, 100)));
-            Game1.spawner.randSpawn();
+            //Game1.spawner.randSpawn();
             //Game1.sceneObjects.Add(new TestTrigger(new Vector2(300, 300)));
         }
         /// <summary>
@@ -144,8 +146,10 @@ namespace GameStateManagement
 
                 Game1.hud.Update(gameTime);
 
-                if (GameState.noEnemies())
-                    Game1.spawner.randSpawn();
+                Game1.SpawnManager.Update(gameTime);
+
+             //   if (GameState.noEnemies())
+             //       Game1.spawner.randSpawn();
 
             }
         }

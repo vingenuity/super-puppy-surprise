@@ -190,7 +190,9 @@
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Screens\VictoryDefeatScreen.cs" />
     <Compile Include="Sounds\SoundManager.cs" />
-    <Compile Include="Spawner.cs" />
+    <Compile Include="Spawning\BasicRunnerSpawn.cs" />
+    <Compile Include="Spawning\Spawn.cs" />
+    <Compile Include="Spawning\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
