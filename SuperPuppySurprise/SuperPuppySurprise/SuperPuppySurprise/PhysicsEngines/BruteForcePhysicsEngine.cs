@@ -116,9 +116,12 @@ namespace SuperPuppySurprise.PhysicsEngines
 
                 if (rec1.Intersects(rec2) && gameObject != gameObject2)
                 {
-                    if (Math.Abs(rec1.X - rec2.X) < Math.Abs(rec1.Width/2 + rec2.Width/2))
+                    Vector2 testPos = newPosition;
+                    testPos.X = gameObject.Position.X;
+                    if (CollidesWithAnObject(testPos, gameObject))
                         Velocity2.X = 0;
-                    if (Math.Abs(rec1.Y - rec2.Y) < Math.Abs(rec1.Height/2 + rec2.Height/2))
+                    testPos.Y = gameObject.Position.Y;
+                    if (CollidesWithAnObject(testPos, gameObject))
                         Velocity2.Y = 0;
                     gameObject.OnCollision(gameObject2);
                     flag = true;
