@@ -103,22 +103,34 @@ namespace SuperPuppySurprise.Sounds
                 PlayerVelocity = Vector2.Zero;
                 
             }
-            catch (Exception e){ }
+            catch { }
         }
 
         public void StartHover(){
-            float volume = .2F;
-            ambientInstance.Volume = volume;
-            ambientInstance.Play();
+            try
+            {
+                float volume = .2F;
+                ambientInstance.Volume = volume;
+                ambientInstance.Play();
+            }
+            catch { }
         }
 
         public void HoverPitch(float speed) {
-              ambientInstance.Pitch = speed / 90000;
+            try
+            {
+                ambientInstance.Pitch = speed / 90000;
+            }
+            catch { }
 
         }
 
         public void StopHover(){
-            ambientInstance.Stop();
+            try
+            {
+                ambientInstance.Stop();
+            }
+            catch { }
         }
 
         public void PlaySound(SoundEffects sound)
