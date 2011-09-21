@@ -8,6 +8,7 @@ namespace SuperPuppySurprise.RoomManager
 {
     public class Room
     {
+        public int RoomNumber;
         public Room()
         {
         }

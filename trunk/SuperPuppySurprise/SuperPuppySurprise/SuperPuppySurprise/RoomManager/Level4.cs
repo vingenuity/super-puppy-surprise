@@ -8,11 +8,12 @@ using SuperPuppySurprise.GameMech;
 
 namespace SuperPuppySurprise.RoomManager
 {
-    public class Level1 : Room
+    public class Level4 : Room
     {
-        public Level1(): base()
+        public Level4()
+            : base()
         {
-            RoomNumber = 0;
+            RoomNumber = 3;
         }
         Random rand = new Random();
         void SetSpawn()
@@ -28,10 +29,10 @@ namespace SuperPuppySurprise.RoomManager
         }
         public void CheckIfProcede()
         {
-            if (GameMechanics.Score > 600)
-            {
-                Game1.RoomManager.ChangeRoom(new Level2());
-            }
+           // if (GameMechanics.Score > 600)
+           // {
+           //     Game1.RoomManager.ChangeRoom(new Level2());
+           // }
         }
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
