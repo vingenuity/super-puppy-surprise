@@ -29,10 +29,11 @@ namespace SuperPuppySurprise.RoomManager
         }
         public void CheckIfProcede()
         {
-           // if (GameMechanics.Score > 600)
-           // {
-           //     Game1.RoomManager.ChangeRoom(new Level2());
-           // }
+            if (GameMechanics.Score > 9000)
+            {
+                GameMechanics.Score = 0;
+               Game1.RoomManager.ChangeRoom(new Level1());
+            }
         }
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
