@@ -102,6 +102,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public void rotateWeapons()
         {
+            Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
             currentFireMode++;
             if (currentFireMode % 5 == 4)
                 currentFireSpeed = 3;
@@ -194,7 +195,11 @@ namespace SuperPuppySurprise.GameObjects
             if (!gamePadState.IsConnected)
                 setVelocityFromKeyBoard();
             else
+            {
                 setVelocityFromGamePad();
+                Game1.SoundEngine.HoverPitch(Velocity.LengthSquared());                
+            }
+
 
             //Update fire direction
             bulletDir = Vector2.Zero;
@@ -297,6 +302,7 @@ namespace SuperPuppySurprise.GameObjects
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
             Game1.PhysicsEngine.AddTrigger(b);
+            Game1.SoundEngine.PlaySound(SoundEffects.shoot);
         }
         public override void OnDamage(double damage)
         {
@@ -320,6 +326,7 @@ namespace SuperPuppySurprise.GameObjects
             if (rounds[1] == 0)
             {
                 currentFireMode = 0;
+                Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
                 return;
             }
             currentFireSpeed = 1;
@@ -333,6 +340,7 @@ namespace SuperPuppySurprise.GameObjects
             if (rounds[2] == 0)
             {
                 currentFireMode = 0;
+                Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
                 return;
             }
             currentFireSpeed = 1;
@@ -368,6 +376,7 @@ namespace SuperPuppySurprise.GameObjects
             if (rounds[3] == 0)
             {
                 currentFireMode = 0;
+                Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
                 return;
             }
             currentFireSpeed = 1;
@@ -394,6 +403,7 @@ namespace SuperPuppySurprise.GameObjects
             if (rounds[4] == 0)
             {
                 currentFireMode = 0;
+                Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
                 currentFireSpeed = 2;
                 return;
             }

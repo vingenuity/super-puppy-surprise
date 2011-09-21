@@ -16,8 +16,8 @@ Global Settings
     Header File = SPSAudio.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 782613503;
-    Last Modified High = 30176385;
+    Last Modified Low = 3886799308;
+    Last Modified High = 30177398;
 
     Category
     {
@@ -225,8 +225,12 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 783583503;
-    Bank Last Revised High = 30176385;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 3888329308;
+    PC Bank Last Modified High = 30177398;
+    Bank Last Revised Low = 3888299308;
+    Bank Last Revised High = 30177398;
 
     Wave
     {
@@ -342,6 +346,52 @@ Wave Bank
             Last Modified High = 30175456;
         }
     }
+
+    Wave
+    {
+        Name = shoot;
+        File = Complete\shoot.wav;
+        Build Settings Last Modified Low = 3077453900;
+        Build Settings Last Modified High = 30177396;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 23608;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2879848654;
+            Last Modified High = 30177396;
+        }
+    }
+
+    Wave
+    {
+        Name = gunchange;
+        File = Complete\gunchange.wav;
+        Build Settings Last Modified Low = 3515189308;
+        Build Settings Last Modified High = 30177398;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 30928;
+            Bits Per Sample = 1;
+            Play Region Offset = 120;
+            Play Region Length = 13314;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3414590212;
+            Last Modified High = 30177398;
+        }
+    }
 }
 
 Sound Bank
@@ -351,8 +401,8 @@ Sound Bank
     Windows File = Win\Sounds.xsb;
     Xbox Bank Path Edited = 0;
     Windows Bank Path Edited = 0;
-    Bank Last Modified Low = 790773503;
-    Bank Last Modified High = 30176385;
+    Bank Last Modified Low = 3954429308;
+    Bank Last Modified High = 30177398;
     Header Last Modified High = 0;
     Header Last Modified Low = 0;
 
@@ -601,6 +651,100 @@ Sound Bank
         }
     }
 
+    Sound
+    {
+        Name = shoot;
+        Volume = -2400;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Waves;
+                    Bank Index = 0;
+                    Entry Name = shoot;
+                    Entry Index = 5;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = gunchange;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Waves;
+                    Bank Index = 0;
+                    Entry Name = gunchange;
+                    Entry Index = 6;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
     Cue
     {
         Name = hover;
@@ -696,6 +840,46 @@ Sound Bank
         {
             Name = Intro;
             Index = 4;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = shoot;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = shoot;
+            Index = 5;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = gunchange;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = gunchange;
+            Index = 6;
             Weight Min = 0;
             Weight Max = 255;
         }
