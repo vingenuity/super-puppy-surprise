@@ -104,9 +104,13 @@ namespace SuperPuppySurprise.Sounds
         }
 
         public void StartHover(){
-            float volume = .2F;
-            ambientInstance.Volume = volume;
-            ambientInstance.Play();
+            try
+            {
+                float volume = .2F;
+                ambientInstance.Volume = volume;
+                ambientInstance.Play();
+            }
+            catch { }
         }
 
         public void StopHover(){

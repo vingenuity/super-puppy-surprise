@@ -32,15 +32,9 @@ namespace SuperPuppySurprise.GameObjects
         {
             Vector2 closest = GameState.findClosestPlayerTo(Position);
 
-            Direction = Vector2.Zero;
-            if (closest.Y > this.Position.Y + 5)
-                Direction.Y++;
-            else if (closest.Y < this.Position.Y - 5)
-                Direction.Y--;
-            if (closest.X > this.Position.X + 5)
-                Direction.X++;
-            else if (closest.X < this.Position.X - 5)
-                Direction.X--;
+            Vector2 lastDirection = this.Direction;
+            Vector2 newDirection = closest - this.Position;
+            Direction = (lastDirection + newDirection)/2;
             Direction.Normalize();
 
             Velocity = Direction * Speed;
