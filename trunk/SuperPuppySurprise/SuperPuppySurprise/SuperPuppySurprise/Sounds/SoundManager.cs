@@ -18,7 +18,9 @@ namespace SuperPuppySurprise.Sounds
 
     public enum SoundEffects
     {
+        weaponchange,
         explode,
+        shoot,
         MenuSelect,
         Hit,
         PlayerAttack,
@@ -35,12 +37,13 @@ namespace SuperPuppySurprise.Sounds
         AudioEngine engine;
         WaveBank waveBank;
         SoundBank soundBank;
-        static Cue menuback, explosion;
+        static Cue menuback, shoot, change, explosion;
 
         System.IO.Stream wavStream;
         SoundEffect ambient;
         SoundEffectInstance ambientInstance;
 
+        
         SoundEffect menuselect;
         List<SoundEffect> hit;
         List<SoundEffect> playerattack;
@@ -104,13 +107,14 @@ namespace SuperPuppySurprise.Sounds
         }
 
         public void StartHover(){
-            try
-            {
-                float volume = .2F;
-                ambientInstance.Volume = volume;
-                ambientInstance.Play();
-            }
-            catch { }
+            float volume = .2F;
+            ambientInstance.Volume = volume;
+            ambientInstance.Play();
+        }
+
+        public void HoverPitch(float speed) {
+              ambientInstance.Pitch = speed / 90000;
+
         }
 
         public void StopHover(){
@@ -124,11 +128,22 @@ namespace SuperPuppySurprise.Sounds
                 SoundEffectInstance sb;
                 switch (sound)
                 {
-                   case SoundEffects.explode:
+                    case SoundEffects.explode:
                         Cue explosion1 = soundBank.GetCue("explode");
                         explosion1.Play();
                         
                         break;
+
+                    case SoundEffects.weaponchange:
+                        Cue change = soundBank.GetCue("gunchange");
+                        change.Play();
+                        break;
+
+                    case SoundEffects.shoot:
+                        Cue shot = soundBank.GetCue("shoot");
+                        shot.Play();
+                        break;
+
                     case SoundEffects.Hit:
                         SoundEffectInstance s2 = hit[(random.Next(playerattack.Count))].CreateInstance();
                         s2.Volume = s2.Volume / 7;
