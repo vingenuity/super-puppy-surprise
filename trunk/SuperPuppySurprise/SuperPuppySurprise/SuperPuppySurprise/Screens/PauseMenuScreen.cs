@@ -71,6 +71,7 @@ namespace GameStateManagement
         /// </summary>
         void ConfirmQuitMessageBoxAccepted(object sender, PlayerIndexEventArgs e)
         {
+            Game1.SoundEngine.StopHover();
             Game1.SoundEngine.TurnSoundOn(ConstantSounds.MenuBackground);
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                            new MainMenuScreen());
