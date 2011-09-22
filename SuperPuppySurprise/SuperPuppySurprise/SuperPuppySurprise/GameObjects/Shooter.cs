@@ -33,25 +33,17 @@ namespace SuperPuppySurprise.GameObjects
         public override void Update(GameTime gameTime)
         {
             Vector2 closest = GameState.findClosestPlayerTo(Position);
-            Vector2 bulletDir;
 
-            Direction = Vector2.Zero;
-            bulletDir = Vector2.Zero;
-            Direction.X++;
-
-            if (closest.Y > this.Position.Y)
-                bulletDir.Y++;
-            else if (closest.Y < this.Position.Y)
-                bulletDir.Y--;
-            if (closest.X > this.Position.X)
-                bulletDir.X++;
-            else if (closest.X < this.Position.X)
-                bulletDir.X--;
+            Vector2 lastDirection = this.Direction;
+            Vector2 newDirection = closest - this.Position;
+            Direction = (lastDirection + newDirection) / 2;
             Direction.Normalize();
+            Velocity = Direction * Speed;
+
+            Vector2 bulletDir = closest - Position;
             bulletDir.Normalize();
             fireBullet(gameTime, bulletDir);
 
-            Velocity = Direction * Speed;
         }
         public override void Draw(GameTime gameTime)
         {
