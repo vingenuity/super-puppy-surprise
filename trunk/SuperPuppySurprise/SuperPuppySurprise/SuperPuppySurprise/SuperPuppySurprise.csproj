@@ -180,6 +180,7 @@
     <Compile Include="RoomManager\Level2.cs" />
     <Compile Include="RoomManager\Level3.cs" />
     <Compile Include="RoomManager\Level4.cs" />
+    <Compile Include="RoomManager\Level5.cs" />
     <Compile Include="RoomManager\Room.cs" />
     <Compile Include="RoomManager\RoomEngine.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
