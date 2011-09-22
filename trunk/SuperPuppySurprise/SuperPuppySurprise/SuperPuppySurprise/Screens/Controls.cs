@@ -10,27 +10,9 @@ namespace GameStateManagement
         /// placeholder to get the idea across: you'll probably want to
         /// put some more interesting gameplay in here!
         /// </summary>
-        class IntroScreen : GameScreen
+        class ControlsScreen : GameScreen
         {
-            public class SmartText
-            {
-                public List<string> list;
-                public double Seconds;
-                public Side side;
-                public enum Side
-                {
-                    Left,
-                    Right,
-                    Center,
-                };
-                public SmartText(List<string> List, double seconds, Side side)
-                {
-                    list = List;
-                    Seconds = seconds;
-                    this.side = side;
-                }
 
-            }
             #region Fields
 
 
@@ -49,7 +31,7 @@ namespace GameStateManagement
             /// <summary>
             /// Constructor.
             /// </summary>
-            public IntroScreen()
+            public ControlsScreen()
             {
             }
             #endregion
@@ -93,7 +75,7 @@ namespace GameStateManagement
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
                 if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
-                    LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, new GameplayScreen());
+                    LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, new MainMenuScreen());
 
             }
             KeyboardState keyboardState; GamePadState gamePadState;
