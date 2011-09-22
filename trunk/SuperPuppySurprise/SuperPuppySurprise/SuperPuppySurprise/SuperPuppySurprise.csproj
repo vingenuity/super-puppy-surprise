@@ -204,6 +204,7 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="Screens\levelcomplete.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuperPuppySurpriseContent\SuperPuppySurpriseContent.contentproj">

@@ -15,7 +15,9 @@ namespace SuperPuppySurprise.Huds
         SpriteFont spriteFont;
         Texture2D LightOn;
         Texture2D LightOff;
+        Texture2D complete;
         RoomMap roomMap;
+        Rectangle rectFinish = new Rectangle(100, 100, 300, 300);
         public Hud()
         {
             spriteFont = Game1.game.Content.Load<SpriteFont>("Menu/SideText");
@@ -27,6 +29,7 @@ namespace SuperPuppySurprise.Huds
             spriteBatch = Game1.spriteBatch;
             LightOn = Game1.game.Content.Load<Texture2D>("LightOff");
             LightOff = Game1.game.Content.Load<Texture2D>("LightOn");
+            complete = Game1.game.Content.Load<Texture2D>("levelcomplete");
         }
         public void Update(GameTime gameTime)
         {
@@ -42,8 +45,9 @@ namespace SuperPuppySurprise.Huds
             spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(500, 85), Color.Black);
             spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(500, 110), Color.Black);
             spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);
-            if(ShowLevelClearedText)
-                spriteBatch.DrawString(spriteFont, "Level Cleared", new Vector2(230, 230), Color.Black);
+            if (ShowLevelClearedText)
+                spriteBatch.Draw(complete, rectFinish, Color.White);
+                //spriteBatch.DrawString(spriteFont, "Level Cleared", new Vector2(230, 230), Color.Black);
             spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             if (GameMechanics.BottomLight)
                 spriteBatch.Draw(LightOn, new Rectangle(243,484, 20, 20), Color.White);
