@@ -34,7 +34,7 @@ namespace SuperPuppySurprise.GameObjects
 
             Vector2 lastDirection = this.Direction;
             Vector2 newDirection = closest - this.Position;
-            Direction = (lastDirection + newDirection)/2;
+            Direction = (lastDirection + newDirection) / 2;
             Direction.Normalize();
 
             Velocity = Direction * Speed;
