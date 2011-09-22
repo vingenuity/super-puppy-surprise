@@ -93,7 +93,7 @@ namespace SuperPuppySurprise.Sounds
                 hit.Add(content.Load<SoundEffect>("Sound/Hit/Body_Hit_02"));*/
                 explosion = soundBank.GetCue("explode");
                 
-               // wavStream = TitleContainer.OpenStream("Content/Sound/Complete/hover.wav");
+
                 ambient = soundContent.Load<SoundEffect>("Sound/Complete/hover");
                 ambientInstance = ambient.CreateInstance();
                 ambientInstance.IsLooped = true;
@@ -109,7 +109,7 @@ namespace SuperPuppySurprise.Sounds
         public void StartHover(){
             try
             {
-                float volume = .2F;
+                float volume = .1F;
                 ambientInstance.Volume = volume;
                 ambientInstance.Play();
             }
