@@ -13,6 +13,7 @@ namespace SuperPuppySurprise.RoomManager
     {
         public Level1(): base()
         {
+            GameMechanics.Score = 0;
             RoomNumber = 0;
         }
         Random rand = new Random();

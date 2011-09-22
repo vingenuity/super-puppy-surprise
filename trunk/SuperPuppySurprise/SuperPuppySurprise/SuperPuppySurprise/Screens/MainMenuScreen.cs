@@ -59,7 +59,7 @@ namespace GameStateManagement
         {
             Game1.SoundEngine.TurnSoundOff(ConstantSounds.MenuBackground);
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new GameplayScreen());
+                               new IntroScreen());
         }
 
 
