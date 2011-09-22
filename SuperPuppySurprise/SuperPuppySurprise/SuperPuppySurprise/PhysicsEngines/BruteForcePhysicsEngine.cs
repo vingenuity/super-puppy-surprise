@@ -128,6 +128,7 @@ namespace SuperPuppySurprise.PhysicsEngines
                     testPos.X = newPosition.X;
                     if (CollidesSquares(testPos, gameObject, gameObject2))
                         Velocity2.X = 0;
+                    testPos = gameObject.Position;
                     testPos.Y = newPosition.Y;
                     if (CollidesSquares(testPos, gameObject, gameObject2))
                         Velocity2.Y = 0;

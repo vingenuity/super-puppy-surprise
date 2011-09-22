@@ -58,8 +58,8 @@ namespace SuperPuppySurprise.GameObjects
                 Game1.RoomManager.ChangeRoom(new Level3());
             if (name == RoomType.Level3)
                 Game1.RoomManager.ChangeRoom(new Level4());
-         // if (name == RoomType.Level4)
-         //       Game1.RoomManager.ChangeRoom(new Level2());
+            if (name == RoomType.Level4)
+                Game1.RoomManager.ChangeRoom(new Level5());
         }
         public override void OnCollision(GameObject gameObject)
         {

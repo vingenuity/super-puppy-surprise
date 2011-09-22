@@ -29,7 +29,7 @@ namespace GameStateManagement
             : base(p)
         {
             // Create our menu entries.
-            MenuEntry restartGameMenuEntry = new MenuEntry("Restart");
+            MenuEntry restartGameMenuEntry = new MenuEntry("You have escaped...");
             MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
 
             // Hook up menu event handlers.

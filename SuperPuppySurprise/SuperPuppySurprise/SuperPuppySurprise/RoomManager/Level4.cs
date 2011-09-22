@@ -30,7 +30,8 @@ namespace SuperPuppySurprise.RoomManager
         }
         public void CheckIfProcede()
         {
-            if (GameMechanics.Score > 9000)
+            Game1.hud.ShowLevelClearedText = false;
+            if (GameMechanics.Score > 400)
             {
                 StillSpawning = false;
                 if (GameState.enemies.Count == 0 && Game1.SpawnManager.SpawnList.Count == 0)
@@ -39,9 +40,9 @@ namespace SuperPuppySurprise.RoomManager
                     if (!NextLevel)
                     {
                         NextLevel = true;
-                        //new EnterNextRoomTrigger(RoomType.Level1);
-                        //for (int i = 0; i < GameState.players.Count; i++)
-                         //   GameState.players[i].GoToRoom(400, 250);
+                        new EnterNextRoomTrigger(RoomType.Level4);
+                        for (int i = 0; i < GameState.players.Count; i++)
+                            GameState.players[i].GoToRoom(400, 250);
                     }
                 }
             }
