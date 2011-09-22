@@ -68,8 +68,8 @@ namespace SuperPuppySurprise.PhysicsEngines
         }
         bool CollidesSquares(GameObject gameObject, GameObject gameObject2)
         {
-            Rectangle rec1 = new Rectangle((int)(gameObject.Position.X - gameObject.Radius), (int)(gameObject.Position.Y - gameObject.Radius), (int)gameObject.Radius * 2, (int)gameObject.Radius * 2);
-            Rectangle rec2 = new Rectangle((int)(gameObject2.Position.X - gameObject2.Radius), (int)(gameObject2.Position.Y - gameObject2.Radius), (int)gameObject2.Radius * 2, (int)gameObject2.Radius * 2);
+            Rectangle rec1 = new Rectangle((int)(gameObject.Position.X - gameObject.Size.X / 2), (int)(gameObject.Position.Y - gameObject.Size.Y / 2), (int)gameObject.Size.X, (int)gameObject.Size.Y);
+            Rectangle rec2 = new Rectangle((int)(gameObject2.Position.X - gameObject2.Size.X / 2), (int)(gameObject2.Position.Y - gameObject2.Size.Y/2), (int)gameObject2.Size.X, (int)gameObject2.Size.Y);
             return rec1.Intersects(rec2); 
         }
         bool Collides(GameObject gameObject, GameObject gameObject2)

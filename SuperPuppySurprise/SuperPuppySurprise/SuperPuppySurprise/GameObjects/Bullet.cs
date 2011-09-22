@@ -40,9 +40,12 @@ namespace SuperPuppySurprise.GameObjects
             Game1.game.RemoveGameObject(this);
             base.Unload();
         }
-
+        double timer = 2;
         public override void Update(GameTime gameTime)
         {
+            if (timer < 0)
+                Unload();
+            timer -= gameTime.ElapsedGameTime.TotalSeconds;
             //detect collision, unload if needed
             if (HitsWalls())
                 Unload();

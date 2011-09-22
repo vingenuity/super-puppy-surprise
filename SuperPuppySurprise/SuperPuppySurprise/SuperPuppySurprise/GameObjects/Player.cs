@@ -77,6 +77,13 @@ namespace SuperPuppySurprise.GameObjects
             testParticle.Start();
             Game1.SoundEngine.StartHover();
         }
+        public bool goingToRoom = false;
+        Vector2 PositionToGoTo;
+        public void GoToRoom(int x, int y)
+        {
+            goingToRoom = true;
+            PositionToGoTo = new Vector2(x, y);
+        }
         void EngineParticle()
         {
             /*
@@ -280,6 +287,13 @@ namespace SuperPuppySurprise.GameObjects
 
             CalculateRotation();
 
+            if (goingToRoom)
+            {
+                Direction = PositionToGoTo - Position;
+                Direction.Normalize();
+                Velocity = Speed * Direction;
+            }
+
             Game1.SoundEngine.PlayerVelocity = Velocity;
 
             EngineParticle();
@@ -323,7 +337,7 @@ namespace SuperPuppySurprise.GameObjects
             Bullet b = new Bullet(newPosition, bulletDir);
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
-            Game1.PhysicsEngine.AddTrigger(b);
+            //Game1.PhysicsEngine.AddTrigger(b);
             Game1.SoundEngine.PlaySound(SoundEffects.shoot);
         }
         public override void OnDamage(double damage)

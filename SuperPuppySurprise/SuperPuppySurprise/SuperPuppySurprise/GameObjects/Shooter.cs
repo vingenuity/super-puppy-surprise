@@ -72,7 +72,7 @@ namespace SuperPuppySurprise.GameObjects
             Bullet b = new Bullet(newPosition, bulletDir);
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
-            Game1.PhysicsEngine.AddTrigger(b);
+           // Game1.PhysicsEngine.AddTrigger(b);
         }
     }
 }

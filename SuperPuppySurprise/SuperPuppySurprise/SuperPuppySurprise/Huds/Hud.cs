@@ -29,6 +29,7 @@ namespace SuperPuppySurprise.Huds
         {
             
         }
+        public bool ShowLevelClearedText = false;
         public void Draw(GameTime gameTime)
         {
             Player p;
@@ -38,7 +39,8 @@ namespace SuperPuppySurprise.Huds
             spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(500, 85), Color.Black);
             spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(500, 110), Color.Black);
             spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);
-
+            if(ShowLevelClearedText)
+                spriteBatch.DrawString(spriteFont, "Level Cleared", new Vector2(230, 230), Color.Black);
             spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             roomMap.Draw(gameTime);
         }
