@@ -17,7 +17,8 @@ namespace SuperPuppySurprise.Huds
         RoomMap roomMap;
         public Hud()
         {
-            spriteFont = Game1.game.Content.Load<SpriteFont>("Menu/menufont");
+            spriteFont = Game1.game.Content.Load<SpriteFont>("Menu/SideText");
+           
             roomMap = new RoomMap(new Vector2(550,300));
         }
         public void Load()
@@ -37,7 +38,8 @@ namespace SuperPuppySurprise.Huds
             spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(500, 85), Color.Black);
             spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(500, 110), Color.Black);
             spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);
-            spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 250), Color.Black);
+
+            spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             roomMap.Draw(gameTime);
         }
     }

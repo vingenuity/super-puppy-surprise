@@ -85,10 +85,14 @@ namespace SuperPuppySurprise.GameObjects
             if(Velocity.LengthSquared() == 0)
                 testParticle.ChangeStatus(false);*/
         }
+        Texture2D turretTexture;
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
         {
             //texture = Content.Load<Texture2D>("TestPicture2");
-            texture = Content.Load<Texture2D>("asset_char");
+            texture = Content.Load<Texture2D>("asset_char_base");
+            turretTexture = Content.Load<Texture2D>("asset_char_turret");
+            Orig = new Vector2(turretTexture.Width / 2, turretTexture.Height / 2);
+            scale = (float)(Size.X/(turretTexture.Width * 1.0)); 
             this.spriteBatch = spriteBatch;
             base.Load(Content, spriteBatch);
         }
@@ -182,12 +186,13 @@ namespace SuperPuppySurprise.GameObjects
 
             return tempDir;
         }
+        Vector2 bulletDir;
         public override void Update(GameTime gameTime)
         {
 
             gamePadState = GamePad.GetState(PlayerIndex.One);
             thisKeyState = Keyboard.GetState();
-            Vector2 bulletDir;
+            bulletDir = Vector2.UnitY;
 
             //Update movement
             Direction = Vector2.Zero;
@@ -201,8 +206,6 @@ namespace SuperPuppySurprise.GameObjects
             }
 
 
-            //Update fire direction
-            bulletDir = Vector2.Zero;
             if (!gamePadState.IsConnected)
                 bulletDir = getBulletDirectionFromKeyBoard();
             else
@@ -275,6 +278,8 @@ namespace SuperPuppySurprise.GameObjects
                 Unload();
             }
 
+            CalculateRotation();
+
             Game1.SoundEngine.PlayerVelocity = Velocity;
 
             EngineParticle();
@@ -288,10 +293,27 @@ namespace SuperPuppySurprise.GameObjects
             Game1.game.RemoveGameObject(this);
             base.Unload();
         }
+        public static float TurretRotationAmount;
+        
+        void CalculateRotation()
+        {
+
+            if (bulletDir.LengthSquared() > 0)
+            {
+                TurretRotationAmount = (float)Math.Atan2(bulletDir.X, -bulletDir.Y);
+            }
+
+        }
+
+        Vector2 Orig;
+        float scale; 
         public override void Draw(GameTime gameTime)
         {
+           
+           
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
-            spriteBatch.Draw(texture, r, Color.White);
+            spriteBatch.Draw(texture, r, null, Color.White, 0, (Size), SpriteEffects.None, 0);
+            spriteBatch.Draw(turretTexture, ((Position)), null, Color.White, TurretRotationAmount, Orig,scale, SpriteEffects.None, 0);
             base.Draw(gameTime);
         }
         public void fireBullet(Vector2 position, Vector2 bulletDir)
