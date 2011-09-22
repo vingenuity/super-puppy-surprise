@@ -47,7 +47,6 @@ namespace SuperPuppySurprise.Huds
             spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);
             if (ShowLevelClearedText)
                 spriteBatch.Draw(complete, rectFinish, Color.White);
-                //spriteBatch.DrawString(spriteFont, "Level Cleared", new Vector2(230, 230), Color.Black);
             spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             if (GameMechanics.BottomLight)
                 spriteBatch.Draw(LightOn, new Rectangle(243,484, 20, 20), Color.White);
