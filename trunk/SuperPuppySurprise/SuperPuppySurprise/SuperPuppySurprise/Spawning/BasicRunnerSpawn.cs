@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SuperPuppySurprise.GameObjects;
+using SuperPuppySurprise.GameMech;
 
 namespace SuperPuppySurprise.Spawning
 {
@@ -28,7 +29,10 @@ namespace SuperPuppySurprise.Spawning
             switch (lastType)
             {
                 case 0:
+                    
                     lastDoor = 2;
+                    GameMechanics.TopLight = true;
+                    GameMechanics.BottomLight = true;
                     if(!fire1)
                     {
                         spawnEnemy('r', 0, 0);
@@ -54,6 +58,7 @@ namespace SuperPuppySurprise.Spawning
                         fire4 = true;
                     }
                     lastDoor = 3;
+                   
                     if(!fire5 && timer > spawn_delay * 4)
                     {
                 
@@ -82,6 +87,8 @@ namespace SuperPuppySurprise.Spawning
                     break;
                 case 1:
                     lastDoor = 0;
+                    GameMechanics.LeftLight = true;
+                    GameMechanics.RightLight = true;
                     if(!fire1)
                     {
                         spawnEnemy('r', 0, 0);
@@ -155,8 +162,14 @@ namespace SuperPuppySurprise.Spawning
         }
         public void CheckIfDone()
         {
-            if(fire8 == true && ObjectsToSpawn.Count == 0)
+            if (fire8 == true && ObjectsToSpawn.Count == 0)
+            {
+                GameMechanics.BottomLight = false;
+                GameMechanics.TopLight = false;
+                GameMechanics.LeftLight = false;
+                GameMechanics.RightLight = false;
                 Game1.SpawnManager.Remove(this);
+            }
         }
         public void spawnEnemy(char eType, int lrOff, int udOff)
         {
