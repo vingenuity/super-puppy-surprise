@@ -160,6 +160,7 @@
     <Compile Include="DPSFParticles\TestParticle3.cs" />
     <Compile Include="GameMech\GameMechanics.cs" />
     <Compile Include="GameObjects\Bullet.cs" />
+    <Compile Include="GameObjects\EnterNextRoomTrigger.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Monster1.cs" />
     <Compile Include="GameObjects\Player.cs" />
