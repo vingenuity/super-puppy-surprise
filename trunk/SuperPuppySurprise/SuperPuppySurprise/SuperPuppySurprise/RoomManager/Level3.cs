@@ -31,7 +31,7 @@ namespace SuperPuppySurprise.RoomManager
         public void CheckIfProcede()
         {
             Game1.hud.ShowLevelClearedText = false;
-            if (GameMechanics.Score > 300)
+            if (GameMechanics.Score > 2000)
             {
                 StillSpawning = false;
                 if (GameState.enemies.Count == 0 && Game1.SpawnManager.SpawnList.Count == 0)

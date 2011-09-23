@@ -42,7 +42,7 @@ namespace GameStateManagement
 
         float pauseAlpha;
 
-        Texture2D Background;
+        
 
         #endregion
 
@@ -95,7 +95,7 @@ namespace GameStateManagement
             for (int i = 0; i < Game1.sceneObjects.Count; i++)
                 Game1.sceneObjects[i].Load(Game1.game.Content, Game1.spriteBatch);
 
-            Background = Game1.game.Content.Load<Texture2D>("Background");
+            Game1.Background = Game1.game.Content.Load<Texture2D>("Background");
 
             ScreenManager.Game.ResetElapsedTime();
 
@@ -200,7 +200,7 @@ namespace GameStateManagement
         {
             Game1.spriteBatch.Begin();
 
-            Game1.spriteBatch.Draw(Background, new Rectangle(0, 0, 500, 500), Color.White);
+            Game1.spriteBatch.Draw(Game1.Background, new Rectangle(0, 0, 500, 500), Color.White);
             Game1.spriteBatch.End();
 
             Game1.ParticleEngine.Draw();
