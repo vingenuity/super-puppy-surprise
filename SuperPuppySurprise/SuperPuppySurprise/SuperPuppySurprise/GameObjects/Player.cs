@@ -119,6 +119,8 @@ namespace SuperPuppySurprise.GameObjects
         {
             Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
             currentFireMode++;
+            if (currentFireMode % 5 == 1)
+                currentFireMode++;
             if (currentFireMode % 5 == 4)
                 currentFireSpeed = 3;
             else
