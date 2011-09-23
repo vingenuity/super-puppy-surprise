@@ -27,7 +27,10 @@ namespace SuperPuppySurprise.GameObjects
 
         public void Load()
         {
-            texture = texture2;
+            texture = Game1.game.Content.Load<Texture2D>("asset_enemy_base");
+            eyeTexture = Game1.game.Content.Load<Texture2D>("asset_enemy_eye");
+            Orig = new Vector2(eyeTexture.Width / 2, eyeTexture.Height / 2);
+            scale = (float)(Size.X / (eyeTexture.Width * 1.0)); 
         }
         public override void Update(GameTime gameTime)
         {
@@ -43,12 +46,23 @@ namespace SuperPuppySurprise.GameObjects
             Direction.Normalize();
 
             Velocity = Direction * Speed;
+            CalculateRotation();
+        }
+        Texture2D eyeTexture;
+        Vector2 Orig;
+        float scale = 1;
+        float eyeRotation = 0;
+        void CalculateRotation()
+        {
+            Vector2 EyeDirection = GameState.players[0].Position - Position;
+            EyeDirection.Normalize();
+            eyeRotation = (float)Math.Atan2(EyeDirection.X, -EyeDirection.Y);
         }
         public override void Draw(GameTime gameTime)
         {
             Rectangle r = new Rectangle((int)(Position.X - Size.X / 2), (int)(Position.Y - Size.Y / 2), (int)Size.X, (int)Size.Y);
             Game1.spriteBatch.Draw(texture, r, Color.White);
-            base.Draw(gameTime);
+            Game1.spriteBatch.Draw(eyeTexture, ((Position)), null, Color.White, eyeRotation, Orig, .1f, SpriteEffects.None, 0);
         }
         public override void Unload()
         {
