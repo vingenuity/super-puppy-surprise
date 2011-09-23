@@ -43,7 +43,6 @@ namespace SuperPuppySurprise.GameObjects
             Vector2 bulletDir = closest - Position;
             bulletDir.Normalize();
             fireBullet(gameTime, bulletDir);
-
         }
         public override void Draw(GameTime gameTime)
         {
@@ -54,8 +53,6 @@ namespace SuperPuppySurprise.GameObjects
 
         public void fireBullet(GameTime gameTime, Vector2 bulletDir)
         {
-            //construct new bullet, giving position, direction
-            //to do: prevent rapid fire
             elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
             if (elapsedTime < fireSpeed)
                 return;
@@ -64,7 +61,6 @@ namespace SuperPuppySurprise.GameObjects
             Bullet b = new Bullet(newPosition, bulletDir);
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
-           // Game1.PhysicsEngine.AddTrigger(b);
         }
     }
 }

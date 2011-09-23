@@ -47,7 +47,6 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Unload()
         {
-
             base.Unload();
         }
         public override void OnCollision(GameObject obj)

@@ -81,9 +81,12 @@ Content\Sound\Complete\Electric_hit.xnb
 Content\Sound\Complete\explode.xnb
 Content\Sound\Complete\hover.xnb
 Content\Sound\Complete\single_shot.xnb
+<<<<<<< .mine
+=======
 Content\asset_enemy_base.xnb
 Content\asset_enemy_eye.xnb
 Content\asset_sideBoard.xnb
+>>>>>>> .r124
 Content\Sound\Soundauto.xgs
 Content\Sound\Waves.xwb
 Content\Sound\Sounds.xsb
