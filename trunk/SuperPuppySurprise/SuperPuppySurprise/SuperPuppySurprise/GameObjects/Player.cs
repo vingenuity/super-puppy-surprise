@@ -32,9 +32,8 @@ namespace SuperPuppySurprise.GameObjects
         int currentFireSpeed = 2;
         int currentFireMode = 0;
         double[] fireSpeeds = { 800, 500, 300, 1 };
-        public int[] rounds = { 0, 2000, 2000, 2000, 2000 };
+        public int[] rounds = { 0, 100, 100, 100, 100 };
         bool rotateHelper = true;
-        bool shotGunHelper = true;
         double elapsedTime;
         Random random;
         GamePadState gamePadState;
@@ -259,17 +258,10 @@ namespace SuperPuppySurprise.GameObjects
                 setFireMode(4);
             if (gamePadState.Buttons.B == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D3))
                 setFireMode(3);
-            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == true)
-                setFireMode(1);
-            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == false)
+            if (gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2))
                 setFireMode(2);
             if (gamePadState.Buttons.Y == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D1))
                 setFireMode(0);
-
-            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 1)
-                shotGunHelper = false;
-            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 2)
-                shotGunHelper = true;
 
             //this function is for testing purposes only
             //the player will switch weapons in game via power-ups
