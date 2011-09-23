@@ -74,8 +74,9 @@ namespace GameStateManagement
                 keyboardState = Keyboard.GetState();
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
-                if (keyboardState.IsKeyDown(Keys.Enter) || keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
-                    LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, new MainMenuScreen());
+                //keyboardState.IsKeyDown(Keys.Enter) || 
+                if (keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
+                    this.ExitScreen();
 
             }
             KeyboardState keyboardState; GamePadState gamePadState;

@@ -32,17 +32,20 @@ namespace GameStateManagement
             // Create our menu entries.
             Game1.SoundEngine.TurnSoundOn(ConstantSounds.MenuBackground);
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
-            MenuEntry optionsMenuEntry = new MenuEntry("Options");
+            MenuEntry creditsMenuEntry = new MenuEntry("Credits");
+            MenuEntry controlsMenuEntry = new MenuEntry("Controls");
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
 
             // Hook up menu event handlers.
             playGameMenuEntry.Selected += PlayGameMenuEntrySelected;
-            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            controlsMenuEntry.Selected += ControlsMenuEntrySelected;
+            creditsMenuEntry.Selected += CreditsMenuEntrySelected;
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu.
             MenuEntries.Add(playGameMenuEntry);
-            MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(controlsMenuEntry);
+            MenuEntries.Add(creditsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
         }
 
@@ -66,11 +69,18 @@ namespace GameStateManagement
         /// <summary>
         /// Event handler for when the Options menu entry is selected.
         /// </summary>
-        void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void ControlsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
+            ScreenManager.AddScreen(new CreditsScreen(), e.PlayerIndex);
         }
 
+        /// <summary>
+        /// Event handler for when the Options menu entry is selected.
+        /// </summary>
+        void CreditsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new ControlsScreen(), e.PlayerIndex);
+        }
 
         /// <summary>
         /// When the user cancels the main menu, ask if they want to exit the sample.

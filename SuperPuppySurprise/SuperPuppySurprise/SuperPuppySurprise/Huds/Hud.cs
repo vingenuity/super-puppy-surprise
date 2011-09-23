@@ -16,6 +16,7 @@ namespace SuperPuppySurprise.Huds
         Texture2D LightOn;
         Texture2D LightOff;
         Texture2D complete;
+        Texture2D sidebar;
         RoomMap roomMap;
         Rectangle rectFinish = new Rectangle(100, 100, 300, 300);
         public Hud()
@@ -30,6 +31,7 @@ namespace SuperPuppySurprise.Huds
             LightOn = Game1.game.Content.Load<Texture2D>("LightOff");
             LightOff = Game1.game.Content.Load<Texture2D>("LightOn");
             complete = Game1.game.Content.Load<Texture2D>("levelcomplete");
+            sidebar = Game1.game.Content.Load<Texture2D>("asset_sideBoard");
         }
         public void Update(GameTime gameTime)
         {
@@ -38,6 +40,7 @@ namespace SuperPuppySurprise.Huds
         public bool ShowLevelClearedText = false;
         public void Draw(GameTime gameTime)
         {
+            //spriteBatch.Draw(sidebar, new Rectangle(500, 0, 250, 500), Color.White);
             Player p;
             p = Game1.sceneObjects[0] as Player;
             spriteBatch.DrawString(spriteFont, "Score: " + GameMechanics.Score, new Vector2(560,20), Color.Black);
