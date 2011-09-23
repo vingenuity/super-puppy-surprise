@@ -78,6 +78,10 @@ namespace SuperPuppySurprise.GameObjects
             testParticle.Start();
             Game1.SoundEngine.StartHover();
         }
+        public int getCurrentFireMode() 
+        {
+            return currentFireMode;
+        }
         public bool goingToRoom = false;
         Vector2 PositionToGoTo;
         public void GoToRoom(int x, int y)
