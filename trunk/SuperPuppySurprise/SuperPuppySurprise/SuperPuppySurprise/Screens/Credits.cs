@@ -27,7 +27,7 @@ namespace GameStateManagement
 
             #region Initialization
             public static bool loaded = false;
-
+            double time = .5;
             /// <summary>
             /// Constructor.
             /// </summary>
@@ -59,7 +59,6 @@ namespace GameStateManagement
 
             #region Update and Draw
 
-
             /// <summary>
             /// Updates the state of the game. This method checks the GameScreen.IsActive
             /// property, so the game will stop updating when the pause menu is active,
@@ -70,13 +69,17 @@ namespace GameStateManagement
             {
                 base.Update(gameTime, otherScreenHasFocus, false);
 
+                time -= gameTime.ElapsedGameTime.TotalSeconds;
 
                 keyboardState = Keyboard.GetState();
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
-                //keyboardState.IsKeyDown(Keys.Enter) || 
-                if (keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
-                    this.ExitScreen();
+                //
+                if (time < 0)
+                {
+                    if (keyboardState.IsKeyDown(Keys.Enter) || keyboardState.IsKeyDown(Keys.Space) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
+                        this.ExitScreen();
+                }
 
             }
             KeyboardState keyboardState; GamePadState gamePadState;
