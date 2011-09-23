@@ -42,6 +42,7 @@ namespace SuperPuppySurprise.GameObjects
         public Player(int id, Vector2 Position)
             : base(Position)
         {
+
             random = new Random();
             Direction = Vector2.UnitY * -1;
             playerID = id;
@@ -301,6 +302,8 @@ namespace SuperPuppySurprise.GameObjects
         public override void Unload()
         {
             Game1.SoundEngine.StopHover();
+
+            Game1.screenManager.AddScreen(new VictoryDefeatScreen("DOOOOOOOOOOOOOOM!!!!", "You have been deactivated"), PlayerIndex.One);
             Game1.ParticleEngine.Remove(testParticle);
             GameState.players.Remove(this);
             Game1.PhysicsEngine.Remove(this);
