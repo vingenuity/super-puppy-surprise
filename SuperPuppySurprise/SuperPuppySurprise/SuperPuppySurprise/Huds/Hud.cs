@@ -56,7 +56,7 @@ namespace SuperPuppySurprise.Huds
             spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             if (GameMechanics.BottomLight)
             {
-                spriteBatch.Draw(LightOn, new Rectangle(243, 484, 20, 20), Color.White);
+                spriteBatch.Draw(LightOn, new Rectangle(241, 480, 20, 20), Color.White);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace SuperPuppySurprise.Huds
             }
             if (GameMechanics.TopLight)
             {
-                spriteBatch.Draw(LightOn, new Rectangle(240, -1, 20, 20), Color.White);
+                spriteBatch.Draw(LightOn, new Rectangle(240, 0, 20, 20), Color.White);
             }
             else
             {
@@ -72,7 +72,7 @@ namespace SuperPuppySurprise.Huds
             }
             if (GameMechanics.LeftLight)
             {
-                spriteBatch.Draw(LightOn, new Rectangle(0, 235, 20, 20), Color.White);
+                spriteBatch.Draw(LightOn, new Rectangle(0, 239, 20, 20), Color.White);
             }
             else
             {
