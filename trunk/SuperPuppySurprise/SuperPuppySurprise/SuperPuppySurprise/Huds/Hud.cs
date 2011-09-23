@@ -56,11 +56,24 @@ namespace SuperPuppySurprise.Huds
             {
                 p = (Player)GameState.players[0];
                 spriteBatch.DrawString(spriteFont, "" + GameMechanics.Score, new Vector2(620, 60), Color.White);
-                int rounds = p.rounds[2];
+                int rounds;
                 int offsetY = 25;
                 int offsetX = 25;
                 int i = 0; int j = 0;
-                while (rounds > 25 && i<4)
+                rounds = p.rounds[3];
+                while (rounds > 25 && i < 4)
+                {
+                    spriteBatch.Draw(gun2, new Rectangle(614 + offsetX * i, 85 + offsetY * j, 15, 15), Color.White);
+                    i++;
+                    rounds -= 25;
+                    // spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(600, 110), Color.White);
+
+                }
+                
+                j++;
+                i = 0;
+                rounds = p.rounds[2];
+                while (rounds > 25 && i < 4)
                 {
                     spriteBatch.Draw(gun1, new Rectangle(614 + offsetX * i, 85 + offsetY * j, 15, 15), Color.White);
                     i++;
@@ -69,18 +82,7 @@ namespace SuperPuppySurprise.Huds
                 }
                 j++;
                 i = 0;
-                rounds = p.rounds[3];
-                while (rounds > 25 && i < 4)
-                {
-                    spriteBatch.Draw(gun2, new Rectangle(614 + offsetX * i, 85 + offsetY * j, 15, 15), Color.White);
-                    i++;
-                    rounds -= 25;
-                   // spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(600, 110), Color.White);
-                    
-                }
-                j++;
-                i = 0;
-                rounds = p.rounds[3];
+                rounds = p.rounds[4];
                 while (rounds > 25 && i < 4)
                 {
                     spriteBatch.Draw(gun3, new Rectangle(614 + offsetX * i, 85 + offsetY * j, 15, 15), Color.White);
