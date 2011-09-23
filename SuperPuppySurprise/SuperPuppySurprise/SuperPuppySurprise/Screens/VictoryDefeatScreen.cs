@@ -25,11 +25,11 @@ namespace GameStateManagement
         /// <summary>
         /// Constructor.
         /// </summary>
-        public VictoryDefeatScreen(string p)
+        public VictoryDefeatScreen(string p, string p2)
             : base(p)
         {
             // Create our menu entries.
-            MenuEntry restartGameMenuEntry = new MenuEntry("You have escaped...");
+            MenuEntry restartGameMenuEntry= new MenuEntry(p2);
             MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
 
             // Hook up menu event handlers.

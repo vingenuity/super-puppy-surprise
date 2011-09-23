@@ -5,6 +5,7 @@ using System.Text;
 using SuperPuppySurprise.GameObjects;
 using Microsoft.Xna.Framework;
 using SuperPuppySurprise.GameMech;
+using System.Diagnostics;
 
 namespace SuperPuppySurprise.PhysicsEngines
 {
@@ -48,6 +49,10 @@ namespace SuperPuppySurprise.PhysicsEngines
                 for (int j = 0; j < PhysicsGameObjects.Count; j++)
                 {
                     gameObject = PhysicsGameObjects[j];
+                    if (gameObject == null && PhysicsGameObjects[j] != null)
+                    {
+                        Debug.Assert(false);
+                    }
                     if (CollidesSquares(gameObject, trigger))
                         trigger.OnCollision(gameObject);
                 }

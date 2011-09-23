@@ -93,7 +93,11 @@ namespace GameStateManagement
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
                 if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
+                {
+                    //Game1.gameplayScreen = new GameplayScreen();
+                    //LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, Game1.gameplayScreen);
                     LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, new GameplayScreen());
+                }
 
             }
             KeyboardState keyboardState; GamePadState gamePadState;

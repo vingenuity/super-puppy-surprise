@@ -44,7 +44,6 @@ namespace SuperPuppySurprise.Huds
             Player p;
             p = Game1.sceneObjects[0] as Player;
             spriteBatch.DrawString(spriteFont, "Score: " + GameMechanics.Score, new Vector2(560,20), Color.Black);
-            spriteBatch.DrawString(spriteFont, "Shotgun: " + p.rounds[1], new Vector2(500, 60), Color.Black);
             spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(500, 85), Color.Black);
             spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(500, 110), Color.Black);
             spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);

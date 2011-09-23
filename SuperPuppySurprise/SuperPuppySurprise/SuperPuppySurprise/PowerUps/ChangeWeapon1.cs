@@ -28,8 +28,8 @@ namespace SuperPuppySurprise.PowerUps
         {
             Player p = gameObject as Player;
             p.rounds[type] += 12;
-            //p.ChangeWeapon(type);
-            //base.Effect(gameObject);
+            if (type == 1)
+                GameMech.GameMechanics.Score += 12;
         }
     }
 }
