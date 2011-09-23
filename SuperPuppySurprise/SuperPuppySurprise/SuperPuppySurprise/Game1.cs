@@ -44,7 +44,7 @@ namespace SuperPuppySurprise
         //public static Spawner spawner;
         public static SoundManager SoundEngine;
         public static SpawnManager SpawnManager;
-
+        public static Texture2D Background;
         public static RoomEngine RoomManager;
 
         static List<GameObject> gameObjectAddList = new List<GameObject>();
