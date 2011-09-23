@@ -9,6 +9,8 @@
 
 #region Using Statements
 using Microsoft.Xna.Framework;
+using SuperPuppySurprise;
+using SuperPuppySurprise.Sounds;
 #endregion
 
 namespace GameStateManagement
@@ -28,6 +30,7 @@ namespace GameStateManagement
         public VictoryDefeatScreen(string p, string p2)
             : base(p)
         {
+            Game1.SoundEngine.PlaySound(SoundEffects.Victory);
             // Create our menu entries.
             MenuEntry restartGameMenuEntry= new MenuEntry(p2);
             MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
@@ -39,6 +42,9 @@ namespace GameStateManagement
             // Add entries to the menu.
             MenuEntries.Add(restartGameMenuEntry);
             //MenuEntries.Add(quitGameMenuEntry);
+
+            //Stop the hovering
+            Game1.SoundEngine.StopHover();
         }
 
 
@@ -80,7 +86,6 @@ namespace GameStateManagement
         /// </summary>
         void RestartEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-
             LoadingScreen.Load(ScreenManager, false, null, new BackgroundScreen(),
                                                            new MainMenuScreen());
         }
