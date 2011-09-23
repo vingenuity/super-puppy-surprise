@@ -32,8 +32,9 @@ namespace SuperPuppySurprise.GameObjects
         int currentFireSpeed = 2;
         int currentFireMode = 0;
         double[] fireSpeeds = { 800, 500, 300, 1 };
-        public int[] rounds = { 0, 20, 20, 20, 20 };
+        public int[] rounds = { 0, 2000, 2000, 2000, 2000 };
         bool rotateHelper = true;
+        bool shotGunHelper = true;
         double elapsedTime;
         Random random;
         GamePadState gamePadState;
@@ -114,8 +115,6 @@ namespace SuperPuppySurprise.GameObjects
         {
             Game1.SoundEngine.PlaySound(SoundEffects.weaponchange);
             currentFireMode++;
-            if (currentFireMode % 5 == 1)
-                currentFireMode++;
             if (currentFireMode % 5 == 4)
                 currentFireSpeed = 3;
             else
@@ -255,10 +254,17 @@ namespace SuperPuppySurprise.GameObjects
                 setFireMode(4);
             if (gamePadState.Buttons.B == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D3))
                 setFireMode(3);
-            if (gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2))
+            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == true)
+                setFireMode(1);
+            if ((gamePadState.Buttons.X == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D2)) && shotGunHelper == false)
                 setFireMode(2);
             if (gamePadState.Buttons.Y == ButtonState.Pressed || thisKeyState.IsKeyDown(Keys.D1))
                 setFireMode(0);
+
+            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 1)
+                shotGunHelper = false;
+            if ((gamePadState.Buttons.X == ButtonState.Released || thisKeyState.IsKeyUp(Keys.D1)) && currentFireMode == 2)
+                shotGunHelper = true;
 
             //this function is for testing purposes only
             //the player will switch weapons in game via power-ups
@@ -274,7 +280,7 @@ namespace SuperPuppySurprise.GameObjects
             if (thisKeyState.IsKeyUp(Keys.Tab) || gamePadState.Buttons.RightShoulder == ButtonState.Pressed)
                 rotateHelper = true;
 
-            if (thisKeyState.IsKeyDown(Keys.O) || gamePadState.Buttons.BigButton == ButtonState.Pressed)
+            if (thisKeyState.IsKeyDown(Keys.O))
             {
                 Unload();
             }
@@ -295,12 +301,10 @@ namespace SuperPuppySurprise.GameObjects
         public override void Unload()
         {
             Game1.SoundEngine.StopHover();
-            Game1.screenManager.AddScreen(new VictoryDefeatScreen("DOOOOOOOOOOOOOOOOOOOOOM!!!!!!!!!!!!!!!!!!", "You have escaped!"), PlayerIndex.One);
-            /*
             Game1.ParticleEngine.Remove(testParticle);
             GameState.players.Remove(this);
             Game1.PhysicsEngine.Remove(this);
-            Game1.game.RemoveGameObject(this);*/
+            Game1.game.RemoveGameObject(this);
             base.Unload();
         }
         public static float TurretRotationAmount;
@@ -333,8 +337,8 @@ namespace SuperPuppySurprise.GameObjects
             Bullet b = new Bullet(newPosition, bulletDir);
             Game1.sceneObjects.Add(b);
             b.Load(Game1.game.Content, spriteBatch);
-            //Game1.PhysicsEngine.AddTrigger(b);
             Game1.SoundEngine.PlaySound(SoundEffects.shoot);
+            //Game1.PhysicsEngine.AddTrigger(b);
         }
         public override void OnDamage(double damage)
         {
@@ -355,6 +359,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         private void fireShotGun(Vector2 position, Vector2 bulletDir)
         {
+            
             if (rounds[1] == 0)
             {
                 currentFireMode = 0;
@@ -369,6 +374,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         private void fireShotGun2(Vector2 position, Vector2 bulletDir)
         {
+         
             if (rounds[2] == 0)
             {
                 currentFireMode = 0;
@@ -419,9 +425,13 @@ namespace SuperPuppySurprise.GameObjects
             position2.X = position.X - 8 * bulletDir.X;
             position2.Y = position.Y - 8 * bulletDir.Y;
             fireBullet(position, bulletDir);
+            
             fireBullet(position1, bulletDir);
-            fireBullet(position2, bulletDir); 
+            
+            fireBullet(position2, bulletDir);
+            
             rounds[3]--;
+
         }
         public float getRandomAdjust()
         {

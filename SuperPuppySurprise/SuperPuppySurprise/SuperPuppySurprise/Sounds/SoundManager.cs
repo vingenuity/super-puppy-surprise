@@ -21,6 +21,8 @@ namespace SuperPuppySurprise.Sounds
         weaponchange,
         explode,
         shoot,
+        Death,
+        Victory,
         MenuSelect,
         Hit,
         PlayerAttack,
@@ -156,6 +158,16 @@ namespace SuperPuppySurprise.Sounds
                         shot.Play();
                         break;
 
+                    case SoundEffects.Victory:
+                        Cue victory = soundBank.GetCue("SPSVictory");
+                        victory.Play();
+                        break;
+
+                    case SoundEffects.Death:
+                        Cue death = soundBank.GetCue("SPSDeath");
+                        death.Play();
+                        break;
+
                     case SoundEffects.Hit:
                         SoundEffectInstance s2 = hit[(random.Next(playerattack.Count))].CreateInstance();
                         s2.Volume = s2.Volume / 7;
@@ -184,6 +196,7 @@ namespace SuperPuppySurprise.Sounds
             }
             catch { }
         }
+
 
         public void Update() { 
           //  pitch = ambient.GetVariable
