@@ -567,13 +567,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Copy of TestPicture2.png">
-      <Name>Copy of TestPicture2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="TestPicture3.png">
       <Name>TestPicture3</Name>
       <Importer>TextureImporter</Importer>
