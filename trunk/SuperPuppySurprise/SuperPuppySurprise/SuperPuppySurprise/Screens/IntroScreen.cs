@@ -62,7 +62,7 @@ namespace GameStateManagement
 
              
 
-                text = Game1.game.Content.Load<Texture2D>("LightOff");
+                text = Game1.game.Content.Load<Texture2D>("asset_storyBoard");
                 Game1.spriteBatch = new SpriteBatch(Game1.game.GraphicsDevice);
             }
 
@@ -77,7 +77,7 @@ namespace GameStateManagement
 
             #region Update and Draw
 
-
+            double time=5;
             /// <summary>
             /// Updates the state of the game. This method checks the GameScreen.IsActive
             /// property, so the game will stop updating when the pause menu is active,
@@ -88,11 +88,13 @@ namespace GameStateManagement
             {
                 base.Update(gameTime, otherScreenHasFocus, false);
 
+                time -= gameTime.ElapsedGameTime.TotalSeconds;
+
 
                 keyboardState = Keyboard.GetState();
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
-                if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
+                if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A) || time < 0)
                 {
                     //Game1.gameplayScreen = new GameplayScreen();
                     //LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, Game1.gameplayScreen);

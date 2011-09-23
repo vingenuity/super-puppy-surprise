@@ -71,7 +71,7 @@ namespace GameStateManagement
         /// </summary>
         void ControlsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new CreditsScreen(), e.PlayerIndex);
+            ScreenManager.AddScreen(new ControlsScreen(), e.PlayerIndex);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace GameStateManagement
         /// </summary>
         void CreditsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new ControlsScreen(), e.PlayerIndex);
+            ScreenManager.AddScreen(new CreditsScreen(), e.PlayerIndex);
         }
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace GameStateManagement
 
              
 
-                text = Game1.game.Content.Load<Texture2D>("LightOff");
+                text = Game1.game.Content.Load<Texture2D>("Credits");
                 Game1.spriteBatch = new SpriteBatch(Game1.game.GraphicsDevice);
             }
 

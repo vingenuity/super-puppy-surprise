@@ -54,9 +54,12 @@ namespace SuperPuppySurprise.GameObjects
         float eyeRotation = 0;
         void CalculateRotation()
         {
-            Vector2 EyeDirection = GameState.players[0].Position - Position;
-            EyeDirection.Normalize();
-            eyeRotation = (float)Math.Atan2(EyeDirection.X, -EyeDirection.Y);
+            if (GameState.players.Count > 0)
+            {
+                Vector2 EyeDirection = GameState.players[0].Position - Position;
+                EyeDirection.Normalize();
+                eyeRotation = (float)Math.Atan2(EyeDirection.X, -EyeDirection.Y);
+            }
         }
         public override void Draw(GameTime gameTime)
         {

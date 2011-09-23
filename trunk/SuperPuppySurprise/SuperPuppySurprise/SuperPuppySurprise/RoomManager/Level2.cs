@@ -41,6 +41,7 @@ namespace SuperPuppySurprise.RoomManager
                     {
                         NextLevel = true;
                         new EnterNextRoomTrigger(RoomType.Level2);
+                        
                         for (int i = 0; i < GameState.players.Count; i++)
                             GameState.players[i].GoToRoom(400, 250);
                     }
