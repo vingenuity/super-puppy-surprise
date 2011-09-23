@@ -58,7 +58,7 @@ namespace GameStateManagement
             }
 
             #region Update and Draw
-
+            double time = .5;
 
             /// <summary>
             /// Updates the state of the game. This method checks the GameScreen.IsActive
@@ -74,8 +74,13 @@ namespace GameStateManagement
                 keyboardState = Keyboard.GetState();
                 gamePadState = GamePad.GetState(PlayerIndex.One);
 
-                if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
-                    LoadingScreen.Load(ScreenManager, true, PlayerIndex.One, new MainMenuScreen());
+                time -= gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (time < 0)
+                {
+                    if (keyboardState.IsKeyDown(Keys.Enter) || gamePadState.IsButtonDown(Buttons.Start) || gamePadState.IsButtonDown(Buttons.A))
+                        this.ExitScreen();
+                }
 
             }
             KeyboardState keyboardState; GamePadState gamePadState;
