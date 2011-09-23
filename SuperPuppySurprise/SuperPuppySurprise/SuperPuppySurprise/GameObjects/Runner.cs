@@ -30,6 +30,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
+            if (GameState.enemies.Count() < 2) Speed = 350;
             Vector2 closest = GameState.findClosestPlayerTo(Position);
 
             Vector2 lastDirection = this.Direction;
