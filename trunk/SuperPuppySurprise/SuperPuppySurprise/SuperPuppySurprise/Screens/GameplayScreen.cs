@@ -37,7 +37,7 @@ namespace GameStateManagement
     class GameplayScreen : GameScreen
     {
         #region Fields
-
+       
         SpriteFont gameFont;
 
         float pauseAlpha;

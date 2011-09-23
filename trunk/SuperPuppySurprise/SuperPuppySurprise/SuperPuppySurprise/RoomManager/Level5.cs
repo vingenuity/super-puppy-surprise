@@ -42,7 +42,7 @@ namespace SuperPuppySurprise.RoomManager
                     if (!NextLevel)
                     {
                         NextLevel = true;
-                        Game1.screenManager.AddScreen(new VictoryDefeatScreen("FREEEEEDOOOOOMMMM!!!!!!!!!!!!!!!"),PlayerIndex.One);
+                        Game1.screenManager.AddScreen(new VictoryDefeatScreen("FREEEEEDOOOOOMMMM!!!!!!!!!!!!!!!", "You have escaped!"),PlayerIndex.One);
                     }
                 }
             }
