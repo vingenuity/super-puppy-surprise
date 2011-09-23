@@ -73,6 +73,10 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnCollision(GameObject obj)
         {
+            if (obj is Player)
+            {
+                ((Player)(obj)).Unload();
+            }
             base.OnCollision(obj);
         }
         public override void AddGameObjectToScene()
