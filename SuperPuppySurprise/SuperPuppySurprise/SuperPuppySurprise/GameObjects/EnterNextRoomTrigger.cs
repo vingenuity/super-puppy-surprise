@@ -65,7 +65,7 @@ namespace SuperPuppySurprise.GameObjects
         {
             if (gameObject is Player)
             {
-                ((Player)(gameObject)).Position = new Vector2(250 - 16, 250 - 16);
+                ((Player)(gameObject)).Position = new Vector2(60 - 16, 250 - 16);
                 ((Player)(gameObject)).goingToRoom = false;
                 nextRoom();
             }
