@@ -18,10 +18,12 @@ namespace SuperPuppySurprise.GameObjects
         //For shooting
         double fireSpeed = 500;
         double elapsedTime;
+        double timeSinceSpawn;
         
         public Shooter(Vector2 Position) : base(Position)
         {
             elapsedTime = fireSpeed;
+            timeSinceSpawn = 0;
         }
 
         public override void Load(ContentManager Content, SpriteBatch spriteBatch)
@@ -32,6 +34,10 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
+            //Last enemy superpower clause
+            if (GameState.enemies.Count() < 2 && timeSinceSpawn > 2) fireSpeed = 200;
+            timeSinceSpawn += gameTime.ElapsedGameTime.TotalSeconds;
+
             Vector2 closest = GameState.findClosestPlayerTo(Position);
 
             Vector2 lastDirection = this.Direction;

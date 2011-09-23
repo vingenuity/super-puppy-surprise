@@ -345,13 +345,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="asset_stage.png">
-      <Name>Background</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Menu\background.png">
       <Name>background</Name>
       <Importer>TextureImporter</Importer>
