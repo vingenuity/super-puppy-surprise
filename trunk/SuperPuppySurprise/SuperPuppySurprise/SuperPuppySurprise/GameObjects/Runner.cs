@@ -12,13 +12,14 @@ namespace SuperPuppySurprise.GameObjects
 {
     public class Runner : Monster
     {
-
+        double timeSinceSpawn;
         Texture2D texture;
         SpriteBatch spriteBatch;
 
         public Runner(Vector2 Position) : base(Position)
         {
             Speed = 200;
+            timeSinceSpawn = 0;
         }
       
 
@@ -30,7 +31,10 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
-            if (GameState.enemies.Count() < 2) Speed = 350;
+            //Last enemy superpower clause
+            if (GameState.enemies.Count() < 2 && timeSinceSpawn > 2) Speed = 325;
+            timeSinceSpawn += gameTime.ElapsedGameTime.TotalSeconds;
+
             Vector2 closest = GameState.findClosestPlayerTo(Position);
 
             Vector2 lastDirection = this.Direction;

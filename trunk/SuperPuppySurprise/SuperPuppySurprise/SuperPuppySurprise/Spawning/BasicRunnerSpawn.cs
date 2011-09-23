@@ -35,13 +35,13 @@ namespace SuperPuppySurprise.Spawning
                     GameMechanics.BottomLight = true;
                     if(!fire1)
                     {
-                        spawnEnemy('r', 0, 0);
+                        spawnEnemy('r', 20, 0);
+                        spawnEnemy('r', -20, 0);
                         fire1 = true;
                     }
                     if(!fire2 && timer > spawn_delay)
                     {
-                        spawnEnemy('r', 20, 0);
-                        spawnEnemy('r', -20, 0);
+                        spawnEnemy('r', 0, 0);
                         fire2 = true;
                     }
                     if(!fire3 && timer > spawn_delay * 2)
@@ -61,14 +61,13 @@ namespace SuperPuppySurprise.Spawning
                    
                     if(!fire5 && timer > spawn_delay * 4)
                     {
-                
-                        spawnEnemy('r', 0, 0);
+                        spawnEnemy('r', 20, 0);
+                        spawnEnemy('r', -20, 0);
                         fire5 = true;
                     }
                     if(!fire6 && timer > spawn_delay  * 5)
                     {
-                        spawnEnemy('r', 20, 0);
-                        spawnEnemy('r', -20, 0);
+                        spawnEnemy('r', 0, 0);
                         fire6 = true;
                     }
                     if(!fire7 && timer > spawn_delay * 6)
@@ -91,13 +90,13 @@ namespace SuperPuppySurprise.Spawning
                     GameMechanics.RightLight = true;
                     if(!fire1)
                     {
-                        spawnEnemy('r', 0, 0);
+                        spawnEnemy('r', 20, 0);
+                        spawnEnemy('r', -20, 0);
                         fire1 = true;
                     }
                     if(!fire2 && timer > spawn_delay)
                     {
-                        spawnEnemy('r', 20, 0);
-                        spawnEnemy('r', -20, 0);
+                        spawnEnemy('r', 0, 0);
                         fire2 = true;
                     }
                     if(!fire3 && timer > spawn_delay * 2)
@@ -116,14 +115,13 @@ namespace SuperPuppySurprise.Spawning
                     lastDoor = 1;
                     if(!fire5 && timer > spawn_delay * 4)
                     {
-                
-                        spawnEnemy('r', 0, 0);
+                        spawnEnemy('r', 20, 0);
+                        spawnEnemy('r', -20, 0);
                         fire5 = true;
                     }
                     if(!fire6 && timer > spawn_delay  * 5)
                     {
-                        spawnEnemy('r', 20, 0);
-                        spawnEnemy('r', -20, 0);
+                        spawnEnemy('r', 0, 0);
                         fire6 = true;
                     }
                     if(!fire7 && timer > spawn_delay * 6)
