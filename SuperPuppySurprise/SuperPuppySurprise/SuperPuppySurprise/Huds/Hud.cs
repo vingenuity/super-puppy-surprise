@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperPuppySurprise.GameMech;
 using SuperPuppySurprise.GameObjects;
+using SuperPuppySurprise.AIRoutines;
 
 namespace SuperPuppySurprise.Huds
 {
@@ -40,32 +41,51 @@ namespace SuperPuppySurprise.Huds
         public bool ShowLevelClearedText = false;
         public void Draw(GameTime gameTime)
         {
-            //spriteBatch.Draw(sidebar, new Rectangle(500, 0, 250, 500), Color.White);
+            spriteBatch.Draw(sidebar, new Rectangle(500, 0, 250, 500), Color.White);
             Player p;
-            p = Game1.sceneObjects[0] as Player;
-            spriteBatch.DrawString(spriteFont, "Score: " + GameMechanics.Score, new Vector2(560,20), Color.Black);
-            spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(500, 85), Color.Black);
-            spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(500, 110), Color.Black);
-            spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(500, 135), Color.Black);
+            if (GameState.players.Count > 0)
+            {
+                p = (Player)GameState.players[0];
+                spriteBatch.DrawString(spriteFont, "" + GameMechanics.Score, new Vector2(620, 60), Color.White);
+                spriteBatch.DrawString(spriteFont, "Super Shotty: " + p.rounds[2], new Vector2(600, 85), Color.White);
+                spriteBatch.DrawString(spriteFont, "Burstfire: " + p.rounds[3], new Vector2(600, 110), Color.White);
+                spriteBatch.DrawString(spriteFont, "Automatic: " + p.rounds[4], new Vector2(600, 135), Color.White);
+            }
             if (ShowLevelClearedText)
                 spriteBatch.Draw(complete, rectFinish, Color.White);
             spriteBatch.DrawString(spriteFont, "Rooms", new Vector2(600, 300), Color.Black);
             if (GameMechanics.BottomLight)
-                spriteBatch.Draw(LightOn, new Rectangle(243,484, 20, 20), Color.White);
+            {
+                spriteBatch.Draw(LightOn, new Rectangle(243, 484, 20, 20), Color.White);
+            }
             else
-                spriteBatch.Draw(LightOff, new Rectangle(243, 484, 20, 20), Color.White);
+            {
+              //  spriteBatch.Draw(LightOff, new Rectangle(243, 484, 20, 20), Color.White);
+            }
             if (GameMechanics.TopLight)
+            {
                 spriteBatch.Draw(LightOn, new Rectangle(240, -1, 20, 20), Color.White);
+            }
             else
-                spriteBatch.Draw(LightOff, new Rectangle(240, -1, 20, 20), Color.White);
+            {
+                //spriteBatch.Draw(LightOff, new Rectangle(240, -1, 20, 20), Color.White);
+            }
             if (GameMechanics.LeftLight)
+            {
                 spriteBatch.Draw(LightOn, new Rectangle(0, 235, 20, 20), Color.White);
+            }
             else
-                spriteBatch.Draw(LightOff, new Rectangle(0, 235, 20, 20), Color.White);
+            {
+                //spriteBatch.Draw(LightOff, new Rectangle(0, 235, 20, 20), Color.White);
+            }
             if (GameMechanics.RightLight)
-                spriteBatch.Draw(LightOn, new Rectangle(480, 240,20, 20), Color.White);
+            {
+                spriteBatch.Draw(LightOn, new Rectangle(480, 240, 20, 20), Color.White);
+            }
             else
-                spriteBatch.Draw(LightOff, new Rectangle(480, 240, 20, 20), Color.White);
+            {
+                //spriteBatch.Draw(LightOff, new Rectangle(480, 240, 20, 20), Color.White);
+            }
             roomMap.Draw(gameTime);
         }
     }

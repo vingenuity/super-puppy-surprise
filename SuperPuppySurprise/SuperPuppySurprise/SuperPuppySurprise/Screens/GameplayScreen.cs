@@ -95,7 +95,7 @@ namespace GameStateManagement
             for (int i = 0; i < Game1.sceneObjects.Count; i++)
                 Game1.sceneObjects[i].Load(Game1.game.Content, Game1.spriteBatch);
 
-            Game1.Background = Game1.game.Content.Load<Texture2D>("Background");
+            Game1.Background = Game1.game.Content.Load<Texture2D>("asset_stage_01");
 
             ScreenManager.Game.ResetElapsedTime();
 

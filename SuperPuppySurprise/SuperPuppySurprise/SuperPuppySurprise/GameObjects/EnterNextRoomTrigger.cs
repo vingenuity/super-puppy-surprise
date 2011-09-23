@@ -52,14 +52,27 @@ namespace SuperPuppySurprise.GameObjects
         }
         void nextRoom()
         {
-            if(name == RoomType.Level1)
+            if (name == RoomType.Level1)
+            {
                 Game1.RoomManager.ChangeRoom(new Level2());
+                Game1.Background = Game1.game.Content.Load<Texture2D>("asset_stage_02");
+            }
             if (name == RoomType.Level2)
+            {
                 Game1.RoomManager.ChangeRoom(new Level3());
+                Game1.Background = Game1.game.Content.Load<Texture2D>("asset_stage_03");
+            }
+
             if (name == RoomType.Level3)
+            {
                 Game1.RoomManager.ChangeRoom(new Level4());
+                Game1.Background = Game1.game.Content.Load<Texture2D>("asset_stage_04");
+            }
             if (name == RoomType.Level4)
+            {
                 Game1.RoomManager.ChangeRoom(new Level5());
+                Game1.Background = Game1.game.Content.Load<Texture2D>("asset_stage_05");
+            }
         }
         public override void OnCollision(GameObject gameObject)
         {
