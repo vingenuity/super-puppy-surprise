@@ -457,6 +457,7 @@ namespace SuperPuppySurprise.GameObjects
         }
         public override void OnCollision(GameObject gameObject)
         {
+            
             base.OnCollision(gameObject);
         }
     }

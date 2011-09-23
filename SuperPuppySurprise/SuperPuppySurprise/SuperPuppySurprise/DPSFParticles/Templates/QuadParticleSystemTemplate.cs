@@ -249,7 +249,7 @@ namespace DPSF.ParticleSystems
 			// Calculate what half of the Quads Width and Height are
 			float fHalfWidth = cParticle.Width / 2.0f;
 			float fHalfHeight = cParticle.Height / 2.0f;
-
+            
 			// Calculate the Positions of the Quads corners around the origin
 			Vector3 sTopLeft = new Vector3(-fHalfWidth, -fHalfHeight, 0);
 			Vector3 sTopRight = new Vector3(fHalfWidth, -fHalfHeight, 0);
