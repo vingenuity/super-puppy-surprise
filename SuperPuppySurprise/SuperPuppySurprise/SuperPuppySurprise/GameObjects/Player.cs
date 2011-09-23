@@ -318,7 +318,7 @@ namespace SuperPuppySurprise.GameObjects
             }
 
         }
-
+ 
         Vector2 Orig;
         float scale; 
         public override void Draw(GameTime gameTime)

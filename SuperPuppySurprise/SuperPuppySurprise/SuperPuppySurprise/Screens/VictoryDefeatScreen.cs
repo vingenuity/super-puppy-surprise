@@ -30,7 +30,8 @@ namespace GameStateManagement
         public VictoryDefeatScreen(string p, string p2)
             : base(p)
         {
-            Game1.SoundEngine.PlaySound(SoundEffects.Victory);
+            if (p.Contains("F"))
+                Game1.SoundEngine.PlaySound(SoundEffects.Victory);
             // Create our menu entries.
             MenuEntry restartGameMenuEntry= new MenuEntry(p2);
             MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
