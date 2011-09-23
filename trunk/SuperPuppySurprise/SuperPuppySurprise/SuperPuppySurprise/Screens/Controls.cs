@@ -41,7 +41,7 @@ namespace GameStateManagement
             /// </summary>
             public override void LoadContent()
             {
-                text = Game1.game.Content.Load<Texture2D>("LightOff");
+                text = Game1.game.Content.Load<Texture2D>("controls_screen");
                 Game1.spriteBatch = new SpriteBatch(Game1.game.GraphicsDevice);
                 //Texture2D controlScreen = Game1.game.Content.Load<Texture2D>("controls_screen");
                 //Game1.spriteBatch.Draw(controlScreen, new Rectangle(0, 0, 800, 500), Color.White);
