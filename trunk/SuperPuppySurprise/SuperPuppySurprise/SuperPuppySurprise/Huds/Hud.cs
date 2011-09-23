@@ -19,6 +19,7 @@ namespace SuperPuppySurprise.Huds
         Texture2D complete;
         Texture2D sidebar;
         Texture2D gun1, gun2, gun3;
+        Texture2D gun0_icon, gun1_icon, gun2_icon, gun3_icon;
         RoomMap roomMap;
         Rectangle rectFinish = new Rectangle(100, 100, 300, 300);
         public Hud()
@@ -37,6 +38,10 @@ namespace SuperPuppySurprise.Huds
             gun1 = Game1.game.Content.Load<Texture2D>("asset_icon_tripleFire");
             gun2 = Game1.game.Content.Load<Texture2D>("asset_icon_spread");
             gun3 = Game1.game.Content.Load<Texture2D>("asset_icon_minigun");
+            gun0_icon = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_green");
+            gun1_icon = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_blue");
+            gun2_icon = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_orange");
+            gun3_icon = Game1.game.Content.Load<Texture2D>("PowerUps/asset_powerup_purple");
         }
         public void Update(GameTime gameTime)
         {
@@ -85,7 +90,14 @@ namespace SuperPuppySurprise.Huds
               
                 }
                 j++;
-              
+                if (p.getCurrentFireMode() % 5 == 0)
+                    spriteBatch.Draw(gun0_icon, new Rectangle(550, 180, 30, 30), Color.White);
+                if (p.getCurrentFireMode() % 5 == 2)
+                    spriteBatch.Draw(gun1_icon, new Rectangle(550, 180, 30, 30), Color.White);
+                if (p.getCurrentFireMode() % 5 == 3)
+                    spriteBatch.Draw(gun2_icon, new Rectangle(550, 180, 30, 30), Color.White);
+                if (p.getCurrentFireMode() % 5 == 4)
+                    spriteBatch.Draw(gun3_icon, new Rectangle(550, 180, 30, 30), Color.White);
                
             }
             if (ShowLevelClearedText)
