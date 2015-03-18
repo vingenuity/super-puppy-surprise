@@ -1,0 +1,1 @@
+The week 1 project is a short game to be made in 3 weeks.  Our team is composed of 5 team members who are all students at TAMU.
